@@ -299,6 +299,10 @@ screen navigation():
 
             textbutton _("Start") action Start()
 
+            if persistent.galleryUnlocked:
+
+                textbutton _("Gallery") action ShowMenu("pre_gallery")
+
         else:
 
             textbutton _("History") action ShowMenu("history")
@@ -568,6 +572,17 @@ style about_text is gui_text
 
 style about_label_text:
     size gui.label_text_size
+
+
+## Screen for the image gallery
+screen pre_gallery():
+
+    tag menu
+    add "gallery_back"
+    use gameGallery #imports the gallery from the separate file it's in
+    textbutton _("Return"):
+        style "return_button"
+        action Return()
 
 
 ## Load and Save screens #######################################################
