@@ -8,7 +8,13 @@ define a = Character("Azazel")
 
 # Backgrounds
 image village fog = "BG/bg_village.png"
-image azazel bad_neutral = "Characters/azazel bad neutral.png" 
+image village flashback = "BG/bg_village_flashback.png"
+image altar = "BG/bg_altar.png"
+image altar flashback = "BG/altar_flashback.png"
+
+#Characters
+#I haven't given all the character images names yet. I can do that later.
+image azazel bad_neutral = "Characters/Azazel/azazel bad neutral.png" 
 
 # The game starts here.
 
