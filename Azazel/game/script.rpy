@@ -3,7 +3,7 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define e = Character("Eileen")
+define a = Character("Azazel")
 
 
 # Backgrounds
@@ -25,12 +25,13 @@ label start:
     # directory.
 
     # show eileen happy
-    show azazel bad_neutral zoom 0.3
+    show azazel bad_neutral at center:
+        zoom 0.3
     # These display lines of dialogue.
 
-    e "You've created a new Ren'Py game."
+    a "You've created a new Ren'Py game."
 
-    e "Once you add a story, pictures, and music, you can release it to the world!"
+    a "Once you add a story, pictures, and music, you can release it to the world!"
 
     # This ends the game.
 
