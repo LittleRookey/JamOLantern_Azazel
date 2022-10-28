@@ -9,7 +9,7 @@ define l = Character("Lilith", image="lilith")
 define m = Character("Micah", image="micah")
 
 # Backgrounds
-image village fog = "BG/bg_village.png"
+image village = "BG/bg_village.png"
 image village flashback = "BG/bg_village_flashback.png"
 image altar = "BG/bg_altar.png"
 image altar flashback = "BG/bg_altar_flashback.png"
@@ -147,23 +147,51 @@ label cave_wakeup:
     a @ neutral very happy "Madam Lilith!"
     l "Forgive me, I couldn't help myself."
     a neutral happy "Hehe, the Lord forgives you."
-    a neutral base "By the way, may I tell you something? I had a dream earlier."
-    a neutral worried "It seemed like a vision of my inauguration tomorrow… I think Father was in it. He said so"
+    a neutral base "By the way, I wanted to tell you something. I had a dream earlier."
+    a neutral worried "It seemed like a vision of my inauguration tomorrow… I think Father was in it. He said something about sacrificing a lamb."
+    a @ neutral sheepish "Don't get me wrong! I know it's a great honor to be the next Prophet."
+    a "I just can't help but feel like..."
+
+    menu:
+        "I don't deserve the honor.":
+            l "Oh, no need to be so humble, Azazel. The people need a leader."
+            l "The sacrifice of a lamb is merely a metaphor–growing into a new identity. And who better to embody that than you?"
+
+        "Something will go wrong.":
+            l "A nightmare, hm...?"
+            l "Worry not, dreams and nightmares have no basis in reality, and only cast the mind astray. Our Lord knows best."
+
+    l "Besides, our leader Baphomet would never hurt you."
     l "You are his only son, after all."
 
-    l """
-    Wait, before you go.
+    a neutral sheepish "Thank you... I'll keep your words in mind."
 
-    As tomorrow is your inauguration day, I have a precious gift for you. 
+    l "No need to thank. And wait one moment before you go."
+    l "This is a sacrificial knife. It has been passed down by generations of Prophets. You will need it for the inauguration rituals."
+    l "Take care not to tarnish it!"
 
-    This is a sacrificial knife. It has been passed down by generations of Prophets. You will need it for the ritual tomorrow.
-    """
+    a @ neutral surprise "Thank you! I won't, Madam Lilith!"
+    a "{i}This knife is so precious to the Order... this is real life.{/i}"
+    a neutral base "{i}I really am about to become the next Prophet. {/i}"
 
-    #Azazel has a menu here. It hasn't been written yet.
+    jump act2
 
-    l "Go help the citizens. I heard" #Is this line finished?
+    #l "Go help the citizens. I heard" #Is this line finished?
 
-    l masked_angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}"
+    #l masked_angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}"
+
+    return
+
+label act2:
+
+    #fade to black for 2 seconds before showing village
+    #numbers: length of fade out, time to stay faded,
+    #length of next fade-in, color
+    scene village with Fade(0.5, 2, 0.5, color="#000")
+
+    "You step outside of your quarters and meet the familiar sight of your mountainside home."
+    "The Order’s flags and  banners wave proudly in the wind under the full moon’s light. The sky’s faraway stars twinkle."
+
 
     return
 
@@ -173,7 +201,7 @@ label debug_section: #A part of the game I made just to test stuff out.
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    scene village fog
+    scene village
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
