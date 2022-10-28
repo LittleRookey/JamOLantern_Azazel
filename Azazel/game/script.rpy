@@ -6,7 +6,7 @@
 define a = Character("Azazel", image="azazel")
 define b = Character("Baphomet", image="baphomet")
 define l = Character("Lilith", image="lilith")
-define m = Character("Micah", image="micah")
+define m = Character("Micah", image="micah", what_size=22)
 
 # Backgrounds
 image village = "BG/bg_village.png"
@@ -192,6 +192,7 @@ label act2:
     "You step outside of your quarters and meet the familiar sight of your mountainside home."
     "The Order’s flags and  banners wave proudly in the wind under the full moon’s light. The sky’s faraway stars twinkle."
 
+    m "My words are TINY!" #placeholder line, the size change in Micah's character works
 
     return
 
