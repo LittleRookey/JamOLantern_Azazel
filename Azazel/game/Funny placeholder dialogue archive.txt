@@ -1,0 +1,20 @@
+#This is just a place to store funny dialogue that I added as a placeholder.
+
+"Baphomet" "UwU!"
+
+###
+
+"You awaken with a start in your own room."
+
+    a "Ah! I'm up!"
+
+    l "Finally. You'd be late to your own funeral if you could, Azazel."
+
+    a "UwU?"
+
+    l "Now is not the time for UwUs, Azazel. It is in fact your own funeral."
+    l "And you are late."
+
+    a "You sure about that? I mean, I feel alive."
+
+###

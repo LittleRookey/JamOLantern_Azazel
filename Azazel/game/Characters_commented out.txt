@@ -1,0 +1,22 @@
+#Character definitions
+#I commented this out of the code because I don't think it's actually necessary.
+image azazel bad_neutral = "Characters/Azazel/azazel bad neutral.png"
+image azazel good_happy = "Characters/Azazel/azazel good happy.png"
+image azazel neutral_base = "Characters/Azazel/azazel neutral base.png"
+image azazel neutral_happy = "Characters/Azazel/azazel neutral happy.png"
+#I stopped defining after this because it seems like we don't really have to.
+#Ren'Py just automatically finds the images in the folders,
+
+image baphomet mask = "Characters/Baphomet/baphomet mask.png"
+image baphomet mask_cracked = "Characters/Baphomet/baphomet mask cracked.png"
+image baphomet silhouette = "Characters/Baphomet/baphomet silhouette.png"
+
+image lilith mask = "Characters/Lilith/lilith mask.png"
+image lilith mask_angry = "Characters/Lilith/lilith mask angry.png"
+image lilith broken_mask_neutral = "Characters/Lilith/lilith broken mask neutral.png"
+
+image micah mask = "Characters/Micah/micah mask.png"
+image micah bandage_neutral = "Characters/Micah/micah bandage neutral.png"
+image micah no_bandage_neutral = "Characters/Micah/micah no bandage neutral.png"
+image micah sacrifice = "Characters/Micah/micah sacrifice.png"
+image micah shock_slash = "Characters/Micah/micah shock slash.png"

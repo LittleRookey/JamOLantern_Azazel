@@ -1,0 +1,25 @@
+#Add this inside the start label of the game to make it so that characters move to the front when speaking.
+#Source: https://lemmasoft.renai.us/forums/viewtopic.php?t=50142
+
+default all_character_tags = []
+    
+    init python:
+        
+        def char_callback(event, **kwargs):
+            global all_character_tags
+            if event == "begin": 
+                current_tag = renpy.get_say_image_tag()
+                if current_tag not in all_character_tags:
+                    all_character_tags.append(current_tag)
+                sprite_tags = [ k for k in renpy.get_showing_tags()
+                                if k in all_character_tags ]
+                for z,k in enumerate(sprite_tags):
+                    att = renpy.get_attributes(k)
+                    zorder = z if k != current_tag else len(sprite_tags)
+                    if str(att) == "()":
+                        renpy.show(k, zorder=zorder)
+                    else:
+                        renpy.show(str(k) + " " + str(att[0]), zorder=zorder )
+            return (), kwargs
+
+        config.all_character_callbacks.append( char_callback )
