@@ -8,7 +8,6 @@ define b = Character("Baphomet", image="baphomet")
 define l = Character("Lilith", image="lilith")
 define m = Character("Micah", image="micah")
 
-
 # Backgrounds
 image village fog = "BG/bg_village.png"
 image village flashback = "BG/bg_village_flashback.png"
@@ -55,10 +54,10 @@ label script_intro:
     show baphomet silhouette at center:
         zoom 0.2
 
-    "{i}Welcome, my friends. Tonight marks the dawn of a new age."
-    "{i}The time has come to crown our new Prophet."
-    "{i}Worry not, my child. Worthy is the lamb who is slain."
-    "{i}You will receive honor,  glory, and the divine blessing of our Lord."
+    "{i}Welcome, my friends. Tonight marks the dawn of a new age.{/i}"
+    "{i}The time has come to crown our new Prophet.{/i}"
+    "{i}Worry not, my child. Worthy is the lamb who is slain.{/i}"
+    "{i}You will receive honor,  glory, and the divine blessing of our Lord.{/i}"
 
     show baphomet silhouette at left:
         zoom 0.2
@@ -66,10 +65,10 @@ label script_intro:
     show azazel silhouette at right:
         zoom 0.2
 
-    "{i}Cast aside your former name."
-    "{i}Cast aside your former skin, your former mind, body, and soul, and embrace your new identity."
-    "{i}{b}All hail our new Prophet!{/b}"
-    "{i}{b}All hail Baphomet!{/b}"
+    "{i}Cast aside your former name.{/i}"
+    "{i}Cast aside your former skin, your former mind, body, and soul, and embrace your new identity.{/i}"
+    "{i}{b}All hail our new Prophet!{/b}{/i}"
+    "{i}{b}All hail Baphomet!{/b}{/i}"
 
     scene black with fade
 
@@ -122,14 +121,14 @@ label cave_wakeup:
 
     l """
     Listen closely...
+    
+    {b}We, the citizens of the Order, are blessed to be under His divine watch.{/b} 
 
-    {b}We, the citizens of the Order, are blessed to be under His divine watch. 
+    {b}We praise our Lord’s mercy and hear His word through his excellency, {color=#f00}The Prophet, Baphomet.{/color}{/b}
 
-    {b}We praise our Lord’s mercy and hear His word through his excellency, {color=#f00}The Prophet, Baphomet.
+    {b}The Order is safe. The Order provides. The Order is {color=#f00}your home, your family, your everything.{/color}{/b}
 
-    {b}The Order is safe. The Order provides. The Order is {color=#f00}your home, your family, your everything.
-
-    {b}To show our faith to Baphomet and our Lord, we cleanse our Order of the unclean through {color=#f00}the sacrifice of dissenters.
+    {b}To show our faith to Baphomet and our Lord, we cleanse our Order of the unclean through {color=#f00}the sacrifice of dissenters.{/color}{/b}
 
     Did you catch all of that, Azazel? I know it was a mouthful.
     """
@@ -164,7 +163,7 @@ label cave_wakeup:
 
     l "Go help the citizens. I heard" #Is this line finished?
 
-    l masked_angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak."
+    l masked_angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}"
 
     return
 
