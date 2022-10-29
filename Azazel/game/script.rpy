@@ -47,9 +47,12 @@ image micah no bandage sickly = "Characters/Micah/micah no bandage/micah sickly 
 
 #Some images need to be edited to fit the dimensions
 #that the gallery uses.
-default galleryList = ["azazel bonus art 2",
+default galleryList = ["azazel bad end",
+                        "azazel bonus art 2",
                         "azazel bonus art 3",
+                        "azazel bonus art 3 final",
                         "azazel bonus", 
+                        "azazel pure evil end",
                         "game jam character mockups",
                         "micah mask pupils",
                         "splash art azazel bonus",
