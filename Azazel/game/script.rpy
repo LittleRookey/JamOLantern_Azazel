@@ -6,7 +6,7 @@
 define a = Character("Azazel", image="azazel")
 define b = Character("Baphomet", image="baphomet")
 define l = Character("Lilith", image="lilith")
-define m = Character("Micah", image="micah", what_size=22)
+define m = Character("Micah", image="micah", what_size=22) #smaller text size
 
 # Backgrounds
 image village = "BG/bg_village.png"
@@ -14,14 +14,32 @@ image village flashback = "BG/bg_village_flashback.png"
 image altar = "BG/bg_altar.png"
 image altar flashback = "BG/bg_altar_flashback.png"
 
-#We can add character definitions later if we want to permanently apply an effect
-#like zoom to a character.
-#I skipped that for now.
-image baphomet silhouette = "Characters/Baphomet/baphomet silhouette.png"
-image lilith masked = "Characters/Lilith/lilith mask.png"
-image lilith masked_angry = "Characters/Lilith/lilith mask angry.png"
-image micah masked = "Characters/Micah/micah mask.png"
+#Character images
 image azazel neutral surprised = "Characters/Azazel/azazel neutral surprise.png"
+
+image baphomet silhouette = "Characters/Baphomet/baphomet silhouette.png"
+
+image lilith masked = "Characters/Lilith/lilith mask.png"
+image lilith masked angry = "Characters/Lilith/lilith mask angry.png"
+
+image micah bandage angry = "Characters/Micah/micah bandage/micah angry.png"
+image micah bandage annoyed = "Characters/Micah/micah bandage/micah annoyed.png"
+image micah bandage neutral = "Characters/Micah/micah bandage/micah bandage neutral.png"
+image micah bandage calm = "Characters/Micah/micah bandage/micah calm.png"
+image micah bandage fearful = "Characters/Micah/micah bandage/micah fearful.png"
+image micah bandage happy = "Characters/Micah/micah bandage/micah happy.png"
+image micah bandage masked = "Characters/Micah/micah bandage/micah mask.png"
+image micah bandage sacrifice = "Characters/Micah/micah bandage/micah sacrifice.png"
+image micah bandage shock slash = "Characters/Micah/micah bandage/micah shock slash.png"
+image micah bandage sickly = "Characters/Micah/micah bandage/micah sickly.png"
+
+image micah no bandage angry = "Characters/Micah/micah no bandage/micah angry no bandage.png"
+image micah no bandage annoyed = "Characters/Micah/micah no bandage/micah annoyed no bandage.png"
+image micah no bandage calm = "Characters/Micah/micah no bandage/micah calm no bandage.png"
+image micah no bandage fearful = "Characters/Micah/micah no bandage/micah fearful no bandage.png"
+image micah no bandage happy = "Characters/Micah/micah no bandage/micah happy no bandage.png"
+image micah no bandage neutral = "Characters/Micah/micah no bandage/micah no bandage neutral.png"
+image micah no bandage sickly = "Characters/Micah/micah no bandage/micah sickly no bandage.png"
 
 #Gallery images list, with placeholder images for now.
 #Gallery based on this tutorial: https://www.youtube.com/watch?v=0hPIQxnesS8
@@ -115,12 +133,12 @@ label cave_wakeup:
 
     l "Finally. You'd be late to your own funeral if you could, Azazel."
 
-    a sheepish "I’m sorry, Madam Lilith. I thought it would be a quick nap…"
+    a neutral sheepish "I’m sorry, Madam Lilith. I thought it would be a quick nap…"
 
     l "No matter–the Lord forgives you. But there’s only a few hours until your sermon."
     l "You remember your lines, don’t you?"
 
-    a surprise "Uh..."
+    a neutral confused "Uh..."
 
     menu:
         "Could you refresh my memory?":
@@ -158,9 +176,9 @@ label cave_wakeup:
     a @ neutral very happy "Madam Lilith!"
     l "Forgive me, I couldn't help myself."
     a neutral happy "Hehe, the Lord forgives you."
-    a neutral base "By the way, I wanted to tell you something. I had a dream earlier."
+    a neutral confused "By the way, I wanted to tell you something. I had a dream earlier."
     a neutral worried "It seemed like a vision of my inauguration tomorrow… I think Father was in it. He said something about sacrificing a lamb."
-    a @ neutral sheepish "Don't get me wrong! I know it's a great honor to be the next Prophet."
+    a @ neutral confused "Don't get me wrong! I know it's a great honor to be the next Prophet."
     a "I just can't help but feel like..."
 
     menu:
@@ -189,7 +207,7 @@ label cave_wakeup:
 
     #l "Go help the citizens. I heard" #Is this line finished?
 
-    #l masked_angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}"
+    #l masked angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}"
 
     return
 
@@ -209,10 +227,10 @@ label act2:
         zoom 0.2
 
     a "It's good to get some fresh air..."
-    a neutral base "And everyone’s working hard to prepare for my crowning ceremony tomorrow. I should do something too."
+    a neutral calm "And everyone’s working hard to prepare for my crowning ceremony tomorrow. I should do something too."
 
     show azazel at left
-    show micah masked at right:
+    show micah bandage masked at right:
         zoom 0.2
 
     m "Azazel."
@@ -224,7 +242,7 @@ label act2:
 
     "The two of you spend the next few hours trudging across the sprawling cliffside, delivering rations to the citizens of the order. "
 
-    a neutral sheepish "Huff... huff..."
+    a neutral confused "Huff... huff..."
     a neutral happy "Here's your food, sir!"
 
     #We don't have art for "Citizen" yet.
@@ -256,7 +274,7 @@ label act2:
     m "..."
     a neutral base "Hey, Micah, what do you think?"
     m "There's nothing to think."
-    a "What do you mean? What he said really bothered me…"
+    a neutral confused "What do you mean? What he said really bothered me…"
     a neutral sheepish "The Order does all it can to protect and provide for its people. And yet, that guy’s so rude!"
     a "He wants “big changes”… if Baphomet heard him, he would be in serious trouble."
     m "Azazel."
@@ -269,23 +287,22 @@ label act2:
 label act2_altar:
 
     scene altar with Fade(0.5, 2, 0.5, color="#000")
-    show azazel neutral happy at left:
+    show azazel neutral base at left:
         zoom 0.2
-    show micah masked at right:
+    show micah bandage masked at right:
         zoom 0.2
 
     "After an arduous hike, the two of you reach a cliff. A simple altar made of three slabs of stone stands on the edge, waving red ribbons. The moon shines brightly in the sky."
     a "Why did you bring me here?"
     m "This is the only place where He isn't watching."
-    a "My Father? I mean- Baphomet?"
-    m "Why else?"
-    #We don't currently have different expressions for bandaged Micah.
-    m bandage neutral "Happy early 18th birthday, Azazel."
-    m "I know you’ll be busy tomorrow, with the inauguration and all. Thats why I wanted to say it now."
-    a neutral very happy "Micah…! You’re so kind!"
-    a "May the Lord bless you."
-    m "The Lord..."
-    m "Hey. We're friends, right?"
+    a neutral confused "My Father? I mean- Baphomet?"
+    m "Who else?"
+    m bandage happy "Happy early 18th birthday, Azazel."
+    m bandage calm "I know you’ll be busy tomorrow, with the inauguration and all. Thats why I wanted to say it now."
+    a neutral overjoyed "Micah…! You’re so kind!"
+    a neutral very happy "May the Lord bless you."
+    m bandage annoyed "The Lord..."
+    m bandage neutral "Hey. We're friends, right?"
     m "Can you keep a secret?"
 
     show azazel neutral base
@@ -306,32 +323,32 @@ label act2_altar:
             m "Two years ago, I was reckless, just like that citizen complaining about rations earlier. And I paid the price."
             m "It's a miracle I can still speak, really… the only reason I didn’t die was because I got on my knees and begged."
             a neutral worried "And who did this to you...?"
-            m "Who else? Your father."
-            a neutral surprised "No!"
+            m no bandage annoyed "Who else? Your father."
+            a neutral horrified "No!"
             show micah bandage neutral
             "Micah puts his bandages back on."
-            m "I'm telling you the truth!"
-            m "*cough*"
+            m bandage angry "I'm telling you the truth!"
+            m bandage sickly "*cough*"
             a neutral worried "Please, don't strain yourself-"
 
-    m "Baphomet tries so hard to keep everyone happy and satisfied through his sermons, but you know what?"
-    m "It doesn’t work. He’s a fraud. Everyone here is miserable!"
+    m bandage annoyed "Baphomet tries so hard to keep everyone happy and satisfied through his sermons, but you know what?"
+    m bandage angry "It doesn’t work. He’s a fraud. Everyone here is miserable!"
     m "No one believes this is paradise. No one likes the prayers, or the masks, or the pitiful rations."
     m "The few that {i}are{/i} happy are delusional. Everyone else just got dragged into the Order because we’re poor and vulnerable and didn’t know any better!"
-    m "...We're all just too afraid to say it."
+    m bandage neutral "...We're all just too afraid to say it."
     m "We can't leave on our own... This cult garbage is fed into our minds 24/7 ... if we-"
     show lilith masked at center:
         zoom 0.25
-    m "!"
+    m bandage fearful "!"
     show lilith masked at center:
         zoom 0.2
     l "There you two are!"
     "Micah scrambles to put their mask back on."
-    show micah masked
-    l masked_angry "..."
+    show micah bandage masked
+    l masked angry "..."
     l "Azazel, we've been looking all over for you. Get some rest."
 
-    #l masked_angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}"
+    #l masked angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}"
 
     return
 
