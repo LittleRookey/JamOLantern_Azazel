@@ -1,0 +1,10 @@
+#Put this in the Preferences menu.
+#I realized that since the text speed slider is already there,
+#this is unnecessary.
+
+vbox:
+	style_prefix "radio"
+	label _("Text display mode")
+	#I don't know of any better way to do the multiple variables than to have the button do them all at once.
+	textbutton _("Gradual") action SetVariable("preferences.text_cps", 25)
+	textbutton _("All at once") action SetVariable("preferences.text_cps", 0)

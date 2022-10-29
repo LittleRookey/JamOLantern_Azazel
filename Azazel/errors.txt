@@ -2,9 +2,7 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 269: choice menuitem expects a non-empty block.
-    "Continue debug scene":
-                           ^
+File "game/screens.rpy", line 771: Indentation mismatch.
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Fri Oct 28 20:52:40 2022
+Sat Oct 29 00:58:54 2022
