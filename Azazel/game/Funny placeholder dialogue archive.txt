@@ -18,3 +18,9 @@
     a "You sure about that? I mean, I feel alive."
 
 ###
+
+m "My words are TINY!" #placeholder line, the size change in Micah's character works
+
+###
+
+a "OwO what's this?"

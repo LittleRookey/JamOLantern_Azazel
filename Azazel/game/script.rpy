@@ -20,11 +20,22 @@ image altar flashback = "BG/bg_altar_flashback.png"
 image baphomet silhouette = "Characters/Baphomet/baphomet silhouette.png"
 image lilith masked = "Characters/Lilith/lilith mask.png"
 image lilith masked_angry = "Characters/Lilith/lilith mask angry.png"
+image micah masked = "Characters/Micah/micah mask.png"
+image azazel neutral surprised = "Characters/Azazel/azazel neutral surprise.png"
 
 #Gallery images list, with placeholder images for now.
 #Gallery based on this tutorial: https://www.youtube.com/watch?v=0hPIQxnesS8
 #More on the gallery is found in screens.rpy and gamegallery.rpy.
-default galleryList = ["gallery00", "gallery01", "gallery02", "gallery03"]
+
+#Some images need to be edited to fit the dimensions
+#that the gallery uses.
+default galleryList = ["azazel bonus art 2",
+                        "azazel bonus art 3",
+                        "azazel bonus", 
+                        "game jam character mockups",
+                        "micah mask pupils",
+                        "splash art azazel bonus",
+                        "splash art azazel"]
 default Lightbox_image = "" #variable used by the gallery
 
 # The game starts here.
@@ -183,6 +194,8 @@ label cave_wakeup:
     return
 
 label act2:
+    #We don't have a confused expression for Azazel yet,
+    #so some lines are missing it.
 
     #fade to black for 2 seconds before showing village
     #numbers: length of fade out, time to stay faded,
@@ -192,7 +205,133 @@ label act2:
     "You step outside of your quarters and meet the familiar sight of your mountainside home."
     "The Order’s flags and  banners wave proudly in the wind under the full moon’s light. The sky’s faraway stars twinkle."
 
-    m "My words are TINY!" #placeholder line, the size change in Micah's character works
+    show azazel neutral happy at center:
+        zoom 0.2
+
+    a "It's good to get some fresh air..."
+    a neutral base "And everyone’s working hard to prepare for my crowning ceremony tomorrow. I should do something too."
+
+    show azazel at left
+    show micah masked at right:
+        zoom 0.2
+
+    m "Azazel."
+    a neutral surprise "Ah! Don't sneak up on me like that, Micah!"
+    m "Yeah, sorry."
+    m "I heard you muttering to yourself. Help me deliver today’s dinner rations. "
+    a "That’s way too much bread and water to carry yourself… of course I’ll help!"
+    m "You know I always get stuck with the hardest tasks."
+
+    "The two of you spend the next few hours trudging across the sprawling cliffside, delivering rations to the citizens of the order. "
+
+    a neutral sheepish "Huff... huff..."
+    a neutral happy "Here's your food, sir!"
+
+    #We don't have art for "Citizen" yet.
+    #Check the Drive script for what emotions this character should show.
+    "Citizen" "Oh, wow. The next Prophet himself shows up at my door, and dinner’s  still just a jug of water and half a loaf of hard bread."
+    "Citizen" "What a gracious Lord! Thank you Baphomet! Jeez, I’m starving here… "
+
+    a neutral surprise "Oh!"
+
+    menu:
+        "I’m sorry, I don’t have anything else…":
+            a neutral sheepish "I can try to request something better for you tomorrow, maybe."
+            "Citizen" "Oh, forget it… just from the way you talk, I know you’re just a naive little kid."
+            "Citizen" "Listen. When you become Prophet, you better start making some big changes around here, alright?"
+            a neutral worried "Ah, I will..."
+
+        "Be grateful of what the Order provides.":
+            a neutral base "Is that really how you should be speaking to the next Prophet?"
+            "Citizen" """
+            Uh... my apologies!
+
+            I was just saying I’d like to see some changes around here… I know you’ll be a great, um, leader.
+
+            The bread’s actually fine. All hail! Haha…
+            """
+
+    "The citizen disappears back into his residence."
+
+    m "..."
+    a neutral base "Hey, Micah, what do you think?"
+    m "There's nothing to think."
+    a "What do you mean? What he said really bothered me…"
+    a neutral sheepish "The Order does all it can to protect and provide for its people. And yet, that guy’s so rude!"
+    a "He wants “big changes”… if Baphomet heard him, he would be in serious trouble."
+    m "Azazel."
+    m "Let’s pass out these last few rations and talk somewhere else."
+
+    jump act2_altar
+
+    return
+
+label act2_altar:
+
+    scene altar with Fade(0.5, 2, 0.5, color="#000")
+    show azazel neutral happy at left:
+        zoom 0.2
+    show micah masked at right:
+        zoom 0.2
+
+    "After an arduous hike, the two of you reach a cliff. A simple altar made of three slabs of stone stands on the edge, waving red ribbons. The moon shines brightly in the sky."
+    a "Why did you bring me here?"
+    m "This is the only place where He isn't watching."
+    a "My Father? I mean- Baphomet?"
+    m "Why else?"
+    #We don't currently have different expressions for bandaged Micah.
+    m bandage neutral "Happy early 18th birthday, Azazel."
+    m "I know you’ll be busy tomorrow, with the inauguration and all. Thats why I wanted to say it now."
+    a neutral very happy "Micah…! You’re so kind!"
+    a "May the Lord bless you."
+    m "The Lord..."
+    m "Hey. We're friends, right?"
+    m "Can you keep a secret?"
+
+    show azazel neutral base
+
+    menu:
+        "Say what you want to say.":
+            m "..."
+            "Micah scratches the bandages on their neck."
+            m "
+            Lilith" #Is this supposed to be here? I think this part is incomplete.
+
+        "Of course. You can trust me.":
+            m "..."
+            show micah no bandage neutral
+            "Micah begins to unveil the tight bandages on their neck."
+            a neutral surprised "What... is that..."
+            m "It's the Order's symbol."
+            m "Two years ago, I was reckless, just like that citizen complaining about rations earlier. And I paid the price."
+            m "It's a miracle I can still speak, really… the only reason I didn’t die was because I got on my knees and begged."
+            a neutral worried "And who did this to you...?"
+            m "Who else? Your father."
+            a neutral surprised "No!"
+            show micah bandage neutral
+            "Micah puts his bandages back on."
+            m "I'm telling you the truth!"
+            m "*cough*"
+            a neutral worried "Please, don't strain yourself-"
+
+    m "Baphomet tries so hard to keep everyone happy and satisfied through his sermons, but you know what?"
+    m "It doesn’t work. He’s a fraud. Everyone here is miserable!"
+    m "No one believes this is paradise. No one likes the prayers, or the masks, or the pitiful rations."
+    m "The few that {i}are{/i} happy are delusional. Everyone else just got dragged into the Order because we’re poor and vulnerable and didn’t know any better!"
+    m "...We're all just too afraid to say it."
+    m "We can't leave on our own... This cult garbage is fed into our minds 24/7 ... if we-"
+    show lilith masked at center:
+        zoom 0.25
+    m "!"
+    show lilith masked at center:
+        zoom 0.2
+    l "There you two are!"
+    "Micah scrambles to put their mask back on."
+    show micah masked
+    l masked_angry "..."
+    l "Azazel, we've been looking all over for you. Get some rest."
+
+    #l masked_angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}"
 
     return
 
@@ -203,6 +342,24 @@ label debug_section: #A part of the game I made just to test stuff out.
     # images directory to show it.
 
     scene village
+
+    menu:
+        "Jump to where?"
+
+        "Opening scene (Act 1)":
+            jump script_intro
+
+        "Cave wake-up (Act 1)":
+            jump cave_wakeup
+
+        "Act 2 opening":
+            jump act2
+
+        "Act 2 altar":
+            jump act2_altar
+
+        "Continue debug scene":
+            "Showing debug scene."
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
