@@ -265,7 +265,7 @@ label act2:
             a neutral worried "Ah, I will..."
 
         "Be grateful of what the Order provides.":
-            a neutral base "Is that really how you should be speaking to the next Prophet?"
+            a neutral annoyed "Is that really how you should be speaking to the next Prophet?"
             "Citizen" """
             Uh... my apologies!
 
