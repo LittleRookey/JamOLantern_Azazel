@@ -13,6 +13,7 @@ image village = "BG/bg_village.png"
 image village flashback = "BG/bg_village_flashback.png"
 image altar = "BG/bg_altar.png"
 image altar flashback = "BG/bg_altar_flashback.png"
+# image sacrificeRoom flashback = "BG/bg_sacrificeRoom_flashback.png"
 
 #Character images
 image azazel neutral surprised = "Characters/Azazel/azazel neutral surprise.png"
@@ -88,8 +89,8 @@ label script_intro:
 
     "{i}Welcome, my friends. Tonight marks the dawn of a new age.{/i}"
     "{i}The time has come to crown our new Prophet.{/i}"
-    "{i}Worry not, my child. Worthy is the lamb who is slain.{/i}"
-    "{i}You will receive honor,  glory, and the divine blessing of our Lord.{/i}"
+    "{i}Worry not, my child. Your sacrifice will not be in vain.{/i}"
+    "{i}You will receive honor,  glory, and the divine blessing of our god, Baphomet.{/i}"
 
     show baphomet silhouette at left:
         zoom 0.2
@@ -132,35 +133,35 @@ label cave_wakeup:
 
     "You awaken with a start in your own room."
 
-    a "Ah! I'm up!"
+    a neutral surprised "Ah! I'm up!"
 
     l "Finally. You'd be late to your own funeral if you could, Azazel."
 
     a neutral sheepish "I’m sorry, Madam Lilith. I thought it would be a quick nap…"
 
-    l "No matter–the Lord forgives you. But there’s only a few hours until your sermon."
+    l "No matter–our god forgives you. But there’s only a few hours until your sermon."
     l "You remember your lines, don’t you?"
 
     a neutral confused "Uh..."
 
     menu:
         "Could you refresh my memory?":
-            l "Just this once. You must get the details correct, Azazel. Our Lord will be watching."
+            l "Just this once. You must get the details correct, Azazel. Our god Baphomet will be watching."
 
         "I'm good.":
             l "The look on your face tells me you're not so sure."
-            l "Remember, you must get the details correct, Azazel. Our Lord will be watching."
+            l "Remember, you must get the details correct, Azazel. Our god will be watching."
 
     l """
     Listen closely...
     
-    {b}We, the citizens of the Order, are blessed to be under His divine watch.{/b} 
+    {b}We, the citizens of the Order, are blessed to be under Baphomet's divine watch.{/b} 
 
-    {b}We praise our Lord’s mercy and hear His word through his excellency, {color=#f00}The Prophet, Baphomet.{/color}{/b}
+    {b}We praise our god’s mercy and hear his word through his excellency, {color=#f00}The Prophet, Baphomet.{/color}{/b}
 
     {b}The Order is safe. The Order provides. The Order is {color=#f00}your home, your family, your everything.{/color}{/b}
 
-    {b}To show our faith to Baphomet and our Lord, we cleanse our Order of the unclean through {color=#f00}the sacrifice of dissenters.{/color}{/b}
+    {b}To show our faith to Baphomet, our god, we cleanse our Order of the unclean through {color=#f00}the sacrifice of dissenters.{/color}{/b}
 
     Did you catch all of that, Azazel? I know it was a mouthful.
     """
@@ -178,27 +179,28 @@ label cave_wakeup:
 
     a @ neutral very happy "Madam Lilith!"
     l "Forgive me, I couldn't help myself."
-    a neutral happy "Hehe, the Lord forgives you."
+    a neutral happy "Hehe, our god forgives you."
     a neutral confused "By the way, I wanted to tell you something. I had a dream earlier."
-    a neutral worried "It seemed like a vision of my inauguration tomorrow… I think Father was in it. He said something about sacrificing a lamb."
+    a neutral worried 'It seemed like a vision of my inauguration tomorrow… Father was in it. He said something about "my sacrifice".'
     a @ neutral confused "Don't get me wrong! I know it's a great honor to be the next Prophet."
-    a "I just can't help but feel like..."
+    a neutral worried "I just can't help but feel like..."
 
     menu:
         "I don't deserve the honor.":
             l "Oh, no need to be so humble, Azazel. The people need a leader."
-            l "The sacrifice of a lamb is merely a metaphor–growing into a new identity. And who better to embody that than you?"
+            l "Your sacrifice is merely a metaphor–growing into a new identity. And who better to embody that than you?"
 
         "Something will go wrong.":
             l "A nightmare, hm...?"
-            l "Worry not, dreams and nightmares have no basis in reality, and only cast the mind astray. Our Lord knows best."
+            l "Worry not, dreams and nightmares have no basis in reality, and only cast the mind astray. Our god knows best."
 
-    l "Besides, our leader Baphomet would never hurt you."
+    l "Besides, our leader would never hurt you."
     l "You are his only son, after all."
 
     a neutral sheepish "Thank you... I'll keep your words in mind."
 
     l "No need to thank. And wait one moment before you go."
+    "She pulls out a gift wrapped in white cloth and presents it to you"
     l "This is a sacrificial knife. It has been passed down by generations of Prophets. You will need it for the inauguration rituals."
     l "Take care not to tarnish it!"
 
