@@ -300,6 +300,7 @@ screen navigation():
             textbutton _("Start") action Start()
 
             if persistent.galleryUnlocked:
+                textbutton _("Character blurbs") action Start("character_blurbs")
 
                 textbutton _("Gallery") action ShowMenu("pre_gallery")
 

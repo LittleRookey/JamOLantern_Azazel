@@ -13,12 +13,17 @@ image village = "BG/bg_village.png"
 image village flashback = "BG/bg_village_flashback.png"
 image altar = "BG/bg_altar.png"
 image altar flashback = "BG/bg_altar_flashback.png"
+#image cave room = "BG/bg_cave_room.png"
+image sacrifice room = "BG/bg_sacrifice_room.png"
+image sacrifice room flashback = "BG/bg_sacrifice_room_flashback.png"
 # image sacrificeRoom flashback = "BG/bg_sacrificeRoom_flashback.png"
 
 #Character images
 image azazel neutral surprised = "Characters/Azazel/azazel neutral surprised.png"
 
 image baphomet silhouette = "Characters/Baphomet/baphomet silhouette.png"
+image baphomet masked = "Characters/Baphomet/baphomet mask.png"
+image baphomet mask_cracked = "Characters/Baphomet/baphomet mask cracked.png"
 
 image lilith masked = "Characters/Lilith/lilith mask.png"
 image lilith masked angry = "Characters/Lilith/lilith mask angry.png"
@@ -27,6 +32,7 @@ image micah bandage angry = "Characters/Micah/micah bandage/micah angry.png"
 image micah bandage annoyed = "Characters/Micah/micah bandage/micah annoyed.png"
 image micah bandage neutral = "Characters/Micah/micah bandage/micah bandage neutral.png"
 image micah bandage calm = "Characters/Micah/micah bandage/micah calm.png"
+image micah bandage disturbed = "Characters/Micah/micah bandage/micah disturbed.png"
 image micah bandage fearful = "Characters/Micah/micah bandage/micah fearful.png"
 image micah bandage happy = "Characters/Micah/micah bandage/micah happy.png"
 image micah bandage masked = "Characters/Micah/micah bandage/micah mask.png"
@@ -37,6 +43,7 @@ image micah bandage sickly = "Characters/Micah/micah bandage/micah sickly.png"
 image micah no bandage angry = "Characters/Micah/micah no bandage/micah angry no bandage.png"
 image micah no bandage annoyed = "Characters/Micah/micah no bandage/micah annoyed no bandage.png"
 image micah no bandage calm = "Characters/Micah/micah no bandage/micah calm no bandage.png"
+image micah no bandage disturbed = "Characters/Micah/micah no bandage/micah disturbed no bandage.png"
 image micah no bandage fearful = "Characters/Micah/micah no bandage/micah fearful no bandage.png"
 image micah no bandage happy = "Characters/Micah/micah no bandage/micah happy no bandage.png"
 image micah no bandage neutral = "Characters/Micah/micah no bandage/micah no bandage neutral.png"
@@ -60,6 +67,10 @@ default galleryList = ["azazel bad end",
                         "splash art azazel"]
 default Lightbox_image = "" #variable used by the gallery
 
+#Change this to False before compiling and releasing.
+#Turning it on lets the player see some testing features.
+default script_testing_mode = True 
+
 # The game starts here.
 
 label start:
@@ -68,20 +79,25 @@ label start:
     #but once you unlock it it will stay unlocked across playthroughs.
     default persistent.galleryUnlocked = False
 
-    menu:
-        "What do you want to see?"
+    if script_testing_mode:
+        menu:
+            "What do you want to see?"
 
-        "Script":
-            jump script_intro
+            "Script":
+                jump script_intro
 
-        "Debug":
-            jump debug_section
-
+            "Debug":
+                jump debug_section
+    else:
+        jump script_intro
+    
     # This ends the game.
 
     return
 
 label script_intro:
+    $ moralityScore = 0
+
     scene altar flashback
 
     show baphomet silhouette at center:
@@ -123,7 +139,7 @@ label script_intro:
 
 label cave_wakeup:
 
-    scene cave with fade #We don't have a cave yet. This just shows a placeholder.
+    scene cave room with fade #We don't have a cave yet. This just shows a placeholder.
 
     show azazel neutral surprised at left:
         zoom 0.2
@@ -217,9 +233,6 @@ label cave_wakeup:
     return
 
 label act2:
-    #We don't have a confused expression for Azazel yet,
-    #so some lines are missing it.
-
     #fade to black for 2 seconds before showing village
     #numbers: length of fade out, time to stay faded,
     #length of next fade-in, color
@@ -250,8 +263,10 @@ label act2:
     a neutral confused "Huff... huff..."
     a neutral happy "Here's your food, sir!"
 
-    #We don't have art for "Citizen" yet.
-    #Check the Drive script for what emotions this character should show.
+    #According to the script, "Citizen" should have annoyed and scared states.
+    #Currently we just have one extra character sprite, so I used that for both emotions.
+    show extra character at center:
+        zoom 0.2
     "Citizen" "Oh, wow. The next Prophet himself shows up at my door, and dinner’s  still just a jug of water and half a loaf of hard bread."
     "Citizen" "What a gracious Lord! Thank you Baphomet! Jeez, I’m starving here… "
 
@@ -259,12 +274,18 @@ label act2:
 
     menu:
         "I’m sorry, I don’t have anything else…":
+            $ moralityScore += 1
+            # insert good sound effect
+
             a neutral sheepish "I can try to request something better for you tomorrow, maybe."
             "Citizen" "Oh, forget it… just from the way you talk, I know you’re just a naive little kid."
             "Citizen" "Listen. When you become Prophet, you better start making some big changes around here, alright?"
             a neutral worried "Ah, I will..."
 
         "Be grateful of what the Order provides.":
+            $ moralityScore -= 1
+            # insert bad sound effect
+
             a neutral annoyed "Is that really how you should be speaking to the next Prophet?"
             "Citizen" """
             Uh... my apologies!
@@ -274,6 +295,7 @@ label act2:
             The bread’s actually fine. All hail! Haha…
             """
 
+    hide extra character
     "The citizen disappears back into his residence."
 
     m "..."
@@ -314,12 +336,25 @@ label act2_altar:
 
     menu:
         "Say what you want to say.":
-            m "..."
+            $ moralityScore -= 1
+            # insert bad sound effect
+
+            m bandage annoyed "..."
             "Micah scratches the bandages on their neck."
-            m "
-            Lilith" #Is this supposed to be here? I think this part is incomplete.
+            m bandage angry "So you're going to tell everyone?"
+            a neutral angry "I just have a bad feeling. The way you said \"our god\" ... it was so, {i}disdainful{/i}."
+            m "What's your problem?"
+            a neutral worried "Micah, you’re my friend and all, but if you’re trying to keep secrets from our god, he’s going to think you’re a dissenter."
+            a neutral angry "Is that why you brought me all the way here? To speak ill of the Order?"
+            m "Listen to me, Azazel! I'm risking my life here!"
+            m bandage sickly "{i}*cough*{/i}"
+            a neutral worried "Let's just go back, it's getting late-"
+            m bandage annoyed "I'm not done."
 
         "Of course. You can trust me.":
+            $ moralityScore += 1
+            # insert good sound effect
+
             m "..."
             show micah no bandage neutral
             "Micah begins to unveil the tight bandages on their neck."
@@ -334,27 +369,179 @@ label act2_altar:
             show micah bandage neutral
             "Micah puts his bandages back on."
             m bandage angry "I'm telling you the truth!"
-            m bandage sickly "*cough*"
+            m bandage sickly "{i}*cough*{/i}"
             a neutral worried "Please, don't strain yourself-"
 
-    m bandage annoyed "Baphomet tries so hard to keep everyone happy and satisfied through his sermons, but you know what?"
+    m bandage annoyed "The Prophet tries so hard to keep everyone happy and satisfied through his sermons, but you know what?"
     m bandage angry "It doesn’t work. He’s a fraud. Everyone here is miserable!"
-    m "No one believes this is paradise. No one likes the prayers, or the masks, or the pitiful rations."
-    m "The few that {i}are{/i} happy are delusional. Everyone else just got dragged into the Order because we’re poor and vulnerable and didn’t know any better!"
-    m bandage neutral "...We're all just too afraid to say it."
-    m "We can't leave on our own... This cult garbage is fed into our minds 24/7 ... if we-"
+    #m "No one believes this is paradise. No one likes the prayers, or the masks, or the pitiful rations."
+    #m "The few that {i}are{/i} happy are delusional. Everyone else just got dragged into the Order because we’re poor and vulnerable and didn’t know any better!"
+    #m bandage neutral "...We're all just too afraid to say it."
+    #m "We can't leave on our own... This cult garbage is fed into our minds 24/7 ... if we-"
+    
+    m "We’re forced to work, we don’t get paid, we can’t leave, and the food just sucks."
+    m "People only joined the Order because of promises of safety and care... We were poor and vulnerable and didn't know any better."
+    m bandage disturbed "We're all just too weak to escape."
+    a neutral confused "{i}I think I hear someone approaching.{/i}"
+    m bandage angry "And on another note. Don’t you think it’s suspicious that we call The Prophet by Baphomet’s name? As if he’s actually the god?"
+    a "Hey, Micah-"
+    m "He’s making us worship him, a man behind a mask. And if we have any little bad thing to say about it, we…!"
+    a neutral horrified "SHH!"
+
+    show micah bandage fearful
+
     show lilith masked at center:
         zoom 0.25
-    m bandage fearful "!"
+    #m bandage fearful "!"
+    " "
     show lilith masked at center:
         zoom 0.2
     l "There you two are!"
     "Micah scrambles to put their mask back on."
     show micah bandage masked
-    l masked angry "..."
-    l "Azazel, we've been looking all over for you. Get some rest."
+    # l masked angry "..."
+    # l "Azazel, we've been looking all over for you. Get some rest."
+
+    l masked angry "Do you have any idea how much trouble you two stirred up by disappearing?"
+    l "You. Go back. Now."
+    m "...Yes, ma'am."
+    hide micah
+    "They leave in a hurry."
+    show lilith masked at right:
+        zoom 0.2
+    l "Hmph..."
+    l "And what about you, young man? What do you have to say for yourself?"
+    a neutral sheepish "I’m very sorry Madam Lilith, I was just passing out rations with Micah. And then we came here to talk..."
+    l "You {i}know{/i} I told you to stop associating yourself with them. You don’t want to catch their voice sickness."
+    l "What did you two talk about?"
+    show azazel neutral base
+    menu:
+        "We just made small talk to catch up.":
+            $ moralityScore += 1
+            # insert good sound effect
+
+            l @ masked angry "..."
+            l "Your dishonesty does not go unnoticed, Azazel. I'm disappointed."
+            a "{i}Shoot!{/i}"
+
+        "They spoke ill of the Order and our god, Baphomet.":
+            $ moralityScore -= 1
+            # insert bad sound effect
+
+            l "As I thought. Your honesty is appreciated."
+            l "Micah may have been your friend, but they are no longer. Dissenters have no place in our Order."
+
+    l "Your sermon is starting soon. Your Father and everyone else is waiting."
+    l "Do not falter. Make us proud."
+
+    jump act3_start
 
     #l masked angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}"
+
+    return
+
+label act3_start:
+
+    scene sacrifice room with Fade(0.5, 2, 0.5, color="#000")
+    show azazel neutral surprised at left:
+        zoom 0.2
+    show lilith masked at right:
+        zoom 0.2
+
+    "You step into a massive cavern, illuminated only by candlelight. A crowd of masked followers has congregated inside already."
+    a "{i}I’ve never been allowed in here before, but this looks just like the room in my dream…{/i}"
+    a "{i}I just got goosebumps.{/i}"
+    l "Welcome, humble citizens of the Order. We come together tonight to celebrate the crowning of our next Prophet."
+    l " " #Is she supposed to say something here?
+    a "{i}I don't see Micah in the crowd.{/i}"
+    a "{i}I don’t see Father either… isn’t he supposed to come and listen to my sermon?{/i}"
+    l "Proceed, Azazel."
+    a neutral calm "Yes, Madam Lilith."
+    a "We, the citizens of the Order, are blessed to be under..."
+
+    menu:
+        "Baphomet's divine watch.":
+            "The Crowd" "All hail Baphomet!" #no sprite shown
+
+        "My divine watch.":
+            "Citizen" "Huh...? Already?" #no sprite shown
+
+    a neutral base "We praise our god’s mercy and hear his word through his excellency…"
+
+    menu:
+        "The Prophet.":
+            "The Crowd" "All hail The Prophet!"
+
+        "Madam Lilith.":
+            l masked angry "This is not the time to be making jokes, Azazel!" (what_size=22)
+
+    a "The Order is safe. The Order provides. The Order is…"
+
+    menu:
+        "Your home, your family, your everything.":
+            "The Crowd" "All hail The Order!"
+            show baphomet silhouette at center:
+                zoom 0.2
+            b " "
+
+        "A huge sham!":
+            $ moralityScore += 1
+            # insert good sound effect
+            show baphomet silhouette at center:
+                zoom 0.2
+            b "{b}That's enough out of you.{/b}"
+            a neutral horrified "Father!"
+
+    "The citizens of the Order bow in reverence."
+    #show baphomet masked
+    b masked "Your Prophet, the ordained messenger of your god, Baphomet."
+    b "My son is an extraordinary being."
+
+    l """
+    {b}We, the citizens of the Order, are blessed to be under Baphomet’s divine watch.{/b}
+
+    {b}We praise our god’s mercy and hear his word through his excellency, {color=#f00}The Prophet.{/color}{/b}
+
+    {b}The Order is safe. The Order provides. The Order is {color=#f00}your home, your family, your everything.{/color}{/b}
+
+    {b}To show our faith to Baphomet, our god, we cleanse our Order of the unclean through {color=#f00}the sacrifice of dissenters.{/color}{/b}
+
+    {b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}
+    """
+
+    #Now that we're at the end, we can unlock the bonus content.
+    $ persistent.galleryUnlocked = True
+
+    #Not sure what's happening here yet.
+    "{b}END{/b}"
+
+    "{b}LEAD{/b}"
+
+    "{b}LEAVE{/b}"
+
+    return
+
+label character_blurbs:
+    #This is a scene that you'll be able to view from the main menu after completing the story.
+    #It explains the background behind all the characters.
+    #We can write better dialogue for it later.
+
+    scene village flashback
+
+    show azazel neutral base at center:
+        zoom 0.2
+
+    a "Hi, I'm Azazel!"
+    a "*insert info about me here*"
+    a "I love the order, they’re like a big family to me. I love my dad, Lady Lilith, and my best friend Micah!"
+
+    hide azazel
+
+    show lilith masked at center:
+        zoom 0.2
+
+    "This is Lady Lilith."
+    "*info about Lilith here*"
 
     return
 
@@ -363,75 +550,53 @@ label debug_section: #A part of the game I made just to test stuff out.
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
+    $ moralityScore = 0
 
     scene village
 
     menu:
-        "Jump to where?"
+        "Do what?"
 
-        "Opening scene (Act 1)":
-            jump script_intro
+        "Jump to a scene":
+            menu:
+                "Jump to where?"
 
-        "Cave wake-up (Act 1)":
-            jump cave_wakeup
+                "Opening scene (Act 1)":
+                    jump script_intro
 
-        "Act 2 opening":
-            jump act2
+                "Cave wake-up (Act 1)":
+                    jump cave_wakeup
 
-        "Act 2 altar":
-            jump act2_altar
+                "Act 2 opening":
+                    jump act2
 
+                "Act 2 altar":
+                    jump act2_altar
+
+                "Act 3":
+                    jump act3_start
+
+                "Return to main debug menu":
+                    jump debug_section
+
+        "Unlock postgame content" if not persistent.galleryUnlocked:
+            $ persistent.galleryUnlocked = True
+            "Now you can see the gallery and character blurbs."
+            jump debug_section
+
+        "Lock postgame content" if persistent.galleryUnlocked:
+            $ persistent.galleryUnlocked = False
+            "You can no longer see the gallery or character blurbs."
+            jump debug_section
+        
         "Continue debug scene":
             "Showing debug scene."
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
-
-    # show eileen happy
     show azazel bad neutral at center:
-        zoom 0.3
-    # These display lines of dialogue.
+        zoom 0.2
 
-    a "Time to test out showing character sprites."
-
-    #This just has Azazel temporarily go to the silhouette just for one line.
-    a @ silhouette "Hiding for a second."
-
-    a "Back."
-
-    #And it works for multiple-word changes too.
-    a @ neutral sheepish "Eeeh."
-
-    a "Now time for some permanent changes."
-
-    show azazel neutral base
-
-    a "This change overrides my old self..."
-    a "permanently."
-
-    hide azazel
-
-    a "I'm gone!"
-
-    show azazel silhouette at center:
-        zoom 0.3
-
-    a "I'm back."
-
-    #for debugging purposes, comment out or delete once game is finished
-    menu:
-        "Unlock the gallery?"
-
-        "True":
-            $ persistent.galleryUnlocked = True
-            a "Now you can see the gallery."
-
-        "False":
-            $ persistent.galleryUnlocked = False
-            a "Now you can't see the gallery."
+    a "Here's the debug scene."
 
     # $ persistent.galleryUnlocked = True
-
 
     return

@@ -1,0 +1,37 @@
+#This is stuff that was in the debug section before I cut it.
+#It was mostly just testing sprite behavior.
+
+# This shows a character sprite. A placeholder is used, but you can
+    # replace it by adding a file named "eileen happy.png" to the images
+    # directory.
+
+    # show eileen happy
+    show azazel bad neutral at center:
+        zoom 0.3
+    # These display lines of dialogue.
+
+    a "Time to test out showing character sprites."
+
+    #This just has Azazel temporarily go to the silhouette just for one line.
+    a @ silhouette "Hiding for a second."
+
+    a "Back."
+
+    #And it works for multiple-word changes too.
+    a @ neutral sheepish "Eeeh."
+
+    a "Now time for some permanent changes."
+
+    show azazel neutral base
+
+    a "This change overrides my old self..."
+    a "permanently."
+
+    hide azazel
+
+    a "I'm gone!"
+
+    show azazel silhouette at center:
+        zoom 0.3
+
+    a "I'm back."
