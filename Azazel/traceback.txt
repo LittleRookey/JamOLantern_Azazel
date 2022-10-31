@@ -1,15 +1,15 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <renpy.display.im.Image object ('BG/bg_sacrificeRoom_flashback.png') at 0x00000000059ca340>:
-  File "game/script.rpy", line 90, in script
-    "{i}Welcome, my friends. Tonight marks the dawn of a new age.{/i}"
-OSError: Couldn't find file 'BG/bg_sacrificeRoom_flashback.png'.
+While loading <renpy.display.im.Image object ('Characters/Azazel/azazel neutral surprise.png') at 0x0000000005954af0>:
+  File "game/script.rpy", line 136, in script
+    a neutral surprised "Ah! I'm up!"
+OSError: Couldn't find file 'Characters/Azazel/azazel neutral surprise.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 90, in script
-    "{i}Welcome, my friends. Tonight marks the dawn of a new age.{/i}"
+  File "game/script.rpy", line 136, in script
+    a neutral surprised "Ah! I'm up!"
   File "C:\Users\ste41\Downloads\renpy-8.0.3-sdk\renpy\ast.py", line 921, in execute
     renpy.exports.say(who, what, *args, **kwargs)
   File "C:\Users\ste41\Downloads\renpy-8.0.3-sdk\renpy\exports.py", line 1373, in say
@@ -46,6 +46,10 @@ Full traceback:
     return transform_render(self, width, height, st, at)
   File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
   File "render.pyx", line 266, in renpy.display.render.render
+  File "C:\Users\ste41\Downloads\renpy-8.0.3-sdk\renpy\display\transform.py", line 747, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 266, in renpy.display.render.render
   File "C:\Users\ste41\Downloads\renpy-8.0.3-sdk\renpy\display\image.py", line 506, in render
     return wrap_render(self.target, width, height, st, at)
   File "C:\Users\ste41\Downloads\renpy-8.0.3-sdk\renpy\display\image.py", line 309, in wrap_render
@@ -62,9 +66,9 @@ Full traceback:
     filelike = renpy.loader.load(self.filename)
   File "C:\Users\ste41\Downloads\renpy-8.0.3-sdk\renpy\loader.py", line 820, in load
     raise IOError("Couldn't find file '%s'." % name)
-OSError: Couldn't find file 'BG/bg_sacrificeRoom_flashback.png'.
+OSError: Couldn't find file 'Characters/Azazel/azazel neutral surprise.png'.
 
 Windows-10-10.0.19043 AMD64
 Ren'Py 8.0.3.22090809
 Azazel 1.0
-Sat Oct 29 21:19:01 2022
+Sun Oct 30 18:49:21 2022

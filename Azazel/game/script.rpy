@@ -16,7 +16,7 @@ image altar flashback = "BG/bg_altar_flashback.png"
 # image sacrificeRoom flashback = "BG/bg_sacrificeRoom_flashback.png"
 
 #Character images
-image azazel neutral surprised = "Characters/Azazel/azazel neutral surprise.png"
+image azazel neutral surprised = "Characters/Azazel/azazel neutral surprised.png"
 
 image baphomet silhouette = "Characters/Baphomet/baphomet silhouette.png"
 
@@ -125,7 +125,7 @@ label cave_wakeup:
 
     scene cave with fade #We don't have a cave yet. This just shows a placeholder.
 
-    show azazel neutral surprise at left:
+    show azazel neutral surprised at left:
         zoom 0.2
 
     show lilith masked at right:
@@ -204,7 +204,7 @@ label cave_wakeup:
     l "This is a sacrificial knife. It has been passed down by generations of Prophets. You will need it for the inauguration rituals."
     l "Take care not to tarnish it!"
 
-    a @ neutral surprise "Thank you! I won't, Madam Lilith!"
+    a @ neutral surprised "Thank you! I won't, Madam Lilith!"
     a "{i}This knife is so precious to the Order... this is real life.{/i}"
     a neutral base "{i}I really am about to become the next Prophet. {/i}"
 
@@ -239,7 +239,7 @@ label act2:
         zoom 0.2
 
     m "Azazel."
-    a neutral surprise "Ah! Don't sneak up on me like that, Micah!"
+    a neutral surprised "Ah! Don't sneak up on me like that, Micah!"
     m "Yeah, sorry."
     m "I heard you muttering to yourself. Help me deliver today’s dinner rations. "
     a "That’s way too much bread and water to carry yourself… of course I’ll help!"
@@ -255,7 +255,7 @@ label act2:
     "Citizen" "Oh, wow. The next Prophet himself shows up at my door, and dinner’s  still just a jug of water and half a loaf of hard bread."
     "Citizen" "What a gracious Lord! Thank you Baphomet! Jeez, I’m starving here… "
 
-    a neutral surprise "Oh!"
+    a neutral surprised "Oh!"
 
     menu:
         "I’m sorry, I don’t have anything else…":
