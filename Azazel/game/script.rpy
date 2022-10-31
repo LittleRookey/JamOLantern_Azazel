@@ -357,7 +357,7 @@ label act2_altar:
 
             m "..."
             show micah no bandage neutral
-            "Micah begins to unveil the tight bandages on their neck."
+            "Micah begins to unravel the tight bandages on their neck."
             a neutral surprised "What... is that..."
             m no bandage angry "It's the Order's symbol."
             m no bandage annoyed " There was never a good time to tell you this. But tomorrow, you’re going to become the next Prophet, and you deserve to know."
@@ -367,7 +367,7 @@ label act2_altar:
             m no bandage annoyed "Who else? Your father."
             a neutral horrified "No!"
             show micah bandage neutral
-            "Micah puts his bandages back on."
+            "Micah puts their bandages back on."
             m bandage angry "I'm telling you the truth!"
             m bandage sickly "{i}*cough*{/i}"
             a neutral worried "Please, don't strain yourself-"
