@@ -1,28 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 80, in script
-    if debug_mode:
-  File "game/script.rpy", line 80, in <module>
-    if debug_mode:
-NameError: name 'debug_mode' is not defined
+  File "game/script.rpy", line 289, in script
+    $ gainGood()
+  File "game/script.rpy", line 289, in <module>
+    $ gainGood()
+  File "game/script.rpy", line 74, in gainGood
+    moralityScore += 1
+UnboundLocalError: local variable 'moralityScore' referenced before assignment
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 80, in script
-    if debug_mode:
-  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\ast.py", line 2115, in execute
-    if renpy.python.py_eval(condition):
-  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\python.py", line 1092, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\python.py", line 1085, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 80, in <module>
-    if debug_mode:
-NameError: name 'debug_mode' is not defined
+  File "game/script.rpy", line 289, in script
+    $ gainGood()
+  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\ast.py", line 1131, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\python.py", line 1061, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 289, in <module>
+    $ gainGood()
+  File "game/script.rpy", line 74, in gainGood
+    moralityScore += 1
+UnboundLocalError: local variable 'moralityScore' referenced before assignment
 
 Windows-10-10.0.19043 AMD64
 Ren'Py 8.0.3.22090809
 Azazel 1.0
-Mon Oct 31 06:52:15 2022
+Tue Nov  1 07:29:45 2022

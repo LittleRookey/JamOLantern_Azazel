@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 184: end of line expected.
-    a neutral worried """It seemed like a vision of my inauguration tomorrow… Father was in it. He said something about "my sacrifice"."""
-                        ^
+File "game/script.rpy", line 539: Line is indented, but the preceding show statement statement does not expect a block. Please check this line's indentation.
+    xalign 0.75
+    ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Sat Oct 29 21:31:12 2022
+Tue Nov  1 07:45:01 2022

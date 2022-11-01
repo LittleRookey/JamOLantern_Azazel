@@ -67,6 +67,19 @@ default galleryList = ["azazel bad end",
                         "splash art azazel"]
 default Lightbox_image = "" #variable used by the gallery
 
+default moralityScore = 0
+
+init python:
+    #These are function definitions, so I don't have to repeat the code
+    #for changing variables and playing a sound whenever it happens.
+    def gainGood():
+        store.moralityScore += 1
+        #playSound
+
+    def gainBad():
+        store.moralityScore -= 1
+        #playSound
+
 #Change this to False before compiling and releasing.
 #Turning it on lets the player see some testing features.
 default script_testing_mode = True 
@@ -162,9 +175,11 @@ label cave_wakeup:
 
     menu:
         "Could you refresh my memory?":
+            $ gainGood()
             l "Just this once. You must get the details correct, Azazel. Our god Baphomet will be watching."
 
         "I'm good.":
+            $ gainBad()
             l "The look on your face tells me you're not so sure."
             l "Remember, you must get the details correct, Azazel. Our god will be watching."
 
@@ -185,9 +200,11 @@ label cave_wakeup:
 
     menu:
         "Yes, I will do my best.":
+            $ gainBad()
             l "I know you will. Make me and your Father proud."
 
         "I don't think I can do it...":
+            $ gainGood()
             l "Do not be afraid. The entire commune trusts and respects your word."
             l "I know you will succeed."
 
@@ -263,8 +280,9 @@ label act2:
     a neutral confused "Huff... huff..."
     a neutral happy "Here's your food, sir!"
 
-    #According to the script, "Citizen" should have annoyed and scared states.
-    #Currently we just have one extra character sprite, so I used that for both emotions.
+    #We currently have just default extra character and extra character scared and very scared.
+    #I just used the default to fill in for where extra character annoyed would be.
+    #I also used extra character scared for surprised.
     show extra character at center:
         zoom 0.2
     "Citizen" "Oh, wow. The next Prophet himself shows up at my door, and dinner’s  still just a jug of water and half a loaf of hard bread."
@@ -274,8 +292,8 @@ label act2:
 
     menu:
         "I’m sorry, I don’t have anything else…":
-            $ moralityScore += 1
-            # insert good sound effect
+            $ gainGood()
+            #Function that increases moralityScore and plays a sound.
 
             a neutral sheepish "I can try to request something better for you tomorrow, maybe."
             "Citizen" "Oh, forget it… just from the way you talk, I know you’re just a naive little kid."
@@ -283,10 +301,11 @@ label act2:
             a neutral worried "Ah, I will..."
 
         "Be grateful of what the Order provides.":
-            $ moralityScore -= 1
-            # insert bad sound effect
+            $ gainBad()
+            #Function that decreases moralityScore and plays a sound.
 
             a neutral annoyed "Is that really how you should be speaking to the next Prophet?"
+            show extra character scared
             "Citizen" """
             Uh... my apologies!
 
@@ -336,8 +355,7 @@ label act2_altar:
 
     menu:
         "Say what you want to say.":
-            $ moralityScore -= 1
-            # insert bad sound effect
+            $ gainBad()
 
             m bandage annoyed "..."
             "Micah scratches the bandages on their neck."
@@ -352,8 +370,7 @@ label act2_altar:
             m bandage annoyed "I'm not done."
 
         "Of course. You can trust me.":
-            $ moralityScore += 1
-            # insert good sound effect
+            $ gainGood()
 
             m "..."
             show micah no bandage neutral
@@ -417,16 +434,14 @@ label act2_altar:
     show azazel neutral base
     menu:
         "We just made small talk to catch up.":
-            $ moralityScore += 1
-            # insert good sound effect
+            $ gainGood()
 
             l @ masked angry "..."
             l "Your dishonesty does not go unnoticed, Azazel. I'm disappointed."
             a "{i}Shoot!{/i}"
 
         "They spoke ill of the Order and our god, Baphomet.":
-            $ moralityScore -= 1
-            # insert bad sound effect
+            $ gainBad()
 
             l "As I thought. Your honesty is appreciated."
             l "Micah may have been your friend, but they are no longer. Dissenters have no place in our Order."
@@ -473,20 +488,20 @@ label act3_start:
             "The Crowd" "All hail The Prophet!"
 
         "Madam Lilith.":
-            l masked angry "This is not the time to be making jokes, Azazel!" (what_size=22)
+            l @ masked angry "This is not the time to be making jokes, Azazel!" (what_size=22)
 
     a "The Order is safe. The Order provides. The Order is…"
 
     menu:
         "Your home, your family, your everything.":
+            $ gainBad()
             "The Crowd" "All hail The Order!"
             show baphomet silhouette at center:
                 zoom 0.2
             b " "
 
         "A huge sham!":
-            $ moralityScore += 1
-            # insert good sound effect
+            $ gainGood()
             show baphomet silhouette at center:
                 zoom 0.2
             b "{b}That's enough out of you.{/b}"
@@ -496,8 +511,12 @@ label act3_start:
     #show baphomet masked
     b masked "Your Prophet, the ordained messenger of your god, Baphomet."
     b "My son is an extraordinary being."
+    b "Thank you, everyone, for joining us here today."
+    b "Madam Lilith, the scroll, if you please..."
 
-    l """
+    l masked "Yes, Lord Baphomet... ahem."
+
+    l masked angry """
     {b}We, the citizens of the Order, are blessed to be under Baphomet’s divine watch.{/b}
 
     {b}We praise our god’s mercy and hear his word through his excellency, {color=#f00}The Prophet.{/color}{/b}
@@ -505,20 +524,102 @@ label act3_start:
     {b}The Order is safe. The Order provides. The Order is {color=#f00}your home, your family, your everything.{/color}{/b}
 
     {b}To show our faith to Baphomet, our god, we cleanse our Order of the unclean through {color=#f00}the sacrifice of dissenters.{/color}{/b}
-
-    {b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}
     """
+
+    #{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}
+
+    l masked "As you are all aware, in order to become the Prophet, we need a sacrifice. And recently, someone amongst our ranks has been found to be speaking ill of our god, Baphomet."
+    l @ masked angry "{b}This is an unforgivable act.{/b} I hope that you have not all forgotten all that our god has done for us. Without him, your lives would all fall to ruin."
+    l "Thus, we have brought in this misguided, broken soul today. With the sacrifice of their life, we shall crown our new Prophet, and the Order shall prevail!"
+
+    "The crowd cheers gleefully."
+
+    l "Bring them in."
+
+    #Rearrange some characters so you can see all five at once.
+    show baphomet:
+        xalign 0.75
+    show extra character at center:
+        xalign 0.25
+        zoom 0.2
+    show micah bandage sickly at center:
+        zoom 0.2
+
+    a neutral horrified "{i}Micah...?!{/i}"
+    m "Azazel..."
+
+    l "Two years ago, this traitor here was found stealing rations from our stock."
+    l "We, as the Order, provide food and home for you all. This greed was unfounded."
+    l "The food that this dissenter stole could have been the rations that your own family were to receive."
+
+    "A cacophony of angry gasps erupt from the crowd."
+
+    m bandage angry "I was {i}starving!{/i} One piece of bread per day isn't-"
+    l masked angry "{b}Quiet.{/b}"
+    m bandage fearful "...!"
+    l masked "Two years ago, we spared the life of this dissenter. We believed in giving them a chance to prove their loyalty once more."
+    l @ masked angry "But we were wrong."
+    l masked "The traitor before you today was spreading hate about our god, attempting to misguide the next prophet."
+    m bandage disturbed "...."
+    l masked angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}"
+    b "Azazel. Come forth."
+    a neutral horrified "Fath- Lord Baphomet..."
+    b "Raise the sacrificial knife, and rid us of the poison that plagues the Order."
+    "The citizen pushes Micah in front of Azazel. The crowd goes silent in anticipation, eagerly awaiting the coming sacrifice."
+    m bandage fearful "Azazel... I..."
+    l "{b}SHUT IT!{/b}"
+    m bandage sickly "..."
+    a "B-but… Lord Baphomet… why Micah..? They’re my friend…"
+    b """
+    We have told you time and time again not to talk to this traitor.
+
+    The only reason why they were spared was because they were your friend. However…
+
+    I will not tolerate this anymore. They have strung you along for long enough.  It’s time this dissenter learned their lesson.
+
+    And what better way to enact punishment on them than having them being slain by their only friend? 
+
+    You are to become the next Prophet, Azazel. Are you really worthy of that title if you are unable to sacrifice one lowly dissenter, just because you have an emotional connection to them?
+    """
+
+    a neutral confused "Father..."
+    a neutral worried "{i}Can I really do this...?{/i}"
+    "Azazel takes a deep breath."
+    a neutral annoyed "I'm sorry, but..."
+
+    #Split to the final ending.
+    if moralityScore >= 5:
+        jump ending_end_cult
+    elif moralityScore <= -5:
+        jump ending_lead_cult
+    else:
+        jump ending_escape_cult
+
+    
+    return
+
+label ending_end_cult:
+
+    a "end cult"
 
     #Now that we're at the end, we can unlock the bonus content.
     $ persistent.galleryUnlocked = True
+    return
 
-    #Not sure what's happening here yet.
-    "{b}END{/b}"
+label ending_lead_cult:
 
-    "{b}LEAD{/b}"
+    a "lead cult"
 
-    "{b}LEAVE{/b}"
+    #Now that we're at the end, we can unlock the bonus content.
+    $ persistent.galleryUnlocked = True
+    return
 
+label ending_escape_cult:
+
+    a "escape cult"
+
+    #Now that we're at the end, we can unlock the bonus content.
+    $ persistent.galleryUnlocked = True
     return
 
 label character_blurbs:
