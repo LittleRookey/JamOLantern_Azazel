@@ -24,3 +24,9 @@ m "My words are TINY!" #placeholder line, the size change in Micah's character w
 ###
 
 a "OwO what's this?"
+
+###
+
+a "end cult uwu"
+a "lead cult uwu"
+a "escape cult uwu"

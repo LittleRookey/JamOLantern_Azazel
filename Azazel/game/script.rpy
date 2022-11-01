@@ -600,7 +600,38 @@ label act3_start:
 
 label ending_end_cult:
 
-    a "end cult"
+    #a "end cult"
+    a neutral angry "I won't kill them."
+    l masked angry "..."
+    m bandage calm "Azazel...!" #Do we have a "relieved"?
+    "Hundreds of voices speak up in protest."
+    b "..."
+    b "Azazel."
+    "He takes a step towards Azazel, reaching out a hand."
+    b "Come on, now. Everyone is watching. You are too old to be throwing tantrums."
+    #We don't seem to differentiate between "teary angry" and "determined angry".
+    a "NO!"
+    a "Micah is my friend. I'm not going to hurt them."
+    b "Azazel..."
+    b "Did I ever say you had a choice?"
+    a "!" #We don't have "disturbed"
+    "He takes another step forward."
+    b "You {b}must{/b} be my successor. You are the face of the Order."
+    a "...I don't want to be."
+    b "..."
+    b "{b}Azazel.{/b}" #we don't have Baphomet angry
+    "Baphomet rushes towards Azazel, gripping the sacrificial knife and pulling it out of his hands."
+    a neutral horrified "Father, no!"
+    b "If you refuse to get rid of this pest, then I will take the responsibility and do it myself. Your sermon will have to wait."
+    m "No... please wait... I don't want to die... I'm sorry..."
+    a "Father, don't-"
+    b "You must learn how to be a leader, Azazel."
+    "Baphomet holds the knife over Micah’s cowering form."
+    a "{b}STOP IT!{/b}"
+    "Azazel runs towards Baphomet, attempting to grab the knife, but Baphomet shoves him away. He hits the floor with a thud."
+    "A loud snapping noise reverberates throughout the entire cavern."
+
+    #show good end splash art here
 
     #Now that we're at the end, we can unlock the bonus content.
     $ persistent.galleryUnlocked = True
@@ -608,7 +639,33 @@ label ending_end_cult:
 
 label ending_lead_cult:
 
-    a "lead cult"
+    #a "lead cult"
+    a neutral angry "This is the end, Micah."
+    "Although his face is covered by a mask, Azazel feels as though Baphomet is smiling."
+    m bandage fearful "Azazel... wait..."
+    a "You spoke out against our god. You stole… you lied… you spoke ill of my father… you… you tricked me into becoming your friend."
+    m bandage disturbed "…What’s gotten into you…?"
+    m bandage calm "… We’re friends, aren’t we…? I never tricked you, I just…"
+    m "…I just wanted to feel safe. I didn’t want to be alone anymore." #We don't seem to have art of sad Micah.
+    
+    #This line is the first one where Azazel needs an emotion that we only have art for in his bad form.
+    #a bad cold "You befriended me so that you wouldn’t get killed by Baphomet. Is that what it is?"
+    a "You befriended me so that you wouldn’t get killed by Baphomet. Is that what it is?"
+    m bandage sickly "…No.. That’s not it… I…"
+    a "You became my friend in order to fool me into thinking that the Order was bad. That the order hurt its citizens."
+    m bandage angry "Azazel, snap out of it!"
+    a "Quiet, dissenter."
+    m bandage fearful "...You sound just like your father."
+    a "I am the next prophet. With your sacrifice, the ritual will be complete."
+    "Azazel feels something change within him."
+
+    #show transformation splash art bad end
+    show azazel bad neutral
+    m "...Azazel..."
+    m "...No. You're not Azazel. Who are you...?"
+    a "I am the prophet. Who else."
+
+    #Show bad end splash arts
 
     #Now that we're at the end, we can unlock the bonus content.
     $ persistent.galleryUnlocked = True
@@ -616,7 +673,31 @@ label ending_lead_cult:
 
 label ending_escape_cult:
 
-    a "escape cult"
+    #a "escape cult"
+    a neutral sheepish "…can’t we sacrifice someone else..?"
+    m bandage calm "...!" #again, no relieved Micah yet
+    b "Azazel."
+    a neutral worried "Please... I don't want to kill Micah... they're my friend..."
+    b "They have had plenty of chances. If not them, who would you suggest we bring? The ritual has already begun."
+    "Azazel looks around frantically. His eyes land upon the citizen who is restraining Micah."
+    a neutral base "...what about him?"
+    b "Are you implying we sacrifice an innocent member of the Order?"
+    a neutral sheepish "H-he’s… also a dissenter."
+    show extra character scared
+    "Citizen" "?!"
+    b "Oh?"
+    a "When I was passing out the rations with Micah, he complained about the amount he received. Then… h-he sullied your name, Lord Baphomet."
+    "Citizen" "What are you talking about?! I.. did no such thing…"
+    b "...I see."
+    b "Lilith, can you attest to this?"
+    l "…I did overhear him. He defaced your honor, Lord Baphomet."
+    l "...What was it that he said, again? \"He's a fraud.\" Yes, that was it."
+
+    show extra character very scared
+    "Citizen" "..."
+    a neutral confused "{i}did... Lilith just lie for me?{/i}"
+    b "..."
+    b "Very well. It seems we have a change of plans."
 
     #Now that we're at the end, we can unlock the bonus content.
     $ persistent.galleryUnlocked = True
@@ -697,6 +778,8 @@ label debug_section: #A part of the game I made just to test stuff out.
         zoom 0.2
 
     a "Here's the debug scene."
+
+    l "...What was it that he said, again? \"He's a fraud.\" Yes, that was it."
 
     # $ persistent.galleryUnlocked = True
 
