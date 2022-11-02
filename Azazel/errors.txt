@@ -2,7 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/gamegallery.rpy", line 36: Tab characters are not allowed in Ren'Py scripts.
+File "game/script.rpy", line 48: invalid syntax
+    lilith masked with alpha 0.5
+            ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Wed Nov  2 07:01:00 2022
+Wed Nov  2 07:51:57 2022

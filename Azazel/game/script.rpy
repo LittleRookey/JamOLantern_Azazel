@@ -28,15 +28,28 @@ image village = "BG/Village.png"
 image village flashback = "BG/VillageFlashback.png"
 
 #Character images
+image azazel neutral gray = im.Grayscale("Characters/Azazel/azazel neutral base.png")
 image azazel neutral surprised = "Characters/Azazel/azazel neutral surprised.png"
+image azazel neutral base = "Characters/Azazel/azazel neutral base.png"
 
+image azazel neutral transparent:
+    "Characters/Azazel/azazel neutral base.png"
+    alpha 0.5
+
+image baphomet gray = im.Grayscale("Characters/Baphomet/baphomet mask.png")
 image baphomet silhouette = "Characters/Baphomet/baphomet silhouette.png"
 image baphomet masked = "Characters/Baphomet/baphomet mask.png"
 image baphomet mask_cracked = "Characters/Baphomet/baphomet mask cracked.png"
 
+image lilith gray = im.Grayscale("Characters/Lilith/lilith mask.png")
 image lilith masked = "Characters/Lilith/lilith mask.png"
 image lilith masked angry = "Characters/Lilith/lilith mask angry.png"
 
+image lilith transparent:
+    "Characters/Lilith/lilith mask.png"
+    alpha 0.5
+
+image micah bandage gray = im.Grayscale("Characters/Micah/micah bandage/micah bandage neutral.png")
 image micah bandage angry = "Characters/Micah/micah bandage/micah angry.png"
 image micah bandage annoyed = "Characters/Micah/micah bandage/micah annoyed.png"
 image micah bandage neutral = "Characters/Micah/micah bandage/micah bandage neutral.png"
@@ -49,6 +62,7 @@ image micah bandage sacrifice = "Characters/Micah/micah bandage/micah sacrifice.
 image micah bandage shock slash = "Characters/Micah/micah bandage/micah shock slash.png"
 image micah bandage sickly = "Characters/Micah/micah bandage/micah sickly.png"
 
+image micah no bandage gray = im.Grayscale("Characters/Micah/micah no bandage/micah no bandage neutral.png")
 image micah no bandage angry = "Characters/Micah/micah no bandage/micah angry no bandage.png"
 image micah no bandage annoyed = "Characters/Micah/micah no bandage/micah annoyed no bandage.png"
 image micah no bandage calm = "Characters/Micah/micah no bandage/micah calm no bandage.png"
@@ -824,10 +838,40 @@ label debug_section: #A part of the game I made just to test stuff out.
     show azazel bad neutral at center:
         zoom 0.2
 
-    a "Here's the debug scene."
+    #a "Here's the debug scene."
 
-    l "...What was it that he said, again? \"He's a fraud.\" Yes, that was it."
+    #l "...What was it that he said, again? \"He's a fraud.\" Yes, that was it."
 
     # $ persistent.galleryUnlocked = True
+
+    show azazel neutral surprised at left:
+        zoom 0.2
+
+    show lilith masked at right:
+        zoom 0.2
+
+    menu:
+        "Test which option for faded-out characters?"
+
+        "Gray":
+            show azazel neutral gray
+            show lilith gray
+
+        "Transparent":
+            show azazel neutral transparent
+            show lilith transparent
+    
+    "You awaken with a start in your own room."
+
+    a @ neutral surprised "Ah! I'm up!"
+
+    l @ masked "Finally. You'd be late to your own funeral if you could, Azazel."
+
+    a @ neutral sheepish "I’m sorry, Madam Lilith. I thought it would be a quick nap…"
+
+    l @ masked "No matter–our god forgives you. But there’s only a few hours until your sermon."
+    l @ masked "You remember your lines, don’t you?"
+
+    a @ neutral confused "Uh..."
 
     return
