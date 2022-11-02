@@ -8,15 +8,24 @@ define b = Character("Baphomet", image="baphomet")
 define l = Character("Lilith", image="lilith")
 define m = Character("Micah", image="micah", what_size=22) #smaller text size
 
+#Splash screens
+image ending end cult = "/Splash/azazel good end splash art 1.png"
+image ending lead cult transforming = "/Splash/azazel bad end splash art 1 transformation.png"
+image ending lead cult micah = "/Splash/bad end splash art 2.png"
+image ending lead cult azazel = "/Splash/azazel bad end splash art 1.png"
+image ending escape cult = "/Splash/splash art azazel.png"
+
 # Backgrounds
-image village = "BG/bg_village.png"
-image village flashback = "BG/bg_village_flashback.png"
-image altar = "BG/bg_altar.png"
-image altar flashback = "BG/bg_altar_flashback.png"
-#image cave room = "BG/bg_cave_room.png"
-image sacrifice room = "BG/bg_sacrifice_room.png"
-image sacrifice room flashback = "BG/bg_sacrifice_room_flashback.png"
-# image sacrificeRoom flashback = "BG/bg_sacrificeRoom_flashback.png"
+image altar = "BG/Altar.png"
+image altar flashback = "BG/AltarFlashback.png"
+image neighbor village = "BG/NeighborVillage.png"
+#We don't have a neighbor village flashback yet. It's still a .clip file.
+image room = "BG/Room.png"
+image room flashback = "BG/RoomFlashback.png"
+image sacrifice room = "BG/SacrificeRoom.png"
+image sacrifice room flashback = "BG/SacrificeRoomFlashback.png"
+image village = "BG/Village.png"
+image village flashback = "BG/VillageFlashback.png"
 
 #Character images
 image azazel neutral surprised = "Characters/Azazel/azazel neutral surprised.png"
@@ -55,14 +64,20 @@ image micah no bandage sickly = "Characters/Micah/micah no bandage/micah sickly 
 
 #Some images need to be edited to fit the dimensions
 #that the gallery uses.
-default galleryList = ["azazel bad end",
+default galleryList = ["azazel bad end splash art 1 (transformation)",
+                        "azazel bad end splash art 1",
+                        "azazel bad end",
                         "azazel bonus art 2",
                         "azazel bonus art 3",
                         "azazel bonus art 3 final",
-                        "azazel bonus", 
+                        "azazel bonus",
+                        "azazel good end splash art 1 (transformation)",
                         "azazel pure evil end",
+                        "bad end splash art 2",
                         "game jam character mockups",
                         "micah mask pupils",
+                        "so sorry micah",
+                        "so sorry micah 2",
                         "splash art azazel bonus",
                         "splash art azazel"]
 default Lightbox_image = "" #variable used by the gallery
@@ -152,7 +167,7 @@ label script_intro:
 
 label cave_wakeup:
 
-    scene cave room with fade #We don't have a cave yet. This just shows a placeholder.
+    scene room with fade
 
     show azazel neutral surprised at left:
         zoom 0.2
@@ -588,6 +603,26 @@ label act3_start:
     a neutral annoyed "I'm sorry, but..."
 
     #Split to the final ending.
+    #If you have testing mode on, it will give you a choice.
+    #Otherwise it just uses morality score to determine it.
+    if script_testing_mode:
+        menu:
+            "Which ending do you want?"
+
+            "End cult (good)":
+                jump ending_end_cult
+
+            "Escape cult (neutral)":
+                jump ending_escape_cult
+
+            "Lead cult (bad)":
+                jump ending_lead_cult
+
+            "Ending based on morality score (default behavior)":
+                "Going there."
+
+
+    #Split to the final ending.
     if moralityScore >= 5:
         jump ending_end_cult
     elif moralityScore <= -5:
@@ -631,7 +666,9 @@ label ending_end_cult:
     "Azazel runs towards Baphomet, attempting to grab the knife, but Baphomet shoves him away. He hits the floor with a thud."
     "A loud snapping noise reverberates throughout the entire cavern."
 
-    #show good end splash art here
+    scene ending end cult
+    pause
+    #scene 
 
     #Now that we're at the end, we can unlock the bonus content.
     $ persistent.galleryUnlocked = True
@@ -659,13 +696,19 @@ label ending_lead_cult:
     a "I am the next prophet. With your sacrifice, the ritual will be complete."
     "Azazel feels something change within him."
 
-    #show transformation splash art bad end
+    show ending lead cult transforming
+    pause
+    hide ending lead cult transforming
+
     show azazel bad neutral
     m "...Azazel..."
     m "...No. You're not Azazel. Who are you...?"
     a "I am the prophet. Who else."
 
-    #Show bad end splash arts
+    scene ending lead cult micah
+    pause
+    scene ending lead cult azazel
+    pause
 
     #Now that we're at the end, we can unlock the bonus content.
     $ persistent.galleryUnlocked = True
@@ -690,6 +733,7 @@ label ending_escape_cult:
     "Citizen" "What are you talking about?! I.. did no such thing…"
     b "...I see."
     b "Lilith, can you attest to this?"
+    l "..."
     l "…I did overhear him. He defaced your honor, Lord Baphomet."
     l "...What was it that he said, again? \"He's a fraud.\" Yes, that was it."
 
@@ -698,6 +742,9 @@ label ending_escape_cult:
     a neutral confused "{i}did... Lilith just lie for me?{/i}"
     b "..."
     b "Very well. It seems we have a change of plans."
+
+    scene ending escape cult
+    pause
 
     #Now that we're at the end, we can unlock the bonus content.
     $ persistent.galleryUnlocked = True
