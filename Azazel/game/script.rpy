@@ -32,8 +32,13 @@ image azazel neutral gray = im.Grayscale("Characters/Azazel/azazel neutral base.
 image azazel neutral surprised = "Characters/Azazel/azazel neutral surprised.png"
 image azazel neutral base = "Characters/Azazel/azazel neutral base.png"
 
+# transparent images for azazel
 image azazel neutral transparent:
     "Characters/Azazel/azazel neutral base.png"
+    alpha 0.5
+
+image azazel neutral surprised transparent: 
+    "Characters/Azazel/azazel neutral surprised.png"
     alpha 0.5
 
 image baphomet gray = im.Grayscale("Characters/Baphomet/baphomet mask.png")
@@ -41,13 +46,32 @@ image baphomet silhouette = "Characters/Baphomet/baphomet silhouette.png"
 image baphomet masked = "Characters/Baphomet/baphomet mask.png"
 image baphomet mask_cracked = "Characters/Baphomet/baphomet mask cracked.png"
 
+# transparent images for baphomet
+image baphomet silhouette transparent:
+     "Characters/Baphomet/baphomet silhouette.png"
+     alpha 0.5
+image baphomet masked transparent: 
+    "Characters/Baphomet/baphomet mask.png"
+    alpha 0.5
+image baphomet mask_cracked transparent: 
+    "Characters/Baphomet/baphomet mask cracked.png"
+    alpha 0.5
+
 image lilith gray = im.Grayscale("Characters/Lilith/lilith mask.png")
 image lilith masked = "Characters/Lilith/lilith mask.png"
 image lilith masked angry = "Characters/Lilith/lilith mask angry.png"
 
+# lilith trnsparent
 image lilith transparent:
     "Characters/Lilith/lilith mask.png"
     alpha 0.5
+image lilith masked transparent:
+    "Characters/Lilith/lilith mask.png"
+    alpha 0.5
+image lilith masked angry transparent:
+    "Characters/Lilith/lilith mask angry.png"
+    alpha 0.5
+
 
 image micah bandage gray = im.Grayscale("Characters/Micah/micah bandage/micah bandage neutral.png")
 image micah bandage angry = "Characters/Micah/micah bandage/micah angry.png"
@@ -71,6 +95,68 @@ image micah no bandage fearful = "Characters/Micah/micah no bandage/micah fearfu
 image micah no bandage happy = "Characters/Micah/micah no bandage/micah happy no bandage.png"
 image micah no bandage neutral = "Characters/Micah/micah no bandage/micah no bandage neutral.png"
 image micah no bandage sickly = "Characters/Micah/micah no bandage/micah sickly no bandage.png"
+
+# Micah Bandeges transparent images 
+image micah bandage angry transparent:
+    "Characters/Micah/micah bandage/micah angry.png"
+    alpha 0.5
+image micah bandage annoyed transparent:
+    "Characters/Micah/micah bandage/micah annoyed.png"
+    alpha 0.5
+image micah bandage neutral transparent:
+    "Characters/Micah/micah bandage/micah bandage neutral.png"
+    alpha 0.5
+image micah bandage calm transparent:
+    "Characters/Micah/micah bandage/micah calm.png"
+    alpha 0.5
+image micah bandage disturbed transparent:
+    "Characters/Micah/micah bandage/micah disturbed.png"
+    alpha 0.5
+image micah bandage fearful transparent:
+    "Characters/Micah/micah bandage/micah fearful.png"
+    alpha 0.5
+image micah bandage happy transparent:
+    "Characters/Micah/micah bandage/micah happy.png"
+    alpha 0.5
+image micah bandage masked transparent:
+    "Characters/Micah/micah bandage/micah mask.png"
+    alpha 0.5
+image micah bandage sacrifice transparent:
+    "Characters/Micah/micah bandage/micah sacrifice.png"
+    alpha 0.5
+image micah bandage shock slash transparent:
+    "Characters/Micah/micah bandage/micah shock slash.png"
+    alpha 0.5
+image micah bandage sickly transparent:
+    "Characters/Micah/micah bandage/micah sickly.png"
+    alpha 0.5
+
+# Micah transparent with no bandages
+image micah no bandage angry transparent:
+    "Characters/Micah/micah no bandage/micah angry no bandage.png"
+    alpha 0.5
+image micah no bandage annoyed transparent:
+    "Characters/Micah/micah no bandage/micah annoyed no bandage.png"
+    alpha 0.5
+image micah no bandage calm transparent:
+    "Characters/Micah/micah no bandage/micah calm no bandage.png"
+    alpha 0.5
+image micah no bandage disturbed transparent:
+    "Characters/Micah/micah no bandage/micah disturbed no bandage.png"
+    alpha 0.5
+image micah no bandage fearful transparent:
+    "Characters/Micah/micah no bandage/micah fearful no bandage.png"
+    alpha 0.5
+image micah no bandage happy transparent:
+    "Characters/Micah/micah no bandage/micah happy no bandage.png"
+    alpha 0.5
+image micah no bandage neutral transparent:
+    "Characters/Micah/micah no bandage/micah no bandage neutral.png"
+    alpha 0.5
+image micah no bandage sickly transparent:
+    "Characters/Micah/micah no bandage/micah sickly no bandage.png"
+    alpha 0.5
+
 
 #Gallery images list, with placeholder images for now.
 #Gallery based on this tutorial: https://www.youtube.com/watch?v=0hPIQxnesS8
@@ -183,22 +269,24 @@ label cave_wakeup:
 
     scene room with fade
 
-    show azazel neutral surprised at left:
+    # show azazel neutral transparent
+    #         show lilith transparent
+    show azazel neutral transparent at left:
         zoom 0.2
 
-    show lilith masked at right:
+    show lilith masked transparent at right:
         zoom 0.2
 
     "You awaken with a start in your own room."
 
-    a neutral surprised "Ah! I'm up!"
+    a @ neutral surprised "Ah! I'm up!"
 
-    l "Finally. You'd be late to your own funeral if you could, Azazel."
+    l @ masked "Finally. You'd be late to your own funeral if you could, Azazel."
 
-    a neutral sheepish "I’m sorry, Madam Lilith. I thought it would be a quick nap…"
+    a @ neutral sheepish "I’m sorry, Madam Lilith. I thought it would be a quick nap…"
 
-    l "No matter–our god forgives you. But there’s only a few hours until your sermon."
-    l "You remember your lines, don’t you?"
+    l @ masked "No matter–our god forgives you. But there’s only a few hours until your sermon."
+    l @ masked "You remember your lines, don’t you?"
 
     a neutral confused "Uh..."
 
