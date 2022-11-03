@@ -445,7 +445,7 @@ label act2:
     show azazel neutral happy transparent at center:
         zoom 0.2
 
-    azazel @ neutral happy "It's good to get some fresh air..."
+    a @ neutral happy "It's good to get some fresh air..."
     a neutral calm "And everyone’s working hard to prepare for my crowning ceremony tomorrow. I should do something too."
 
     show azazel neutral calm transparent at left
@@ -469,7 +469,7 @@ label act2:
     #I also used extra character scared for surprised.
     show extra character at center:
         zoom 0.2
-    extra character "Oh, wow. The next Prophet himself shows up at my door, and dinner’s  still just a jug of water and half a loaf of hard bread."
+    extra "Oh, wow. The next Prophet himself shows up at my door, and dinner’s  still just a jug of water and half a loaf of hard bread."
     "Citizen" "What a gracious Lord! Thank you Baphomet! Jeez, I’m starving here… "
 
     a neutral surprised "Oh!"
