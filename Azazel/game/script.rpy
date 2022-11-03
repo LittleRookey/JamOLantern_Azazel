@@ -7,6 +7,7 @@ define a = Character("Azazel", image="azazel")
 define b = Character("Baphomet", image="baphomet")
 define l = Character("Lilith", image="lilith")
 define m = Character("Micah", image="micah", what_size=22) #smaller text size
+define crowd = Character("Crowd", what_bold = True)
 define extra = Character("Citizen", image = "extra character")
 
 #Splash screens
@@ -247,11 +248,15 @@ init python:
     #for changing variables and playing a sound whenever it happens.
     def gainGood():
         store.moralityScore += 1
-        #playSound
+        renpy.play("audio/GoodDecisionSFX.ogg", channel="sound")
 
     def gainBad():
         store.moralityScore -= 1
-        #playSound
+        renpy.play("audio/BadDecisionSFX.ogg", channel="sound")
+
+#Makes it so unavailable choices still show.
+#This is important for the ending menu where you see the final split.
+define config.menu_include_disabled = True
 
 #Change this to False before compiling and releasing.
 #Turning it on lets the player see some testing features.
@@ -642,16 +647,22 @@ label act3_start:
     a "{i}I’ve never been allowed in here before, but this looks just like the room in my dream…{/i}"
     a "{i}I just got goosebumps.{/i}"
     l "Welcome, humble citizens of the Order. We come together tonight to celebrate the crowning of our next Prophet."
-    l " " #Is she supposed to say something here?
-    a "{i}I don't see Micah in the crowd.{/i}"
-    a "{i}I don’t see Father either… isn’t he supposed to come and listen to my sermon?{/i}"
-    l "Proceed, Azazel."
+    #The crowd character is marked to always speak in bold.
+    crowd "Welcome, Azazel."
+    a @ neutral happy "Hello, everyone."
+    a @ neutral confused "{i}I don't see Micah in the crowd.{/i}"
+    a @ neutral annoyed "{i}I don’t see Father either… isn’t he supposed to be here?{/i}"
+    #l "Proceed, Azazel."
+    l masked "Midnight marks his 18th birthday, and the start of his new journey as a leader to us all."
+    l "We will begin tonight’s inauguration with a sermon led by our god’s next Prophet."
+    crowd "We listen to your every word."
+    l masked "You may begin."
     a neutral calm "Yes, Madam Lilith."
     a "We, the citizens of the Order, are blessed to be under..."
 
     menu:
         "Baphomet's divine watch.":
-            "The Crowd" "All hail Baphomet!" #no sprite shown
+            crowd "All hail Baphomet!" #no sprite shown
 
         "My divine watch.":
             "Citizen" "Huh...? Already?" #no sprite shown
@@ -660,7 +671,7 @@ label act3_start:
 
     menu:
         "The Prophet.":
-            "The Crowd" "All hail The Prophet!"
+            crowd "All hail The Prophet!"
 
         "Madam Lilith.":
             l @ masked angry "This is not the time to be making jokes, Azazel!" (what_size=22)
@@ -670,10 +681,11 @@ label act3_start:
     menu:
         "Your home, your family, your everything.":
             $ gainBad()
-            "The Crowd" "All hail The Order!"
+            crowd "All hail The Order!"
             show baphomet silhouette at center:
                 zoom 0.2
-            b " "
+            b "You have done well, my lamb."
+            a neutral very happy "Father!"
 
         "A huge sham!":
             $ gainGood()
@@ -684,32 +696,49 @@ label act3_start:
 
     "The citizens of the Order bow in reverence."
     #show baphomet masked
-    b masked "Your Prophet, the ordained messenger of your god, Baphomet."
-    b "My son is an extraordinary being."
-    b "Thank you, everyone, for joining us here today."
-    b "Madam Lilith, the scroll, if you please..."
+    crowd "We are blessed to be in your presence, Baphomet."
+    b masked """
+    Your Prophet, the ordained messenger of your god, has arrived.
 
-    l masked "Yes, Lord Baphomet... ahem."
+    His excellency, Baphomet, speaks through me. He sees you, he hears you, and he loves you. My words are his words, as his are mine.
 
-    l masked angry """
-    {b}We, the citizens of the Order, are blessed to be under Baphomet’s divine watch.{/b}
+    But alas, the time for renewal is now. Tonight marks the dawn of a new age!
 
-    {b}We praise our god’s mercy and hear his word through his excellency, {color=#f00}The Prophet.{/color}{/b}
+    Eighteen long years I have raised and cherished my son. The ears and horns on his head are a mark of him being blessed by our god.
 
-    {b}The Order is safe. The Order provides. The Order is {color=#f00}your home, your family, your everything.{/color}{/b}
-
-    {b}To show our faith to Baphomet, our god, we cleanse our Order of the unclean through {color=#f00}the sacrifice of dissenters.{/color}{/b}
+    I have no doubts that he will be the most powerful Prophet in the history of our Order.
     """
 
-    #{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}
+    crowd "*murmur*"
 
-    l masked "As you are all aware, in order to become the Prophet, we need a sacrifice. And recently, someone amongst our ranks has been found to be speaking ill of our god, Baphomet."
-    l @ masked angry "{b}This is an unforgivable act.{/b} I hope that you have not all forgotten all that our god has done for us. Without him, your lives would all fall to ruin."
-    l "Thus, we have brought in this misguided, broken soul today. With the sacrifice of their life, we shall crown our new Prophet, and the Order shall prevail!"
+    a neutral base "..."
 
-    "The crowd cheers gleefully."
+    #We don't have angry Baphomet.
+    b "Azazel. Finish the sermon."
 
-    l "Bring them in."
+    a neutral annoyed "To show our faith to Baphomet, our god, we cleanse our Order of the unclean through…"
+
+    menu:
+        "The sacrifice of dissenters.":
+            $ gainBad()
+            crowd "Purge the dissenters!"
+            a neutral overjoyed "{i}I did it!{/i}"
+
+        "...":
+            $ gainGood()
+            b "The sacrifice of dissenters."
+            crowd "..."
+            a neutral sheepish "{i}Father is gonna kill me.{/i}"
+
+    l masked "Let us continue with the ceremony."
+    l "As tradition of the Prophet's inauguration, we hold a special sacrifice. This honor would usually be bestowed upon an elder in our community, who has served the Order long and well."
+    l masked angry "However, tonight, no such honor exists. Because our new Prophet cannot be crowned while the unclean run free amongst our ranks."
+    "The crowd collectively gasps."
+    a neutral horrified "{i}They’re changing the ceremony?{/i}"
+    l "Speaking ill of our god, Baphomet, is {b}an unforgivable act.{/b} I hope that you have not all forgotten all that our god has done for us. Without him, your lives would all fall to ruin."
+    l masked "Tonight, Azazel will be upholding our promise of faith to Baphomet through the cleansing of a dissenter. With the sacrifice of their poor, broken soul, we shall crown our new Prophet, and the Order shall prevail!"
+    "The crowd cheers."
+    l masked "Bring the dissenter in."
 
     #Rearrange some characters so you can see all five at once.
     show baphomet:
@@ -720,7 +749,7 @@ label act3_start:
     show micah bandage sickly at center:
         zoom 0.2
 
-    a neutral horrified "{i}Micah...?!{/i}"
+    a neutral horrified "Micah!"
     m "Azazel..."
 
     l "Two years ago, this traitor here was found stealing rations from our stock."
@@ -734,33 +763,34 @@ label act3_start:
     m bandage fearful "...!"
     l masked "Two years ago, we spared the life of this dissenter. We believed in giving them a chance to prove their loyalty once more."
     l @ masked angry "But we were wrong."
-    l masked "The traitor before you today was spreading hate about our god, attempting to misguide the next prophet."
+    l masked "The traitor before you today was spreading hate about our god, attempting to misguide the next Prophet."
     m bandage disturbed "...."
-    l masked angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}"
+    l masked angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak. They must be purged from our Order.{/b}"
     b "Azazel. Come forth."
-    a neutral horrified "Fath- Lord Baphomet..."
+    #a neutral horrified "Fath- Lord Baphomet..."
     b "Raise the sacrificial knife, and rid us of the poison that plagues the Order."
     "The citizen pushes Micah in front of Azazel. The crowd goes silent in anticipation, eagerly awaiting the coming sacrifice."
-    m bandage fearful "Azazel... I..."
-    l "{b}SHUT IT!{/b}"
+    m bandage fearful "Azazel... don't..."
+    l "{b}SILENCE!{/b}"
     m bandage sickly "..."
-    a "B-but… Lord Baphomet… why Micah..? They’re my friend…"
+    #a "B-but… Lord Baphomet… why Micah..? They’re my friend…"
+    a "Wait, Lord Baphomet, please- Micah is my friend!"
     b """
-    We have told you time and time again not to talk to this traitor.
-
-    The only reason why they were spared was because they were your friend. However…
-
-    I will not tolerate this anymore. They have strung you along for long enough.  It’s time this dissenter learned their lesson.
-
-    And what better way to enact punishment on them than having them being slain by their only friend? 
-
-    You are to become the next Prophet, Azazel. Are you really worthy of that title if you are unable to sacrifice one lowly dissenter, just because you have an emotional connection to them?
+    A traitorous rebel who can’t learn a simple lesson is no friend of yours.
+    
+    This dissenter has strung you along for long enough. It’s time they’ve learned their lesson. 
+    
+    And what more of an honor is it to be sacrificed in the name of our god, during the most important ceremony of this generation? 
+    
+    You are about to become the next Prophet, the highest honor anyone could bestow upon you. Are you really worthy of that title if you are unable to sacrifice one lowly dissenter?
+    
+    Proceed. 
     """
 
-    a neutral confused "Father..."
-    a neutral worried "{i}Can I really do this...?{/i}"
-    "Azazel takes a deep breath."
-    a neutral annoyed "I'm sorry, but..."
+    "You take a deep breath, and pull out the sacrificial knife."
+    show azazel neutral annoyed
+
+    jump ending_choice_menu
 
     #Split to the final ending.
     #If you have testing mode on, it will give you a choice.
@@ -791,6 +821,20 @@ label act3_start:
         jump ending_escape_cult
 
     
+    return
+
+label ending_choice_menu:
+
+    menu:
+        "I understand my duty." if moralityScore <= -5:
+            jump ending_lead_cult
+
+        "I would like to negotiate." if moralityScore > -5 and moralityScore < 5:
+            jump ending_escape_cult
+
+        "I refuse." if moralityScore >= 5:
+            jump ending_end_cult
+
     return
 
 label ending_end_cult:

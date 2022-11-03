@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 48: invalid syntax
-    lilith masked with alpha 0.5
-            ^
+File "game/script.rpy", line 254: invalid syntax
+        store.moralityScore -= 
+    
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Wed Nov  2 07:51:57 2022
+Thu Nov  3 06:38:36 2022
