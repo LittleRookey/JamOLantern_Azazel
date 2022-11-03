@@ -7,6 +7,7 @@ define a = Character("Azazel", image="azazel")
 define b = Character("Baphomet", image="baphomet")
 define l = Character("Lilith", image="lilith")
 define m = Character("Micah", image="micah", what_size=22) #smaller text size
+define extra = Character("Citizen", image = "extra character")
 
 #Splash screens
 image ending end cult = "/Splash/azazel good end splash art 1.png"
@@ -31,14 +32,56 @@ image village flashback = "BG/VillageFlashback.png"
 image azazel neutral gray = im.Grayscale("Characters/Azazel/azazel neutral base.png")
 image azazel neutral surprised = "Characters/Azazel/azazel neutral surprised.png"
 image azazel neutral base = "Characters/Azazel/azazel neutral base.png"
+image azazel neutral happy = "Characters/Azazel/azazel neutral happy.png"
+image azazel neutral calm = "Characters/Azazel/azazel neutral calm.png"
+image azazel neutral horrified = "Characters/Azazel/azazel neutral horrified.png"
+image azazel neutral annoyed = "Characters/Azazel/azazel neutral annoyed.png"
+image azazel neutral angry = "Characters/Azazel/azazel neutral angry.png"
+image azazel neutral confused = "Characters/Azazel/azazel neutral confused.png"
+image azazel neutral overjoyed = "Characters/Azazel/azazel neutral overjoyed.png"
+image azazel neutral sheepish = "Characters/Azazel/azazel neutral sheepish.png"
+image azazel neutral veryhappy = "Characters/Azazel/azazel neutral very happy.png"
+image azazel neutral worried = "Characters/Azazel/azazel neutral worried.png"
 
 # transparent images for azazel
 image azazel neutral transparent:
     "Characters/Azazel/azazel neutral base.png"
     alpha 0.5
-
 image azazel neutral surprised transparent: 
     "Characters/Azazel/azazel neutral surprised.png"
+    alpha 0.5
+image azazel neutral base transparent:
+    "Characters/Azazel/azazel neutral base.png"
+    alpha 0.5
+image azazel neutral happy transparent:
+    "Characters/Azazel/azazel neutral happy.png"
+    alpha 0.5
+image azazel neutral calm transparent:
+    "Characters/Azazel/azazel neutral calm.png"
+    alpha 0.5
+image azazel neutral horrified transparent:
+    "Characters/Azazel/azazel neutral horrified.png"
+    alpha 0.5
+image azazel neutral annoyed transparent:
+    "Characters/Azazel/azazel neutral annoyed.png"
+    alpha 0.5
+image azazel neutral angry transparent:
+    "Characters/Azazel/azazel neutral angry.png"
+    alpha 0.5
+image azazel neutral confused transparent:
+    "Characters/Azazel/azazel neutral confused.png"
+    alpha 0.5
+image azazel neutral overjoyed transparent:
+    "Characters/Azazel/azazel neutral overjoyed.png"
+    alpha 0.5
+image azazel neutral sheepish transparent:
+    "Characters/Azazel/azazel neutral sheepish.png"
+    alpha 0.5
+image azazel neutral veryhappy transparent:
+    "Characters/Azazel/azazel neutral very happy.png"
+    alpha 0.5
+image azazel neutral worried transparent:
+    "Characters/Azazel/azazel neutral worried.png"
     alpha 0.5
 
 image baphomet gray = im.Grayscale("Characters/Baphomet/baphomet mask.png")
@@ -157,6 +200,21 @@ image micah no bandage sickly transparent:
     "Characters/Micah/micah no bandage/micah sickly no bandage.png"
     alpha 0.5
 
+# image for extra character
+image extra character = "Characters/extra sprites/extra character.png"
+image extra character scared = "Characters/extra sprites/extra character scared.png"
+image extra character very scared = "Characters/extra sprites/extra character very scared.png"
+
+# transparent image for extra character
+image extra character transparent:
+    "Characters/extra sprites/extra character.png"
+    alpha 0.5
+image extra character scared transparent:
+    "Characters/extra sprites/extra character scared.png"
+    alpha 0.5
+image extra character very scared transparent:
+    "Characters/extra sprites/extra character very scared.png"
+    alpha 0.5
 
 #Gallery images list, with placeholder images for now.
 #Gallery based on this tutorial: https://www.youtube.com/watch?v=0hPIQxnesS8
@@ -288,19 +346,19 @@ label cave_wakeup:
     l @ masked "No matter–our god forgives you. But there’s only a few hours until your sermon."
     l @ masked "You remember your lines, don’t you?"
 
-    a neutral confused "Uh..."
+    a @ neutral confused "Uh..."
 
     menu:
         "Could you refresh my memory?":
             $ gainGood()
-            l "Just this once. You must get the details correct, Azazel. Our god Baphomet will be watching."
+            l @ masked "Just this once. You must get the details correct, Azazel. Our god Baphomet will be watching."
 
         "I'm good.":
             $ gainBad()
-            l "The look on your face tells me you're not so sure."
-            l "Remember, you must get the details correct, Azazel. Our god will be watching."
+            l @ masked "The look on your face tells me you're not so sure."
+            l @ masked "Remember, you must get the details correct, Azazel. Our god will be watching."
 
-    l """
+    l @ masked """
     Listen closely...
     
     {b}We, the citizens of the Order, are blessed to be under Baphomet's divine watch.{/b} 
@@ -318,44 +376,44 @@ label cave_wakeup:
     menu:
         "Yes, I will do my best.":
             $ gainBad()
-            l "I know you will. Make me and your Father proud."
+            l @ masked "I know you will. Make me and your Father proud."
 
         "I don't think I can do it...":
             $ gainGood()
-            l "Do not be afraid. The entire commune trusts and respects your word."
-            l "I know you will succeed."
+            l @ masked "Do not be afraid. The entire commune trusts and respects your word."
+            l @ masked "I know you will succeed."
 
     "She pats the top of your head."
 
     a @ neutral very happy "Madam Lilith!"
-    l "Forgive me, I couldn't help myself."
-    a neutral happy "Hehe, our god forgives you."
-    a neutral confused "By the way, I wanted to tell you something. I had a dream earlier."
-    a neutral worried 'It seemed like a vision of my inauguration tomorrow… Father was in it. He said something about "my sacrifice".'
+    l @ masked "Forgive me, I couldn't help myself."
+    a @ neutral happy "Hehe, our god forgives you."
+    a @ neutral confused "By the way, I wanted to tell you something. I had a dream earlier."
+    a @ neutral worried 'It seemed like a vision of my inauguration tomorrow… Father was in it. He said something about "my sacrifice".'
     a @ neutral confused "Don't get me wrong! I know it's a great honor to be the next Prophet."
-    a neutral worried "I just can't help but feel like..."
+    a @ neutral worried "I just can't help but feel like..."
 
     menu:
         "I don't deserve the honor.":
-            l "Oh, no need to be so humble, Azazel. The people need a leader."
-            l "Your sacrifice is merely a metaphor–growing into a new identity. And who better to embody that than you?"
+            l @ masked "Oh, no need to be so humble, Azazel. The people need a leader."
+            l @ masked "Your sacrifice is merely a metaphor–growing into a new identity. And who better to embody that than you?"
 
         "Something will go wrong.":
-            l "A nightmare, hm...?"
-            l "Worry not, dreams and nightmares have no basis in reality, and only cast the mind astray. Our god knows best."
+            l @ masked "A nightmare, hm...?"
+            l @ masked "Worry not, dreams and nightmares have no basis in reality, and only cast the mind astray. Our god knows best."
 
-    l "Besides, our leader would never hurt you."
-    l "You are his only son, after all."
+    l @ masked "Besides, our leader would never hurt you."
+    l @ masked "You are his only son, after all."
 
-    a neutral sheepish "Thank you... I'll keep your words in mind."
+    a @ neutral sheepish "Thank you... I'll keep your words in mind."
 
-    l "No need to thank. And wait one moment before you go."
+    l @ masked "No need to thank. And wait one moment before you go."
     "She pulls out a gift wrapped in white cloth and presents it to you"
-    l "This is a sacrificial knife. It has been passed down by generations of Prophets. You will need it for the inauguration rituals."
-    l "Take care not to tarnish it!"
+    l @ masked "This is a sacrificial knife. It has been passed down by generations of Prophets. You will need it for the inauguration rituals."
+    l @ masked "Take care not to tarnish it!"
 
     a @ neutral surprised "Thank you! I won't, Madam Lilith!"
-    a "{i}This knife is so precious to the Order... this is real life.{/i}"
+    a neutral base "{i}This knife is so precious to the Order... this is real life.{/i}"
     a neutral base "{i}I really am about to become the next Prophet. {/i}"
 
     jump act2
@@ -375,34 +433,34 @@ label act2:
     "You step outside of your quarters and meet the familiar sight of your mountainside home."
     "The Order’s flags and  banners wave proudly in the wind under the full moon’s light. The sky’s faraway stars twinkle."
 
-    show azazel neutral happy at center:
+    show azazel neutral happy transparent at center:
         zoom 0.2
 
-    a "It's good to get some fresh air..."
+    azazel @ neutral happy "It's good to get some fresh air..."
     a neutral calm "And everyone’s working hard to prepare for my crowning ceremony tomorrow. I should do something too."
 
-    show azazel at left
-    show micah bandage masked at right:
+    show azazel neutral calm transparent at left
+    show micah bandage masked transparent at right:
         zoom 0.2
 
-    m "Azazel."
-    a neutral surprised "Ah! Don't sneak up on me like that, Micah!"
-    m "Yeah, sorry."
-    m "I heard you muttering to yourself. Help me deliver today’s dinner rations. "
-    a "That’s way too much bread and water to carry yourself… of course I’ll help!"
-    m "You know I always get stuck with the hardest tasks."
+    m @ bandage masked "Azazel."
+    a @ neutral surprised "Ah! Don't sneak up on me like that, Micah!"
+    m @ bandage masked "Yeah, sorry."
+    m @ bandage masked "I heard you muttering to yourself. Help me deliver today’s dinner rations. "
+    a @ neutral happy "That’s way too much bread and water to carry yourself… of course I’ll help!"
+    m @ bandage masked "You know I always get stuck with the hardest tasks."
 
     "The two of you spend the next few hours trudging across the sprawling cliffside, delivering rations to the citizens of the order. "
 
-    a neutral confused "Huff... huff..."
-    a neutral happy "Here's your food, sir!"
+    a @ neutral confused "Huff... huff..."
+    a @ neutral happy "Here's your food, sir!"
 
     #We currently have just default extra character and extra character scared and very scared.
     #I just used the default to fill in for where extra character annoyed would be.
     #I also used extra character scared for surprised.
     show extra character at center:
         zoom 0.2
-    "Citizen" "Oh, wow. The next Prophet himself shows up at my door, and dinner’s  still just a jug of water and half a loaf of hard bread."
+    extra character "Oh, wow. The next Prophet himself shows up at my door, and dinner’s  still just a jug of water and half a loaf of hard bread."
     "Citizen" "What a gracious Lord! Thank you Baphomet! Jeez, I’m starving here… "
 
     a neutral surprised "Oh!"
