@@ -89,6 +89,7 @@ image baphomet gray = im.Grayscale("Characters/Baphomet/baphomet mask.png")
 image baphomet silhouette = "Characters/Baphomet/baphomet silhouette.png"
 image baphomet masked = "Characters/Baphomet/baphomet mask.png"
 image baphomet mask_cracked = "Characters/Baphomet/baphomet mask cracked.png"
+image baphomet angry = "Characters/Baphomet/baphomet angry.png"
 
 # transparent images for baphomet
 image baphomet silhouette transparent:
@@ -99,6 +100,9 @@ image baphomet masked transparent:
     alpha 0.5
 image baphomet mask_cracked transparent: 
     "Characters/Baphomet/baphomet mask cracked.png"
+    alpha 0.5
+image baphomet angry transparent:
+    "Characters/Baphomet/baphomet angry.png"
     alpha 0.5
 
 image lilith gray = im.Grayscale("Characters/Lilith/lilith mask.png")
