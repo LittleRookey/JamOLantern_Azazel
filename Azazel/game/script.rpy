@@ -871,6 +871,22 @@ label act3_start:
 
 label ending_choice_menu:
 
+    if script_testing_mode:
+        menu:
+            "Which ending do you want to see?"
+
+            "Lead cult":
+                jump ending_lead_cult
+
+            "Escape cult":
+                jump ending_escape_cult
+
+            "End cult":
+                jump ending_end_cult
+
+            "See end from regular game":
+                pass
+
     menu:
         "I understand my duty." if moralityScore <= -5:
             jump ending_lead_cult
