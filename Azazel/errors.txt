@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1169: expected 'simple_expression' not found.
-    scene black with with Fade(0.5, 2, 0.5, color="#000")
-                     ^
+File "game/script.rpy", line 322: expected expression
+    define config.menu_include_disabled = 
+                                          ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Fri Nov  4 07:43:35 2022
+Fri Nov  4 17:19:01 2022

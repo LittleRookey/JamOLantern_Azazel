@@ -1,0 +1,42 @@
+#old script
+    #a "lead cult"
+    a @ neutral angry "This is the end, Micah."
+    "Although his face is covered by a mask, Azazel feels as though Baphomet is smiling."
+    m @ bandage fearful "Azazel... wait..."
+    a @ -transparent "You spoke out against our god. You stole... you lied... you spoke ill of my father... you... you tricked me into becoming your friend."
+    m @ bandage disturbed "...What's gotten into you...?"
+    m bandage calm "... We're friends, aren't we...? I never tricked you, I just..."
+    m "...I just wanted to feel safe. I didn't want to be alone anymore." #We don't seem to have art of sad Micah.
+    
+    show micah bandage calm transparent
+    #This line is the first one where Azazel needs an emotion that we only have art for in his bad form.
+    #a bad cold "You befriended me so that you wouldn’t get killed by Baphomet. Is that what it is?"
+    a @ -transparent "You befriended me so that you wouldn't get killed by Baphomet. Is that what it is?"
+    m @ bandage sickly "...No.. That's not it... I..."
+    a @ -transparent "You became my friend in order to fool me into thinking that the Order was bad. That the order hurt its citizens."
+    m bandage angry "Azazel, snap out of it!"
+    show micah bandage angry transparent
+    a @ -transparent "Quiet, dissenter."
+    m @ bandage fearful "...You sound just like your father."
+    a @ -transparent "I am the next prophet. With your sacrifice, the ritual will be complete."
+    "Azazel feels something change within him."
+
+    play music suspicious
+    show ending lead cult transforming
+    window hide #hides the text box
+    pause
+    hide ending lead cult transforming
+    window auto #returns the text box
+
+    show azazel bad neutral
+    m "...Azazel..."
+    m "...No. You're not Azazel. Who are you...?"
+    a bad neutral "I am the prophet. Who else."
+
+    scene ending lead cult micah
+    pause
+    scene ending lead cult azazel
+    pause
+    play sound knife_sfx
+    scene pure evil end
+    pause

@@ -28,7 +28,7 @@ image ending escape cult = "/Splash/splash art azazel.png"
 image altar = "BG/Altar.png"
 image altar flashback = "BG/AltarFlashback.png"
 image neighbor village = "BG/NeighborVillage.png"
-#We don't have a neighbor village flashback yet. It's still a .clip file.
+image neighbor village flashback = "BG/NeighborVillageFlashback.png"
 image room = "BG/Room.png"
 image room flashback = "BG/RoomFlashback.png"
 image sacrifice room = "BG/SacrificeRoom.png"
@@ -42,6 +42,7 @@ image azazel neutral surprised = "Characters/Azazel/azazel neutral surprised.png
 image azazel neutral base = "Characters/Azazel/azazel neutral base.png"
 image azazel neutral happy = "Characters/Azazel/azazel neutral happy.png"
 image azazel neutral calm = "Characters/Azazel/azazel neutral calm.png"
+image azazel neutral cold = "Characters/Azazel/azazel neutral cold.png"
 image azazel neutral horrified = "Characters/Azazel/azazel neutral horrified.png"
 image azazel neutral annoyed = "Characters/Azazel/azazel neutral annoyed.png"
 image azazel neutral angry = "Characters/Azazel/azazel neutral angry.png"
@@ -52,6 +53,16 @@ image azazel neutral veryhappy = "Characters/Azazel/azazel neutral very happy.pn
 image azazel neutral worried = "Characters/Azazel/azazel neutral worried.png"
 image azazel neutral teary angry  = "Characters/Azazel/azazel neutral teary angry.png"
 image azazel neutral determined angry  = "Characters/Azazel/azazel neutral determined angry.png"
+
+image azazel bad smile = "Characters/Azazel/azazel bad smile.png"
+image azazel bad deranged = "Characters/Azazel/azazel bad deranged.png"
+image azazel bad smirk eyes closed = "Characters/Azazel/azazel bad smirk eyes closed.png"
+image azazel bad annoyed = "Characters/Azazel/azazel bad annoyed.png"
+image azazel bad calm = "Characters/Azazel/azazel bad calm.png"
+image azazel bad sneer = "Characters/Azazel/azazel bad sneer.png"
+image azazel bad very happy = "Characters/Azazel/azazel bad very happy.png"
+image azazel bad laughter = "Characters/Azazel/azazel bad laugh.png"
+image azazel bad laugh = "Characters/Azazel/azazel bad laugh.png"
 
 # transparent images for azazel
 image azazel neutral transparent:
@@ -68,6 +79,9 @@ image azazel neutral happy transparent:
     alpha 0.5
 image azazel neutral calm transparent:
     "Characters/Azazel/azazel neutral calm.png"
+    alpha 0.5
+image azazel neutral cold transparent:
+    "Characters/Azazel/azazel neutral cold.png"
     alpha 0.5
 image azazel neutral horrified transparent:
     "Characters/Azazel/azazel neutral horrified.png"
@@ -99,6 +113,36 @@ image azazel neutral teary angry transparent:
 image azazel neutral determined angry transparent:
     "Characters/Azazel/azazel neutral determined angry.png"
     alpha 0.5
+
+image azazel bad smile transparent:
+    "Characters/Azazel/azazel bad smile.png"
+    alpha 0.5
+image azazel bad deranged transparent:
+    "Characters/Azazel/azazel bad deranged.png"
+    alpha 0.5
+image azazel bad smirk eyes closed transparent:
+    "Characters/Azazel/azazel bad smirk eyes closed.png"
+    alpha 0.5
+image azazel bad annoyed transparent:
+    "Characters/Azazel/azazel bad annoyed.png"
+    alpha 0.5
+image azazel bad calm transparent:
+    "Characters/Azazel/azazel bad calm.png"
+    alpha 0.5
+image azazel bad sneer transparent:
+    "Characters/Azazel/azazel bad sneer.png"
+    alpha 0.5
+image azazel bad very happy transparent:
+    "Characters/Azazel/azazel bad very happy.png"
+    alpha 0.5
+image azazel bad laughter transparent:
+    "Characters/Azazel/azazel bad laugh.png"
+    alpha 0.5
+image azazel bad laugh transparent:
+    "Characters/Azazel/azazel bad laugh.png"
+    alpha 0.5
+
+
 
 image baphomet gray = im.Grayscale("Characters/Baphomet/baphomet mask.png")
 image baphomet silhouette = "Characters/Baphomet/baphomet silhouette.png"
@@ -285,6 +329,12 @@ init python:
 #This is important for the ending menu where you see the final split.
 define config.menu_include_disabled = True
 
+#Set defaults for unlocking the different endings.
+default persistent.galleryUnlocked = False
+default persistent.ending_end_unlocked = False
+default persistent.ending_escape_unlocked = False
+default persistent.ending_lead_unlocked = False
+
 #Change this to False before compiling and releasing.
 #Turning it on lets the player see some testing features.
 default script_testing_mode = True 
@@ -295,7 +345,7 @@ label start:
     #This sets the persistent variable for the gallery to false by default.
     #This means that the gallery will initially be locked,
     #but once you unlock it it will stay unlocked across playthroughs.
-    default persistent.galleryUnlocked = False
+    #default persistent.galleryUnlocked = False
 
     "Content warning: This game contains scenes of murder, blood, and the death of a friend."
 
@@ -920,6 +970,7 @@ label ending_choice_menu:
     return
 
 label ending_end_cult:
+    $ persistent.ending_end_unlocked = True
     show azazel neutral angry transparent
 
     #a "end cult"
@@ -966,55 +1017,142 @@ label ending_end_cult:
     return
 
 label ending_lead_cult:
-    show azazel neutral angry transparent
+    $ persistent.ending_lead_unlocked = True
+    show azazel neutral cold transparent
     show micah bandage fearful transparent
 
-    #a "lead cult"
-    a @ neutral angry "This is the end, Micah."
-    "Although his face is covered by a mask, Azazel feels as though Baphomet is smiling."
-    m @ bandage fearful "Azazel... wait..."
-    a @ -transparent "You spoke out against our god. You stole... you lied... you spoke ill of my father... you... you tricked me into becoming your friend."
-    m @ bandage disturbed "...What's gotten into you...?"
-    m bandage calm "... We're friends, aren't we...? I never tricked you, I just..."
-    m "...I just wanted to feel safe. I didn't want to be alone anymore." #We don't seem to have art of sad Micah.
-    
-    show micah bandage calm transparent
-    #This line is the first one where Azazel needs an emotion that we only have art for in his bad form.
-    #a bad cold "You befriended me so that you wouldn’t get killed by Baphomet. Is that what it is?"
-    a @ -transparent "You befriended me so that you wouldn't get killed by Baphomet. Is that what it is?"
-    m @ bandage sickly "...No.. That's not it... I..."
-    a @ -transparent "You became my friend in order to fool me into thinking that the Order was bad. That the order hurt its citizens."
-    m bandage angry "Azazel, snap out of it!"
-    show micah bandage angry transparent
-    a @ -transparent "Quiet, dissenter."
-    m @ bandage fearful "...You sound just like your father."
-    a @ -transparent "I am the next prophet. With your sacrifice, the ritual will be complete."
-    "Azazel feels something change within him."
+    a @ -transparent "This is the end, Micah."
+    "Although his face is covered by a mask, you can sense your Father is smiling."
+    m @ -transparent "Hey! You said we were friends... come on, you don't have to do this!!"
+    a @ -transparent "No, now I realize the truth. In fact, I'm disappointed I didn't realize sooner."
+    a neutral angry "You only befriended me to try and sway me from my path. And to protect yourself from your doomed fate!"
+    a "You have been a dissenter for years. But you managed to stay under the radar by tricking me into being your friend, so I would be reluctant to kill you."
+    show azazel neutral angry transparent
+    m @ bandage disturbed "What's gotten into you? None of that is true! *cough*"
+    m @ bandage sad "...I just didn't want to be alone anymore. I didn't trick you into anything, I promise."
+    a @ -transparent "No. You spoke out against our god. You stole, you lied, and you even spoke ill of The Prophet, my Father, straight to my face."
+    a neutral cold "You almost successfully swayed me from my path, and barred me from my rightful position. You truly are the most clever mutineer I've ever seen."
+    a "But a liar's promise holds no weight. May our god Baphomet have mercy upon your soul."
+    show azazel neutral cold transparent
+    m @ -transparent "Azazel... you sound just like your father."
 
+    #show the transformation splash art
     play music suspicious
     show ending lead cult transforming
     window hide #hides the text box
     pause
-    hide ending lead cult transforming
+    #hide ending lead cult transforming
     window auto #returns the text box
+    """
+    You feel a sinister change within you. For the first time in years, you remember that you are not human. 
 
-    show azazel bad neutral
-    m "...Azazel..."
-    m "...No. You're not Azazel. Who are you...?"
-    a bad neutral "I am the prophet. Who else."
+    You are a symbol of the Order. A blessing born from Baphomet's might as a god.
+
+    This is the sacred honor you were told to bear. 
+    """
+
+    hide ending lead cult transforming
+    show azazel bad smile transparent
+    show micah bandage fearful transparent
+
+    a @ -transparent "Where was I again? Ah, yes. I {i}am{/i} just like my Father."
+    a @ -transparent "Members of the Order, feast your eyes on your next Prophet!"
+    a @ bad deranged "It's truly an honor to lead this ceremony. You all are about to witness history."
+    m @ -transparent "Who are you?!"
+    a @ bad eyes closed smirk "How silly. A change in demeanor and you cannot even recognize me anymore."
+    a @ bad annoyed "Just as I cannot recognize you anymore, either."
+    a @ bad cold "You used to be Micah- friendly, quiet, and obedient. Now look at you. A lowly dissenter, aiming to ruin my inauguration."
+    a @ bad calm "I have let go of all former reservations. Let us commence the sacrifice!"
+    m @ -transparent "N-no... this can't be happening... snap out of it, please!"
+    a @ bad sneer "I refuse."
+    "You raise your sacrificial knife, letting it be seen by the crowd. Micah struggles desperately against their restraints."
+    a @ bad smirk eyes closed "Citizens of the Order, do you feel blessed to be under Baphomet's divine scrutiny? Our god invites you to celebrate this sacrifice! This blade is a symbol of his righteousness!"
+    a @ bad sneer "Show your faith to me, everyone, as we cleanse the unclean, and purge the scum of the earth. Speak!"
+    crowd "All hail the next Prophet!"
+    a @ bad deranged "Louder!"
+    crowd "ALL HAIL!"
+    a @ bad laugh "Hahaha!"
+    m @ bandage sickly "{i}He's gone completely insane.{/i}"
+    a bad very happy "Now, Micah..."
+    menu:
+        "Return to your creator.":
+            pass
+        "God rest your wicked soul.":
+            pass
 
     scene ending lead cult micah
     pause
     scene ending lead cult azazel
     pause
     play sound knife_sfx
+    show black with fade
+    pause
+
+    hide black
+    scene sacrifice room
+    show azazel bad laughter transparent at left:
+        zoom 0.2
+    show micah bandage sacrifice transparent at center:
+        zoom 0.2
+    show baphomet masked transparent at right:
+        zoom 0.2
+    m @ -transparent "....."
+    "The dissenter collapses. They could not utter any last words."
+    "Half of the crowd cheers. The rest watch in disturbed horror."
+    a @ bad smirk eyes closed "Are half of you asleep? The evil has been purged. Applaud, applaud!"
+    crowd "*CLAP* *CLAP* *CLAP*"
+    a @ bad laugh "Wonderful!"
+    b @ masked "Wonderful indeed. You have done well, my son."
+    a @ bad overjoyed "I know!"
+    b @ masked "..."
+    b @ masked "Now that the sacrifice is complete, it is finally time to officially crown our new Prophet. It is my honor to bestow upon you this sacred role, and I trust you will serve our community with strength and vigor."
+    show azazel bad sneer
+    menu:
+        "I will.":
+            show azazel bad sneer transparent
+            b masked "You are a son I can be proud of."
+
+        "Sure, old man!":
+            show azazel bad sneer transparent
+            b masked "...Okay then."
+
+    "Father" """
+    As Prophet, you will relay the divine word you hear from our god Baphomet, and borrow his sacred name. You work to uphold the peace and prosperity of the Order, and keep the community's faith in you strong and absolute. 
+    
+    Cast aside your former name. Your name is now Baphomet. 
+    
+    Cast aside your former skin, your former mind, body, and soul, and embrace your new identity. Your identity is now our god. 
+    
+    Citizens of the Order- bow to your new leader!
+    """
+
+    show baphomet masked transparent
+
+    crowd "All hail our new Prophet!"
+    crowd "ALL HAIL BAPHOMET!"
+
+    show azazel silhouette
+
+    """
+    The clock strikes 12.
+
+    Happy birthday...
+
+    Baphomet.
+
+    The Order is in your hands. 
+    """
+
     scene pure evil end
     pause
+    
+    #to be continued uwu
 
     jump after_finishing
     return
 
 label ending_escape_cult:
+    $ persistent.ending_escape_unlocked = True
     show azazel neutral worried transparent
 
     #a "escape cult"
@@ -1230,7 +1368,20 @@ label ending_escape_cult:
 
 label after_finishing:
     #Now that we're at the end, we can unlock the bonus content.
-    $ persistent.galleryUnlocked = True
+    # $ persistent.galleryUnlocked = True
+    $ numberOfEndingsUnlocked = 0
+    if persistent.ending_end_unlocked:
+        $ numberOfEndingsUnlocked += 1
+    if persistent.ending_lead_unlocked:
+        $ numberOfEndingsUnlocked += 1
+    if persistent.ending_escape_unlocked:
+        $ numberOfEndingsUnlocked += 1
+
+    if numberOfEndingsUnlocked == 3:
+        $ persistent.galleryUnlocked = True
+        $ endingsInfoString = "You have seen all endings.\nMake sure to check the gallery in the main menu!"
+    else:
+        $ endingsInfoString = "You have unlocked " + str(numberOfEndingsUnlocked) + " out of 3 endings.\nPlay again to see the rest!"
 
     #scene black
     call screen credits
@@ -1257,7 +1408,7 @@ screen credits:
             text("Character Art: @oto")
             text("Sound Effects: @Ben Slattery")
             text("Music: @Ben Slattery, @Winterestr")
-            text("\nMake sure to check the gallery in the main menu!")
+            text("\n[endingsInfoString]")
             textbutton _("Finish") action MainMenu(confirm=False, save=False)
 
 
@@ -1344,11 +1495,17 @@ label debug_section: #A part of the game I made just to test stuff out.
 
         "Unlock postgame content" if not persistent.galleryUnlocked:
             $ persistent.galleryUnlocked = True
+            $ persistent.ending_end_unlocked = True
+            $ persistent.ending_escape_unlocked = True
+            $ persistent.ending_lead_unlocked = True
             "Now you can see the gallery and character blurbs."
             jump debug_section
 
         "Lock postgame content" if persistent.galleryUnlocked:
             $ persistent.galleryUnlocked = False
+            $ persistent.ending_end_unlocked = False
+            $ persistent.ending_escape_unlocked = False
+            $ persistent.ending_lead_unlocked = False
             "You can no longer see the gallery or character blurbs."
             jump debug_section
         
