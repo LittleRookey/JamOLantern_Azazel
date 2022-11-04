@@ -1,0 +1,30 @@
+# Unused code for splitting the user to the ending.
+# Taken out now that the user sees a menu by default.
+
+#Split to the final ending.
+    #If you have testing mode on, it will give you a choice.
+    #Otherwise it just uses morality score to determine it.
+    if script_testing_mode:
+        menu:
+            "Which ending do you want?"
+
+            "End cult (good)":
+                jump ending_end_cult
+
+            "Escape cult (neutral)":
+                jump ending_escape_cult
+
+            "Lead cult (bad)":
+                jump ending_lead_cult
+
+            "Ending based on morality score (default behavior)":
+                "Going there."
+
+
+    #Split to the final ending.
+    if moralityScore >= 5:
+        jump ending_end_cult
+    elif moralityScore <= -5:
+        jump ending_lead_cult
+    else:
+        jump ending_escape_cult
