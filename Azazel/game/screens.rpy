@@ -326,7 +326,8 @@ screen navigation():
             textbutton _("Main Menu") action MainMenu()
 
         # textbutton _("About") action ShowMenu("about")
-        imagebutton auto "mm_gallery_%s.png" xpos 1690 ypos 566 focus_mask True action ShowMenu("pre_gallery") hovered [ Play("sound", "audio/KnifeSFX.ogg") ]
+        if persistent.galleryUnlocked:
+            imagebutton auto "mm_gallery_%s.png" xpos 1690 ypos 566 focus_mask True action ShowMenu("pre_gallery") hovered [ Play("sound", "audio/KnifeSFX.ogg") ]
 
         # if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
@@ -628,9 +629,15 @@ screen pre_gallery():
     tag menu
     add "gallery_back"
     use gameGallery #imports the gallery from the separate file it's in
-    textbutton _("Return"):
-        style "return_button"
-        action Return()
+    hbox:
+        yalign 1.0
+        #spacing 20
+        textbutton _("Return"):
+            #style "return_button"
+            action Return()
+        textbutton _("Character blurbs"):
+            #style "return_button"
+            action Start("character_blurbs")
 
 
 ## Load and Save screens #######################################################

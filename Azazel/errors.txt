@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 303: fixed expects a non-empty block.
-    if persistent.galleryUnlocked:
-                                  ^
+File "game/script.rpy", line 534: expected end of line
+    play music <from currentTrackPosition>less_mellow_mood
+                     ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Thu Nov  3 17:16:30 2022
+Thu Nov  3 20:38:39 2022

@@ -1,0 +1,44 @@
+b "My son is an extraordinary being."
+    b "Thank you, everyone, for joining us here today."
+    b "Madam Lilith, the scroll, if you please..."
+
+    l masked "Yes, Lord Baphomet... ahem."
+
+    l masked angry """
+    {b}We, the citizens of the Order, are blessed to be under Baphomet’s divine watch.{/b}
+
+    {b}We praise our god’s mercy and hear his word through his excellency, {color=#f00}The Prophet.{/color}{/b}
+
+    {b}The Order is safe. The Order provides. The Order is {color=#f00}your home, your family, your everything.{/color}{/b}
+
+    {b}To show our faith to Baphomet, our god, we cleanse our Order of the unclean through {color=#f00}the sacrifice of dissenters.{/color}{/b}
+    """
+	
+	    #{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}
+
+    l masked "As you are all aware, in order to become the Prophet, we need a sacrifice. And recently, someone amongst our ranks has been found to be speaking ill of our god, Baphomet."
+    l @ masked angry "{b}This is an unforgivable act.{/b} I hope that you have not all forgotten all that our god has done for us. Without him, your lives would all fall to ruin."
+    l "Thus, we have brought in this misguided, broken soul today. With the sacrifice of their life, we shall crown our new Prophet, and the Order shall prevail!"
+
+    "The crowd cheers gleefully."
+
+    l "Bring them in."
+	
+	
+	
+	b """
+    We have told you time and time again not to talk to this traitor.
+
+    The only reason why they were spared was because they were your friend. However…
+
+    I will not tolerate this anymore. They have strung you along for long enough.  It’s time this dissenter learned their lesson.
+
+    And what better way to enact punishment on them than having them being slain by their only friend? 
+
+    You are to become the next Prophet, Azazel. Are you really worthy of that title if you are unable to sacrifice one lowly dissenter, just because you have an emotional connection to them?
+    """
+	
+	a neutral confused "Father..."
+    a neutral worried "{i}Can I really do this...?{/i}"
+    "Azazel takes a deep breath."
+    a neutral annoyed "I'm sorry, but..."

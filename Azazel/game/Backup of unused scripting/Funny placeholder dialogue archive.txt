@@ -6,16 +6,16 @@
 
 "You awaken with a start in your own room."
 
-    a "Ah! I'm up!"
+a "Ah! I'm up!"
 
-    l "Finally. You'd be late to your own funeral if you could, Azazel."
+l "Finally. You'd be late to your own funeral if you could, Azazel."
 
-    a "UwU?"
+a "UwU?"
 
-    l "Now is not the time for UwUs, Azazel. It is in fact your own funeral."
-    l "And you are late."
+l "Now is not the time for UwUs, Azazel. It is in fact your own funeral."
+l "And you are late."
 
-    a "You sure about that? I mean, I feel alive."
+a "You sure about that? I mean, I feel alive."
 
 ###
 
@@ -34,3 +34,9 @@ a "escape cult uwu"
 ###
 
 "Crowd" "{b}UWU!!!!!!!!!!!!!!!!!{/b}"
+
+###
+
+#a "I like oatmeal... and blood!"
+#a "I like playing League of Legends."
+#a "I dislike the time I spend not playing games."

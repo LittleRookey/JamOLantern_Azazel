@@ -10,6 +10,12 @@ define m = Character("Micah", image="micah", what_size=22) #smaller text size
 define crowd = Character("Crowd", what_bold = True)
 define extra = Character("Citizen", image = "extra character")
 
+#Define audio files.
+define audio.intense_action = "/audio/IntenseAction.ogg"
+define audio.mellow_mood = "/audio/MellowMood.ogg"
+define audio.less_mellow_mood = "/audio/LessMellowMood.ogg"
+define audio.suspicious = "/audio/Suspicious.ogg"
+
 #Splash screens
 image ending end cult = "/Splash/azazel good end splash art 1.png"
 image ending lead cult transforming = "/Splash/azazel bad end splash art 1 transformation.png"
@@ -227,7 +233,8 @@ image extra character very scared transparent:
 
 #Some images need to be edited to fit the dimensions
 #that the gallery uses.
-default galleryList = ["azazel bad end splash art 1 (transformation)",
+default galleryList = ["character refs",
+                        "azazel bad end splash art 1 (transformation)",
                         "azazel bad end splash art 1",
                         "azazel bad end",
                         "azazel bonus art 2",
@@ -239,6 +246,7 @@ default galleryList = ["azazel bad end splash art 1 (transformation)",
                         "bad end splash art 2",
                         "game jam character mockups",
                         "micah mask pupils",
+                        "orderEndCongrats",
                         "so sorry micah",
                         "so sorry micah 2",
                         "splash art azazel bonus",
@@ -294,6 +302,7 @@ label script_intro:
     $ moralityScore = 0
 
     scene altar flashback
+    play music suspicious
 
     show baphomet silhouette at center:
         zoom 0.2
@@ -315,6 +324,7 @@ label script_intro:
     "{i}{b}All hail Baphomet!{/b}{/i}"
 
     scene black with fade
+    stop music
 
     #This is monologue mode, used for giving one character multiple repeated lines.
     "?" """
@@ -335,6 +345,7 @@ label script_intro:
 label cave_wakeup:
 
     scene room with fade
+    play music mellow_mood
 
     # show azazel neutral transparent
     #         show lilith transparent
@@ -425,6 +436,7 @@ label cave_wakeup:
     a neutral base "{i}This knife is so precious to the Order... this is real life.{/i}"
     a neutral base "{i}I really am about to become the next Prophet. {/i}"
 
+    stop music
     jump act2
 
     #l "Go help the citizens. I heard" #Is this line finished?
@@ -438,6 +450,7 @@ label act2:
     #numbers: length of fade out, time to stay faded,
     #length of next fade-in, color
     scene village with Fade(0.5, 2, 0.5, color="#000")
+    play music mellow_mood
 
     "You step outside of your quarters and meet the familiar sight of your mountainside home."
     "The Order’s flags and  banners wave proudly in the wind under the full moon’s light. The sky’s faraway stars twinkle."
@@ -516,6 +529,18 @@ label act2:
 
 label act2_altar:
 
+    #Smoothly switch to the less-mellow music.
+
+    #Get the current position of the track playing.
+    #Set it to 0 by default if nothing's playing, then convert to string.
+    $ currentTrackPosition = renpy.music.get_pos("music")
+    if currentTrackPosition is None:
+        $ currentTrackPosition = 0
+    $ ctp_str = str(currentTrackPosition)
+    #Sets up a string that plays the new track, starting where you left off and returning to the beginning each time through.
+    #Cut parameters:  fadeout=0.6, fadein=0.6,
+    $ renpy.music.play("<loop 0 from " + ctp_str + ">audio/LessMellowMood.ogg", tight=True)
+
     scene altar with Fade(0.5, 2, 0.5, color="#000")
     show azazel neutral base at left:
         zoom 0.2
@@ -587,8 +612,11 @@ label act2_altar:
     m bandage angry "And on another note. Don’t you think it’s suspicious that we call The Prophet by Baphomet’s name? As if he’s actually the god?"
     a "Hey, Micah-"
     m "He’s making us worship him, a man behind a mask. And if we have any little bad thing to say about it, we…!"
+    stop music
+    
     a neutral horrified "SHH!"
 
+    play music suspicious
     show micah bandage fearful
 
     show lilith masked at center:
@@ -633,6 +661,7 @@ label act2_altar:
     l "Your sermon is starting soon. Your Father and everyone else is waiting."
     l "Do not falter. Make us proud."
 
+    stop music
     jump act3_start
 
     #l masked angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak.{/b}"
@@ -646,6 +675,7 @@ label act3_start:
         zoom 0.2
     show lilith masked at right:
         zoom 0.2
+    play music suspicious
 
     "You step into a massive cavern, illuminated only by candlelight. A crowd of masked followers has congregated inside already."
     a "{i}I’ve never been allowed in here before, but this looks just like the room in my dream…{/i}"
@@ -752,6 +782,8 @@ label act3_start:
         zoom 0.2
     show micah bandage sickly at center:
         zoom 0.2
+
+    play music intense_action
 
     a neutral horrified "Micah!"
     m "Azazel..."
@@ -876,6 +908,8 @@ label ending_end_cult:
 
     scene ending end cult
     pause
+    scene pure good end
+    pause
     #scene 
 
     #Now that we're at the end, we can unlock the bonus content.
@@ -917,6 +951,8 @@ label ending_lead_cult:
     pause
     scene ending lead cult azazel
     pause
+    scene pure evil end
+    pause
 
     #Now that we're at the end, we can unlock the bonus content.
     $ persistent.galleryUnlocked = True
@@ -953,32 +989,57 @@ label ending_escape_cult:
 
     scene ending escape cult
     pause
+    scene neutral end
+    pause
 
     #Now that we're at the end, we can unlock the bonus content.
     $ persistent.galleryUnlocked = True
     return
 
 label character_blurbs:
-    #This is a scene that you'll be able to view from the main menu after completing the story.
+    #This is a scene that you'll be able to view from the gallery after completing the story.
     #It explains the background behind all the characters.
-    #We can write better dialogue for it later.
 
     scene village flashback
 
-    show azazel neutral base at center:
+    show azazel neutral happy at center:
         zoom 0.2
 
     a "Hi, I'm Azazel!"
-    a "*insert info about me here*"
+    a "I like oatmeal and I dislike scary movies."
     a "I love the order, they’re like a big family to me. I love my dad, Lady Lilith, and my best friend Micah!"
+    a "What? No, you can't touch my tail!!!"
 
     hide azazel
+
+    show baphomet masked at center:
+        zoom 0.2
+
+    b "I am Baphomet, the Leader."
+    b "I like chocolate. And power."
+    b "I dislike dissenters. I enjoy seeing them get sacrificed at our rituals."
+    b "Have you seen my son?"
+
+    hide baphomet
 
     show lilith masked at center:
         zoom 0.2
 
-    "This is Lady Lilith."
-    "*info about Lilith here*"
+    l "This is Lady Lilith."
+    l "I like red wine. {w}I dislike white wine."
+    l "Do I like anyone? Well... Our god is what's most important to me."
+
+    hide lilith
+
+    show micah bandage neutral at center:
+        zoom 0.2
+
+    m "Hi, I'm Micah."
+    m "I don't remember the last time I had more than 3 hours of sleep in one night..."
+    m "I like coffee."
+    m "I dislike no coffee. {w}And Baphomet."
+    m "Let's keep that last one a secret, OK? Nobody needs to know!"
+    m "Except for Azazel. I think he needs to know about that."
 
     return
 
