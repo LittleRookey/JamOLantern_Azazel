@@ -50,6 +50,8 @@ image azazel neutral overjoyed = "Characters/Azazel/azazel neutral overjoyed.png
 image azazel neutral sheepish = "Characters/Azazel/azazel neutral sheepish.png"
 image azazel neutral veryhappy = "Characters/Azazel/azazel neutral very happy.png"
 image azazel neutral worried = "Characters/Azazel/azazel neutral worried.png"
+image azazel neutral teary angry  = "Characters/Azazel/azazel neutral teary angry.png"
+image azazel neutral determined angry  = "Characters/Azazel/azazel neutral determined angry.png"
 
 # transparent images for azazel
 image azazel neutral transparent:
@@ -90,6 +92,12 @@ image azazel neutral veryhappy transparent:
     alpha 0.5
 image azazel neutral worried transparent:
     "Characters/Azazel/azazel neutral worried.png"
+    alpha 0.5
+image azazel neutral teary angry transparent:
+    "Characters/Azazel/azazel neutral teary angry.png"
+    alpha 0.5
+image azazel neutral determined angry transparent:
+    "Characters/Azazel/azazel neutral determined angry.png"
     alpha 0.5
 
 image baphomet gray = im.Grayscale("Characters/Baphomet/baphomet mask.png")
@@ -925,8 +933,8 @@ label ending_end_cult:
     "He takes a step towards Azazel, reaching out a hand."
     b @ -transparent "Come on, now. Everyone is watching. You are too old to be throwing tantrums."
     #We don't seem to differentiate between "teary angry" and "determined angry".
-    a @ -transparent "NO!"
-    a @ -transparent "Micah is my friend. I'm not going to hurt them."
+    a @ neutral teary angry "NO!"
+    a @ neutral determined angry "Micah is my friend. I'm not going to hurt them."
     b @ -transparent "Azazel..."
     b @ -transparent "Did I ever say you had a choice?"
     a @ -transparent "!" #We don't have "disturbed"
@@ -943,7 +951,7 @@ label ending_end_cult:
     a @ -transparent "Father, don't-"
     b @ -transparent "You must learn how to be a leader, Azazel."
     "Baphomet holds the knife over Micah's cowering form."
-    a @ -transparent "{b}STOP IT!{/b}"
+    a @ neutral teary angry "{b}STOP IT!{/b}"
     "Azazel runs towards Baphomet, attempting to grab the knife, but Baphomet shoves him away. He hits the floor with a thud."
     "A loud snapping noise reverberates throughout the entire cavern."
 
@@ -1074,17 +1082,17 @@ label ending_escape_cult:
     a @ -transparent "I... I'm..."
     m @ bandage angry "Let's go!"
     "They suddenly grab your hand, and the two of you make a run for it."
-    a @ -transparent "MICAH!"
+    a @ neutral teary angry "MICAH!"
     b @ angry "STOP THEM!"
 
     scene village with Fade(0.5, 2, 0.5, color="#000")
-    show azazel neutral surprised transparent at left:
+    show azazel neutral teary angry at left:
         zoom 0.2
     show micah bandage disturbed transparent at right:
         zoom 0.2
     a @ -transparent "Where are we going?"
     m @ -transparent "Away."
-    show azazel neutral angry transparent
+    show azazel neutral teary angry transparent
     a @ -transparent "Micah, I have to complete the ceremony!"
     a @ -transparent "Father is right, I've been completely useless. I need to do {i}something{/i}. I'll kill that dissenter to save you."
     m @ bandage fearful "Forget that, keep running! They're catching up!"
@@ -1116,7 +1124,7 @@ label ending_escape_cult:
     b @ -transparent "{b}Here is the fate of all who dare oppose our god.{/b}"
     a @ -transparent "M... Micah..."
     a neutral angry "AH! AHH!"
-    show azazel neutral angry transparent
+    show azazel neutral teary angry transparent
     m @ -transparent """
     *cough*
 
@@ -1127,14 +1135,14 @@ label ending_escape_cult:
 
     a @ -transparent "No! I can't leave you behind..."
     b @ -transparent "{b}Return to my side now.{/b}"
-    a neutral horrified "*cough* Now...!"
+    a neutral teary angry "*cough* Now...!"
     menu:
         "Run away":
-            show azazel neutral horrified transparent
+            show azazel neutral teary angry transparent
             "You break into a frenetic run, wiping the stinging tears on your face."
 
         "Stay with Micah":
-            show azazel neutral horrified transparent
+            show azazel neutral teary angry transparent
             m @ -transparent "You idiot..."
             m @ -transparent "What's the point if we both get caught? *cough*"
             a @ -transparent "Don’t die–I’ll take you to the infirmary, I’ll do anything!"
