@@ -399,7 +399,7 @@ default persistent.ending_lead_unlocked = False
 
 #Change this to False before compiling and releasing.
 #Turning it on lets the player see some testing features.
-default script_testing_mode = True 
+default script_testing_mode = False 
 
 # The game starts here.
 
@@ -409,7 +409,7 @@ label start:
     #but once you unlock it it will stay unlocked across playthroughs.
     #default persistent.galleryUnlocked = False
 
-    "Content warning: This game contains scenes of murder, blood, and the death of a friend."
+    "Content warning: Death, blood"
 
     if script_testing_mode:
         menu:

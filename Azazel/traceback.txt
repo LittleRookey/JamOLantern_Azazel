@@ -1,36 +1,38 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1275, in script
-    l @ broken_mask neutral "You've done a phenomenal job, Azazel. I'm proud of you."
-Exception: Image 'lilith broken_mask' does not accept attributes 'neutral'.
+  File "game/script.rpy", line 412, in script call
+    "Content warning: This game contains scenes of murder, blood, and the death of a friend."
+  File "renpy/common/00console.rpy", line 1125, in script call
+    python in _console:
+  File "renpy/common/000statements.rpy", line 449, in execute_pause
+    delay = eval(p["delay"])
+NameError: name 'music' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1275, in script
-    l @ broken_mask neutral "You've done a phenomenal job, Azazel. I'm proud of you."
-  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\ast.py", line 921, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\exports.py", line 1373, in say
-    who(what, *args, **kwargs)
-  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\character.py", line 1206, in __call__
-    old_attr_state = self.handle_say_attributes(False, interact)
-  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\character.py", line 1041, in handle_say_attributes
-    if self.resolve_say_attributes(predicting, temporary_attrs):
-  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\character.py", line 986, in resolve_say_attributes
-    renpy.exports.show(show_image)
-  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\exports.py", line 686, in show
-    if not base.find_target() and renpy.config.missing_show:
-  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\display\image.py", line 414, in find_target
-    self.target = target._duplicate(a)
-  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\display\core.py", line 397, in _duplicate
-    args.extraneous()
-  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\display\core.py", line 265, in extraneous
-    raise Exception("Image '{}' does not accept attributes '{}'.".format(
-Exception: Image 'lilith broken_mask' does not accept attributes 'neutral'.
+  File "game/script.rpy", line 412, in script call
+    "Content warning: This game contains scenes of murder, blood, and the death of a friend."
+  File "renpy/common/00console.rpy", line 1125, in script call
+    python in _console:
+  File "<string>", line 1, in script
+  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\ast.py", line 2232, in execute
+    self.call("execute")
+  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\ast.py", line 2220, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\statements.py", line 281, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 449, in execute_pause
+    delay = eval(p["delay"])
+  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\python.py", line 1092, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\python.py", line 1085, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "<string>", line 1, in <module>
+NameError: name 'music' is not defined
 
 Windows-10-10.0.19043 AMD64
 Ren'Py 8.0.3.22090809
 Azazel 1.0
-Fri Nov  4 18:43:00 2022
+Fri Nov  4 18:53:06 2022
