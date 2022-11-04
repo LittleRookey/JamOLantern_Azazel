@@ -1253,7 +1253,7 @@ screen credits:
             text("\nCredits:")
             text("Programming: @Miles Blumenau, @LittleRookey")
             text("Writing: @IcebergCabbage")
-            text("Background Art: @Meh , @oto")
+            text("Background Art: @Meh")
             text("Character Art: @oto")
             text("Sound Effects: @Ben Slattery")
             text("Music: @Ben Slattery, @Winterestr")
