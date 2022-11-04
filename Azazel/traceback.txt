@@ -1,19 +1,25 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1089, in script
-    show azazel bad laugh transparent at left:
-Exception: Image 'azazel bad laugh' does not accept attributes 'transparent'.
+  File "game/script.rpy", line 1275, in script
+    l @ broken_mask neutral "You've done a phenomenal job, Azazel. I'm proud of you."
+Exception: Image 'lilith broken_mask' does not accept attributes 'neutral'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1089, in script
-    show azazel bad laugh transparent at left:
-  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\ast.py", line 1408, in execute
-    show_imspec(self.imspec, atl=getattr(self, "atl", None))
-  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\ast.py", line 1371, in show_imspec
-    renpy.config.show(name,
+  File "game/script.rpy", line 1275, in script
+    l @ broken_mask neutral "You've done a phenomenal job, Azazel. I'm proud of you."
+  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\ast.py", line 921, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\exports.py", line 1373, in say
+    who(what, *args, **kwargs)
+  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\character.py", line 1206, in __call__
+    old_attr_state = self.handle_say_attributes(False, interact)
+  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\character.py", line 1041, in handle_say_attributes
+    if self.resolve_say_attributes(predicting, temporary_attrs):
+  File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\character.py", line 986, in resolve_say_attributes
+    renpy.exports.show(show_image)
   File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\exports.py", line 686, in show
     if not base.find_target() and renpy.config.missing_show:
   File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\display\image.py", line 414, in find_target
@@ -22,9 +28,9 @@ Full traceback:
     args.extraneous()
   File "D:\Downloads\Software\renpy-8.0.3-sdk\renpy\display\core.py", line 265, in extraneous
     raise Exception("Image '{}' does not accept attributes '{}'.".format(
-Exception: Image 'azazel bad laugh' does not accept attributes 'transparent'.
+Exception: Image 'lilith broken_mask' does not accept attributes 'neutral'.
 
 Windows-10-10.0.19043 AMD64
 Ren'Py 8.0.3.22090809
 Azazel 1.0
-Fri Nov  4 17:26:47 2022
+Fri Nov  4 18:43:00 2022
