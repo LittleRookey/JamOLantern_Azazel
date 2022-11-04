@@ -150,6 +150,7 @@ image micah no bandage happy = "Characters/Micah/micah no bandage/micah happy no
 image micah no bandage neutral = "Characters/Micah/micah no bandage/micah no bandage neutral.png"
 image micah no bandage sickly = "Characters/Micah/micah no bandage/micah sickly no bandage.png"
 
+
 # Micah Bandeges transparent images 
 image micah bandage angry transparent:
     "Characters/Micah/micah bandage/micah angry.png"
@@ -184,6 +185,7 @@ image micah bandage shock slash transparent:
 image micah bandage sickly transparent:
     "Characters/Micah/micah bandage/micah sickly.png"
     alpha 0.5
+
 
 # Micah transparent with no bandages
 image micah no bandage angry transparent:
@@ -557,6 +559,9 @@ label act2_altar:
     m @ -transparent "This is the only place where He isn't watching."
     a @ neutral confused "My Father? I mean- Baphomet?"
     m @ -transparent "Who else?"
+    # hide micah bandage masked transparent
+    show micah bandage transparent with fade:
+        zoom 0.2
     m @ bandage happy "Happy early 18th birthday, Azazel."
     m @ bandage calm "I know you’ll be busy tomorrow, with the inauguration and all. Thats why I wanted to say it now."
     a @ neutral overjoyed "Micah…! You’re so kind!"
@@ -590,7 +595,7 @@ label act2_altar:
 
             show azazel neutral base transparent
             m @ -transparent "..."
-            show micah no bandage neutral
+            show micah no bandage neutral with fade
             "Micah begins to unravel the tight bandages on their neck."
             show micah no bandage neutral transparent
             a @ neutral surprised "What... is that..."
