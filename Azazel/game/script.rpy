@@ -1062,7 +1062,7 @@ label ending_escape_cult:
     extra @ very scared "Please, I didn’t mean anything! I’ll never speak ill of anyone again! All hail!"
     "You raise the sacrificial knife."
     show azazel neutral angry transparent
-    a @ -transparent "In the name of our god, Baphomet, I will prove my faith… may he have mercy on your soul."
+    a @ -transparent "In the name of our god, Baphomet, I will prove my faith... may he have mercy on your soul."
     play sound knife_sfx
     a @ -transparent "..."
     extra @ scared "...?"
