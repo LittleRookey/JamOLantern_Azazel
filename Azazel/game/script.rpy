@@ -100,10 +100,23 @@ image azazel neutral determined angry transparent:
     "Characters/Azazel/azazel neutral determined angry.png"
     alpha 0.5
 
+# azazel good and
+image azazel good disturbed = "Characters/Azazel/azazel good disturbed.png"
+image azazel good horrified = "Characters/Azazel/azazel good horrified.png"
+
+image azazel good disturbed transparent:
+    "Characters/Azazel/azazel good disturbed.png"
+    alpha 0.5
+image azazel good horrified transparent:
+    "Characters/Azazel/azazel good horrified.png"
+    alpha 0.5
+
 image baphomet gray = im.Grayscale("Characters/Baphomet/baphomet mask.png")
 image baphomet silhouette = "Characters/Baphomet/baphomet silhouette.png"
 image baphomet masked = "Characters/Baphomet/baphomet mask.png"
 image baphomet mask_cracked = "Characters/Baphomet/baphomet mask cracked.png"
+image baphomet mask_cracked angry = "Characters/Baphomet/baphomet mask cracked angry.png"
+image baphomet mask_cracked no pupil = "Characters/Baphomet/baphomet mask cracked no pupil.png"
 image baphomet angry = "Characters/Baphomet/baphomet angry.png"
 
 # transparent images for baphomet
@@ -119,11 +132,19 @@ image baphomet mask_cracked transparent:
 image baphomet angry transparent:
     "Characters/Baphomet/baphomet angry.png"
     alpha 0.5
+image baphomet mask_cracked angry transparent:
+    "Characters/Baphomet/baphomet mask cracked angry.png"
+    alpha 0.5
+image baphomet mask_cracked no pupil transparent:
+    "Characters/Baphomet/baphomet mask cracked no pupil.png"
+    alpha 0.5
+
 
 image lilith gray = im.Grayscale("Characters/Lilith/lilith mask.png")
 image lilith masked = "Characters/Lilith/lilith mask.png"
 image lilith masked angry = "Characters/Lilith/lilith mask angry.png"
 image lilith broken_mask = "Characters/Lilith/lilith broken mask neutral.png"
+image lilith broken_mask angry = "Characters/Lilith/lilith broken mask angry.png"
 
 # lilith trnsparent
 image lilith transparent:
@@ -137,6 +158,9 @@ image lilith masked angry transparent:
     alpha 0.5
 image lilith broken_mask transparent:
     "Characters/Lilith/lilith broken mask neutral.png"
+    alpha 0.5
+image lilith broken_mask angry transparent:
+    "Characters/Lilith/lilith broken mask angry.png"
     alpha 0.5
 
 
@@ -152,6 +176,9 @@ image micah bandage masked = "Characters/Micah/micah bandage/micah mask.png"
 image micah bandage sacrifice = "Characters/Micah/micah bandage/micah sacrifice.png"
 image micah bandage shock slash = "Characters/Micah/micah bandage/micah shock slash.png"
 image micah bandage sickly = "Characters/Micah/micah bandage/micah sickly.png"
+image micah bandage relieved = "Characters/Micah/micah bandage/micah relieved.png"
+image micah bandage pleading = "Characters/Micah/micah bandage/micah pleading.png"
+image micah bandage sad = "Characters/Micah/micah bandage/micah sad.png"
 
 image micah no bandage gray = im.Grayscale("Characters/Micah/micah no bandage/micah no bandage neutral.png")
 image micah no bandage angry = "Characters/Micah/micah no bandage/micah angry no bandage.png"
@@ -198,7 +225,15 @@ image micah bandage shock slash transparent:
 image micah bandage sickly transparent:
     "Characters/Micah/micah bandage/micah sickly.png"
     alpha 0.5
-
+image micah bandage relieved transparent:
+    "Characters/Micah/micah bandage/micah relieved.png"
+    alpha 0.5
+image micah bandage pleading transparent:
+    "Characters/Micah/micah bandage/micah pleading.png"
+    alpha 0.5
+image micah bandage sad transparent:
+    "Characters/Micah/micah bandage/micah sad.png"
+    alpha 0.5
 
 # Micah transparent with no bandages
 image micah no bandage angry transparent:
@@ -920,45 +955,148 @@ label ending_choice_menu:
     return
 
 label ending_end_cult:
+    "You cast aside the sacrificial knife. It clatters against the floor."
     show azazel neutral angry transparent
 
     #a "end cult"
-    a @ neutral angry "I won't kill them."
-    l @ masked angry "..."
-    m bandage calm "Azazel...!" #Do we have a "relieved"?
-    show micah bandage calm transparent
-    "Hundreds of voices speak up in protest."
-    b @ -transparent "..."
-    b @ -transparent "Azazel."
-    "He takes a step towards Azazel, reaching out a hand."
-    b @ -transparent "Come on, now. Everyone is watching. You are too old to be throwing tantrums."
+    a @ neutral angry "What honor is it to murder my friend in cold blood? It’s not just!"
+    # a @ neutral angry "I won't kill them."
+    # l @ masked angry "..."
+    m bandage relieved "Azazel...!" #Do we have a "relieved"?
+    show micah bandage relieved transparent
+    "{i}Hundreds of voices speak up in protest.{/i}"
+    # b @ -transparent "..."
+    # b @ -transparent "Azazel."
+    "Citizen 1" "He’s ruining the ceremony! KILL THE DISSENTER!"
+    "Citizen 2" "Just hurry up and sacrifice them already!"
+    "Citizen 3" "Phew, thank god..."
+    a @ neutral angry "The members of the Order have a right to voice complaints and concerns! How is it so wicked to want a better life? How blasphemous is it to want to sleep with a full stomach?"
+    a @ neutral angry "If the Order promises to care and provide, it {i}should!{/i}"
+    b @ angry "{b}SILENCE!{/b}"
+    show baphomet angry transparent
+    "{i}Your Father storms towards you. You instinctively take a step back.{/i}"
+    b @ masked -transparent "You are hysterical. Your mind has already been tainted with lies and deception."
+    b @ angry -transparent "Destroy the source. It is the only way to save your soul."
     #We don't seem to differentiate between "teary angry" and "determined angry".
-    a @ neutral teary angry "NO!"
-    a @ neutral determined angry "Micah is my friend. I'm not going to hurt them."
-    b @ -transparent "Azazel..."
-    b @ -transparent "Did I ever say you had a choice?"
-    a @ -transparent "!" #We don't have "disturbed"
-    "He takes another step forward."
-    b @ -transparent "You {b}must{/b} be my successor. You are the face of the Order."
-    a @ -transparent "...I don't want to be."
-    b @ -transparent "..."
-    b @ -transparent "{b}Azazel.{/b}" #we don't have Baphomet angry
-    "Baphomet rushes towards Azazel, gripping the sacrificial knife and pulling it out of his hands."
-    a neutral horrified "Father, no!"
-    show azazel neutral horrified transparent
-    b @ -transparent "If you refuse to get rid of this pest, then I will take the responsibility and do it myself. Your sermon will have to wait."
-    m @ -transparent "No... please wait... I don't want to die... I'm sorry..."
-    a @ -transparent "Father, don't-"
-    b @ -transparent "You must learn how to be a leader, Azazel."
-    "Baphomet holds the knife over Micah's cowering form."
+    a @ neutral angry "I refuse."
+    b @ masked -transparent "You do not have a choice. Sacrifice them."
+    
+    a @ neutral teary angry "I refuse!"
+    show azazel neutral teary angry transparent
+    b @ masked -transparent "You {b}will{/b} become my successor. You are the face of the Order."
+    a @ neutral angry "...Then I don’t want to be anymore."
+    show azazel neutral angry transparent
+    b @ angry -transparent "{b}Unacceptable{/b}"
+    "{i}Before you can react, your Father’s hand thrusts out and clenches around Micah’s neck. He lifts them up into the air.{/i}"
+    b @ angry -transparent "If you refuse to get rid of this pest, then I will do it myself."
+    m @ bandage fearful "*cough*"
+    a @ neutral horrified "They can’t breathe! Let them go!"
+    b @ angry -transparent "The mercy given to you two years ago was undeserved. May our god have mercy on your wicked soul."
     a @ neutral teary angry "{b}STOP IT!{/b}"
-    "Azazel runs towards Baphomet, attempting to grab the knife, but Baphomet shoves him away. He hits the floor with a thud."
+    menu:
+        "Tackle Baphomet":
+            "You lunge at your Father, but he is much taller and stronger than you. You tug on his robes desperately."
+            b @ angry -transparent "Azazel! You are embarrassing yourself!"
+            a @ neutral determined angry "Put them down! They’re going to die!"
+            b @ angry -transparent "You have failed the ceremony at every step. This is my last effort to redeem you. Stand down."
+            m @ bandage fearful "H... help...!"
+            a @ neutral horrified "{i}Micah!{/i}"
+            "You struggle against your Father, punching, kicking, doing everything you could in a last ditch attempt to save your friend."
+            b @ mask_cracked "{b}ENOUGH!{/b}"
+            show baphomet mask_cracked transparent
+        "Pick up the knife":
+            "You lunge for the sacrificial knife and point it against your Father. "
+            a @ neutral determined angry "Don't move!"
+            show baphomet masked transparent
+            b @ masked -transparent "You brat...! You dare raise a weapon against a god?!"
+            m @ bandage fearful "H.. help...!"
+            play sound knife_sfx
+            pause
+            "Your friend is released from being choked."
+            m @ bandage sickly "..."
+            a @ neutral horrified "...F-Father, I-"
+            b @ mask_cracked -transparent "{b}Get over here.{/b}"
+            show baphomet mask_cracked transparent
+            a @ neutral horrified "{i}I broke his mask!{/i}"
+            "Your Father, normally so well-spoken and composed in the eyes of the Order, is consumed with indignant rage. He grabs you by the collar."
+            b @ mask_cracked -transparent "I found you, I {i}raised{/i} you-and this is how you repay me, Azazel? I am your Father! {b}Your god!{/b}"
+            b @ mask_cracked -transparent "You are a disgrace to the Order! A disgrace to me!"
+    
+    "Your father violently kicks you in the gut. You fall to the floor."
     "A loud snapping noise reverberates throughout the entire cavern."
+    "*CRACK*"
 
-    play music mellow_mood
+    # play music mellow_mood
     scene ending end cult
     pause
-    scene pure good end
+
+    "{i}What... happend?{/i}"
+    "{i}My born? I broke my born!{/i}"
+    "The horrified crowd watches"
+    "Citizen 1" "The Prophet beat his own son! I can’t watch any longer..."
+    "Citizen 2" "Oh god, look at his horn... and why is his hair white?"
+    "Citizen 3" "Hang in there, Azazel!"
+    scene sacrifice room with Fade(0.5, 2, 0.5, color="#000")
+    "You cradle your broken horn in your hands."
+    show azazel good disturbed transparent at right:
+        zoom .2
+    show micah bandage sickly transparent at left:
+        zoom .2
+    a @ good disturbed "{i}Everything hurts...{/i}"
+    m @ bandage sickly "You risked yourself to save my life..."
+    m @ bandage relieved "*cough* You're a hero..."
+    a @ good disturbed "I don’t think it’s not over yet."
+    "The two of you turn towards the Prophet, expecting him to be looming over the two of you."
+    "Surprisingly, he is facing away, head bowed, clutching his face."
+    # hide azazel good disturbed transparent
+    hide micah bandage sickly transparent
+    show baphomet mask_cracked transparent at center:
+        zoom 0.2
+        yalign 1.0
+    b @ mask_cracked -transparent "My mask..."
+    "The crowd becomes unruly"
+    "Citizen 1" "What? The Prophet’s mask broke? I thought he was supposed to be a manifestation of Baphomet..."
+    "Citizen 2" "He was so crazy and unhinged today. I always knew he felt like a fraud."
+    "Citizen 3" "Down with the Order!"
+    crowd "{b}False Prophet! False Prophet! False Prophet!{/b}"
+    b @ mask_cracked angry "H-how dare you? Dissenters, all of you! Your god Baphomet commands you to stop!"
+    "A crowd member throws a stone at him, and the crowd roars. Lilith steps in for damage control."
+    crowd "{b}GET OUT OF HERE!{/b}"
+
+    hide baphomet mask_cracked transparent
+    show azazel good disturbed transparent at center:
+        zoom .2
+    show baphomet mask_cracked transparent at right:
+        zoom 0.2
+        yalign 1.0
+    show lilith masked transparent at left:
+        zoom 0.2
+        yalign 1.0
+
+    l @ masked "Baphomet. For the sake of the Order, I suggest you leave. Their frustrations will not be quelled by words alone today."
+    b @ mask_cracked no pupil "No"
+    b @ mask_cracked "I refuse to let it end like this. I refuse. This ceremony was supposed to be perfect."
+    b @ mask_cracked angry "But you...! Azazel! You ruined everything!"
+    a @ good horrified "!"
+    l @ masked angry "Don’t hit your son again!"
+    "{b}SLAP{/b}"
+    show lilith broken_mask angry with dissolve
+    show lilith broken_mask angry transparent
+    l @ broken_mask angry "...How unbecoming of you."
+    "She cradles her aching face. Pieces of her mask crumble away."
+    b @ mask_cracked "Why do you protect him so vehemently? Why do you coddle him so?"
+    b @ mask_cracked "He is {i}my{/i} son."
+    l @ broken_mask angry "Perhaps I consider him mine as well."
+    b @ mask_cracked angry "You witch!"
+    l @ broken_mask angry "You could never understand...!"
+    "She holds him off. A handful of brave citizens rush to help her restrain the disgraced Prophet."
+    
+
+
+
+
+
+    # scene pure good end
     pause
     #scene 
 
@@ -1227,6 +1365,7 @@ label ending_escape_cult:
 
     jump after_finishing
     return
+
 
 label after_finishing:
     #Now that we're at the end, we can unlock the bonus content.
