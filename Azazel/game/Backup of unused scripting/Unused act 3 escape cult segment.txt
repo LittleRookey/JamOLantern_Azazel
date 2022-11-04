@@ -1,0 +1,28 @@
+ #a @ neutral sheepish "...can't we sacrifice someone else..?"
+    m @ bandage calm "...!" #again, no relieved Micah yet
+    b @ -transparent "Azazel."
+    a neutral worried "Please... I don't want to kill Micah... they're my friend..."
+    show azazel neutral worried transparent
+    b @ -transparent "They have had plenty of chances. If not them, who would you suggest we bring? The ritual has already begun."
+    "Azazel looks around frantically. His eyes land upon the citizen who is restraining Micah."
+    a @ neutral base "...what about him?"
+    b @ -transparent "Are you implying we sacrifice an innocent member of the Order?"
+    a @ neutral sheepish "H-he's... also a dissenter."
+    show extra character scared
+    extra "?!"
+    show extra character scared transparent
+    b @ -transparent "Oh?"
+    a @ -transparent "When I was passing out the rations with Micah, he complained about the amount he received. Then... h-he sullied your name, Lord Baphomet."
+    extra @ -transparent "What are you talking about?! I.. did no such thing..."
+    b @ -transparent "...I see."
+    b @ -transparent "Lilith, can you attest to this?"
+    l @ -transparent "..."
+    l @ -transparent "...I did overhear him. He defaced your honor, Lord Baphomet."
+    l @ -transparent "...What was it that he said, again? \"He's a fraud.\" Yes, that was it."
+
+    show extra character very scared
+    extra "..."
+    show extra character very scared transparent
+    a @ neutral confused "{i}did... Lilith just lie for me?{/i}"
+    b @ -transparent "..."
+    b @ -transparent "Very well. It seems we have a change of plans."
