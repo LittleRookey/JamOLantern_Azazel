@@ -15,6 +15,8 @@ define audio.intense_action = "/audio/IntenseAction.ogg"
 define audio.mellow_mood = "/audio/MellowMood.ogg"
 define audio.less_mellow_mood = "/audio/LessMellowMood.ogg"
 define audio.suspicious = "/audio/Suspicious.ogg"
+define audio.neutral_ending = "/audio/Neutral_Ending.mp3"
+define audio.good_ending = "/audio/Good_Ending.mp3"
 define audio.knife_sfx = "/audio/KnifeSFX.ogg"
 
 #Splash screens
@@ -1279,6 +1281,7 @@ label ending_end_cult:
 
 
     scene village
+    play music good_ending
     """
     Your unwavering determination and strength has set your people free from the chains of Baphomet.
 
@@ -1665,6 +1668,7 @@ label ending_escape_cult:
 
     #We don't have a flashback of the neighboring village, but we do have one for the original village.
     scene neighbor village
+    play music neutral_ending
     """
     {i}Your indecisiveness has costed you everything.{/i}
 
