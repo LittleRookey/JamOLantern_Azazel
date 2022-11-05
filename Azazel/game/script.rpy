@@ -58,7 +58,7 @@ image azazel neutral determined angry  = "Characters/Azazel/azazel neutral deter
 image azazel neutral disturbed = "Characters/Azazel/azazel neutral disturbed.png"
 image azazel neutral teary = "Characters/Azazel/azazel neutral teary.png"
 image azazel neutral eyes closed exhausted = "Characters/Azazel/azazel neutral eyes closed exhausted.png"
-image azazel neutral meek = "Characters/Azazel/azazel neutral meek"
+image azazel neutral meek = "Characters/Azazel/azazel neutral meek.png"
 
 image azazel bad smile = "Characters/Azazel/azazel bad smile.png"
 image azazel bad deranged = "Characters/Azazel/azazel bad deranged.png"
@@ -259,7 +259,6 @@ image micah bandage relieved = "Characters/Micah/micah bandage/micah relieved.pn
 image micah bandage sacrifice = "Characters/Micah/micah bandage/micah sacrifice.png"
 image micah bandage shock slash = "Characters/Micah/micah bandage/micah shock slash.png"
 image micah bandage sickly = "Characters/Micah/micah bandage/micah sickly.png"
-image micah bandage sad= "Characters/Micah/micah bandage/micah sad.png"
 
 image micah no bandage gray = im.Grayscale("Characters/Micah/micah no bandage/micah no bandage neutral.png")
 image micah no bandage angry = "Characters/Micah/micah no bandage/micah angry no bandage.png"
@@ -1363,7 +1362,7 @@ label ending_lead_cult:
     a "You have been a dissenter for years. But you managed to stay under the radar by tricking me into being your friend, so I would be reluctant to kill you."
     show azazel neutral angry transparent
     m @ bandage disturbed "What's gotten into you? None of that is true! *cough*"
-    m @ bandage sad "...I just didn't want to be alone anymore. I didn't trick you into anything, I promise."
+    m @ bandage sickly "...I just didn't want to be alone anymore. I didn't trick you into anything, I promise."
     a @ -transparent "No. You spoke out against our god. You stole, you lied, and you even spoke ill of The Prophet, my Father, straight to my face."
     a neutral cold "You almost successfully swayed me from my path, and barred me from my rightful position. You truly are the most clever mutineer I've ever seen."
     a "But a liar's promise holds no weight. May our god Baphomet have mercy upon your soul."
@@ -1820,19 +1819,19 @@ label character_blurbs:
     m @ bandage annoyed "It's kind of painful, you know. Getting stabbed. Twice. By two different people."
     m @ bandage annoyed "...Anyways."
     m @ bandage neutral "I got caught stealing a few years ago, so I was marked as a dissenter."
-    m @ bandage sad "The scars on my neck are proof of that. It sucks, but at least I'm still alive."
+    m @ bandage sickly "The scars on my neck are proof of that. It sucks, but at least I'm still alive."
     m @ bandage neutral "I couldn't tell Azazel, or they'd get rid of me. If I wanted to keep being friends with him, I had to keep my mouth shut."
     m @ bandage calm "I was okay with that. He's my best friend, so.. I put up with it."
     m @ bandage happy "We've spent our whole lives together, anyways."
     m @ bandage relieved "I mean, it's not like I had anyone else, haha... I was poor and always had to do the chores for everyone."
-    m @ bandage sad "It was lonely. But Azazel always kept me company, so I put up with it. I was happy when I got to hang out with him."
+    m @ bandage sickly "It was lonely. But Azazel always kept me company, so I put up with it. I was happy when I got to hang out with him."
     m @ bandage neutral "..."
     m @ bandage annoyed "What, do you want me to say more?"
     m @ bandage angry "Don't bring up Baphomet. He's a horrible man. He's brainwashed everyone else into believing he was some sort of god, but not me."
     m @ bandage angry "Lilith, too. She was completely captivated. All she did was make sure that Azazel never saw the horrible things his father was doing."
     m @ bandage angry "It's all thanks to those two that all of this happened!"
     m @ bandage sickly "...cough."
-    m @ bandage sad "...Please don't make me talk about them any more than that."
+    m @ bandage sickly "...Please don't make me talk about them any more than that."
 
     return
 
@@ -1929,3 +1928,4 @@ label debug_section: #A part of the game I made just to test stuff out.
     a @ neutral confused "Uh..."
 
     return
+
