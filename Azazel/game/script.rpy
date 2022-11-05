@@ -1,4 +1,4 @@
-﻿# The script of the game goes in this file.
+# The script of the game goes in this file.
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
@@ -55,6 +55,10 @@ image azazel neutral veryhappy = "Characters/Azazel/azazel neutral very happy.pn
 image azazel neutral worried = "Characters/Azazel/azazel neutral worried.png"
 image azazel neutral teary angry  = "Characters/Azazel/azazel neutral teary angry.png"
 image azazel neutral determined angry  = "Characters/Azazel/azazel neutral determined angry.png"
+image azazel neutral disturbed = "Characters/Azazel/azazel neutral disturbed.png"
+image azazel neutral teary = "Characters/Azazel/azazel neutral teary.png"
+image azazel neutral eyes closed exhausted = "Characters/Azazel/azazel neutral eyes closed exhausted.png"
+image azazel neutral meek = "Characters/Azazel/azazel neutral meek"
 
 image azazel bad smile = "Characters/Azazel/azazel bad smile.png"
 image azazel bad deranged = "Characters/Azazel/azazel bad deranged.png"
@@ -82,7 +86,7 @@ image azazel good worried = "Characters/Azazel/azazel good worried.png"
 image azazel neutral transparent:
     "Characters/Azazel/azazel neutral base.png"
     alpha 0.5
-image azazel neutral surprised transparent: 
+image azazel neutral surprised transparent:
     "Characters/Azazel/azazel neutral surprised.png"
     alpha 0.5
 image azazel neutral base transparent:
@@ -202,13 +206,13 @@ image baphomet angry = "Characters/Baphomet/baphomet angry.png"
 image baphomet silhouette transparent:
      "Characters/Baphomet/baphomet silhouette.png"
      alpha 0.5
-image baphomet masked transparent: 
+image baphomet masked transparent:
     "Characters/Baphomet/baphomet mask.png"
     alpha 0.5
-image baphomet mask_cracked transparent: 
+image baphomet mask_cracked transparent:
     "Characters/Baphomet/baphomet mask cracked.png"
     alpha 0.5
-image baphomet mask_cracked angry transparent: 
+image baphomet mask_cracked angry transparent:
     "Characters/Baphomet/baphomet mask cracked angry.png"
     alpha 0.5
 image baphomet mask_cracked no pupil transparent:
@@ -255,6 +259,7 @@ image micah bandage relieved = "Characters/Micah/micah bandage/micah relieved.pn
 image micah bandage sacrifice = "Characters/Micah/micah bandage/micah sacrifice.png"
 image micah bandage shock slash = "Characters/Micah/micah bandage/micah shock slash.png"
 image micah bandage sickly = "Characters/Micah/micah bandage/micah sickly.png"
+image micah bandage sad= "Characters/Micah/micah bandage/micah sad.png"
 
 image micah no bandage gray = im.Grayscale("Characters/Micah/micah no bandage/micah no bandage neutral.png")
 image micah no bandage angry = "Characters/Micah/micah no bandage/micah angry no bandage.png"
@@ -267,7 +272,7 @@ image micah no bandage neutral = "Characters/Micah/micah no bandage/micah no ban
 image micah no bandage sickly = "Characters/Micah/micah no bandage/micah sickly no bandage.png"
 
 
-# Micah Bandeges transparent images 
+# Micah Bandeges transparent images
 image micah bandage angry transparent:
     "Characters/Micah/micah bandage/micah angry.png"
     alpha 0.5
@@ -399,7 +404,7 @@ default persistent.ending_lead_unlocked = False
 
 #Change this to False before compiling and releasing.
 #Turning it on lets the player see some testing features.
-default script_testing_mode = False 
+default script_testing_mode = False
 
 # The game starts here.
 
@@ -422,7 +427,7 @@ label start:
                 jump debug_section
     else:
         jump script_intro
-    
+
     # This ends the game.
 
     return
@@ -509,8 +514,8 @@ label cave_wakeup:
 
     l @ masked """
     Listen closely...
-    
-    {b}We, the citizens of the Order, are blessed to be under Baphomet's divine watch.{/b} 
+
+    {b}We, the citizens of the Order, are blessed to be under Baphomet's divine watch.{/b}
 
     {b}We praise our god's mercy and hear his word through his excellency, {color=#f00}The Prophet, Baphomet.{/color}{/b}
 
@@ -746,7 +751,7 @@ label act2_altar:
     #m "The few that {i}are{/i} happy are delusional. Everyone else just got dragged into the Order because we're poor and vulnerable and didn't know any better!"
     #m bandage neutral "...We're all just too afraid to say it."
     #m "We can't leave on our own... This cult garbage is fed into our minds 24/7 ... if we-"
-    
+
     m "We're forced to work, we don't get paid, we can't leave, and the food just sucks."
     m "People only joined the Order because of promises of safety and care... We were poor and vulnerable and didn't know any better."
     m bandage disturbed "We're all just too weak to escape."
@@ -756,7 +761,7 @@ label act2_altar:
     a @ -transparent "Hey, Micah-"
     m @ -transparent "He's making us worship him, a man behind a mask. And if we have any little bad thing to say about it, we...!"
     stop music
-    
+
     a neutral horrified "SHH!"
 
     play music suspicious
@@ -908,7 +913,7 @@ label act3_start:
     a @ neutral base "..."
 
     #We don't have angry Baphomet.
-    b @ -transparent "Azazel. Finish the sermon."
+    b @ angry "Azazel. Finish the sermon."
 
     a @ neutral annoyed "To show our faith to Baphomet, our god, we cleanse our Order of the unclean through..."
 
@@ -973,32 +978,32 @@ label act3_start:
     l @ masked "The traitor before you today was spreading hate about our god, attempting to misguide the next Prophet."
     m @ bandage disturbed "...."
     l @ masked angry "{b}Dissidents are wicked, unrepenting beings, who use sweet lies to rule the minds of the weak. They must be purged from our Order.{/b}"
-    b @ -transparent "Azazel. Come forth."
+    b @ masked "Azazel. Come forth."
     #a neutral horrified "Fath- Lord Baphomet..."
-    b @ -transparent "Raise the sacrificial knife, and rid us of the poison that plagues the Order."
+    b @ masked "Raise the sacrificial knife, and rid us of the poison that plagues the Order."
     "The citizen pushes Micah in front of Azazel. The crowd goes silent in anticipation, eagerly awaiting the coming sacrifice."
     m @ bandage fearful "Azazel... don't..."
-    l @ -transparent "{b}SILENCE!{/b}"
+    l @ masked angry "{b}SILENCE!{/b}"
     m @ bandage sickly "..."
     #a "B-but… Lord Baphomet… why Micah..? They’re my friend…"
-    a @ -transparent "Wait, Lord Baphomet, please- Micah is my friend!"
-    b @ -transparent """
+    a @ disturbed "Wait, Lord Baphomet, please- Micah is my friend!"
+    b @ masked """
     A traitorous rebel who can't learn a simple lesson is no friend of yours.
-    
-    This dissenter has strung you along for long enough. It's time they've learned their lesson. 
-    
-    And what more of an honor is it to be sacrificed in the name of our god, during the most important ceremony of this generation? 
-    
+
+    This dissenter has strung you along for long enough. It's time they've learned their lesson.
+
+    And what more of an honor is it to be sacrificed in the name of our god, during the most important ceremony of this generation?
+
     You are about to become the next Prophet, the highest honor anyone could bestow upon you. Are you really worthy of that title if you are unable to sacrifice one lowly dissenter?
-    
-    Proceed. 
+
+    Proceed.
     """
 
     "You take a deep breath, and pull out the sacrificial knife."
     show azazel neutral annoyed
 
     jump ending_choice_menu
-    
+
     return
 
 label ending_choice_menu:
@@ -1058,7 +1063,7 @@ label ending_end_cult:
     #We don't seem to differentiate between "teary angry" and "determined angry".
     a @ neutral angry "I refuse."
     b @ masked -transparent "You do not have a choice. Sacrifice them."
-    
+
     a @ neutral teary angry "I refuse!"
     show azazel neutral teary angry transparent
     b @ masked -transparent "You {b}will{/b} become my successor. You are the face of the Order."
@@ -1099,7 +1104,7 @@ label ending_end_cult:
             "Your Father, normally so well-spoken and composed in the eyes of the Order, is consumed with indignant rage. He grabs you by the collar."
             b @ mask_cracked -transparent "I found you, I {i}raised{/i} you-and this is how you repay me, Azazel? I am your Father! {b}Your god!{/b}"
             b @ mask_cracked -transparent "You are a disgrace to the Order! A disgrace to me!"
-    
+
     "Your father violently kicks you in the gut. You fall to the floor."
     "A loud snapping noise reverberates throughout the entire cavern."
     "*CRACK*"
@@ -1169,7 +1174,7 @@ label ending_end_cult:
     b @ mask_cracked angry "You witch!"
     l @ broken_mask angry "You could never understand...!"
     "She holds him off. A handful of brave citizens rush to help her restrain the disgraced Prophet."
-    
+
     b @ mask_cracked angry "Ugh...!"
     l broken_mask """
     Micah, Azazel.
@@ -1303,7 +1308,7 @@ label ending_end_cult:
     pause
     scene pure good end
     pause
-    #scene 
+    #scene
 
     jump after_finishing
 
@@ -1373,11 +1378,11 @@ label ending_lead_cult:
     #hide ending lead cult transforming
     window auto #returns the text box
     """
-    You feel a sinister change within you. For the first time in years, you remember that you are not human. 
+    You feel a sinister change within you. For the first time in years, you remember that you are not human.
 
     You are a symbol of the Order. A blessing born from Baphomet's might as a god.
 
-    This is the sacred honor you were told to bear. 
+    This is the sacred honor you were told to bear.
     """
 
     hide ending lead cult transforming
@@ -1446,12 +1451,12 @@ label ending_lead_cult:
             b masked "...Okay then."
 
     "Father" """
-    As Prophet, you will relay the divine word you hear from our god Baphomet, and borrow his sacred name. You work to uphold the peace and prosperity of the Order, and keep the community's faith in you strong and absolute. 
-    
-    Cast aside your former name. Your name is now Baphomet. 
-    
-    Cast aside your former skin, your former mind, body, and soul, and embrace your new identity. Your identity is now our god. 
-    
+    As Prophet, you will relay the divine word you hear from our god Baphomet, and borrow his sacred name. You work to uphold the peace and prosperity of the Order, and keep the community's faith in you strong and absolute.
+
+    Cast aside your former name. Your name is now Baphomet.
+
+    Cast aside your former skin, your former mind, body, and soul, and embrace your new identity. Your identity is now our god.
+
     Citizens of the Order- bow to your new leader!
     """
 
@@ -1469,12 +1474,12 @@ label ending_lead_cult:
 
     Baphomet.
 
-    The Order is in your hands. 
+    The Order is in your hands.
     """
 
     scene pure evil end
     pause
-    
+
     #to be continued uwu
 
     jump after_finishing
@@ -1485,7 +1490,7 @@ label ending_escape_cult:
     show azazel neutral worried transparent
 
     #a "escape cult"
-    
+
     b @ angry "There is no negotiation."
     "The knife in your hand trembles as the crowd grows restless."
     a neutral worried "Wait! I don't mean to offend anyone. Please, understand..."
@@ -1504,37 +1509,37 @@ label ending_escape_cult:
             a neutral surprised "Hear me out! I mean, just earlier today I heard this man complaining about rations!"
             show azazel neutral angry transparent
             crowd "*anxious chattering*"
-            extra @ very scared "Uh..."
+            extra character @ very scared "Uh..."
 
         "I know of another dissenter.":
             crowd "*gasp*"
             a neutral angry "That's right. In fact... it's that man right there!"
             show azazel neutral angry transparent
-            extra @ very scared "What?"
+            extra character @ very scared "What?"
             crowd "*loud murmuring*"
-            a @ -transparent "He complained about the rations, saying he expected special treatment tonight."
+            a @ cold "He complained about the rations, saying he expected special treatment tonight."
 
-    a @ -transparent "He said it all sarcastically, like \"Thanks Baphomet,\" and \"What a gracious god.\""
+    a @ angry "He said it all sarcastically, like \"Thanks Baphomet,\" and \"What a gracious god.\""
     a @ neutral worried "And I thought in my head, wow, how ungrateful... after all the effort I went through delivering food to everyone!"
-    extra @ very scared "Hey, where's your proof? I didn't say any of that!"
-    a @ neutral base "Only dissenters lie. Are you calling me a liar?"
-    extra @ very scared "Tch..."
-    b @ -transparent "Very well then. A new dissenter will be cleansed. May his wicked soul no longer defile our precious Order and our god's name."
+    extra character @ very scared "Hey, where's your proof? I didn't say any of that!"
+    a @ neutral cold "Only dissenters lie. Are you calling me a liar?"
+    extra character @ very scared "Tch..."
+    b @ masked "Very well then. A new dissenter will be cleansed. May his wicked soul no longer defile our precious Order and our god's name."
     show azazel neutral base transparent
     a @ neutral surprised "{i}That actually worked?!{/i}"
-    b @ -transparent "After all, this is a sacred trial for our next Prophet. The subject is of little importance. The strength lies in his will and blade."
-    a @ neutral sheepish "Oh, yes, of course."
+    b @ masked "After all, this is a sacred trial for our next Prophet. The subject is of little importance. The strength lies in his will and blade."
+    a @ neutral meek "Oh, yes, of course."
     a @ neutral worried "{i}I bought Micah some time, but now I roped this guy into things! I'm sorry, bread guy...{/i}"
     "The dissenter is dragged to the center of the circle, in place of Micah."
-    extra @ very scared "Please, I didn’t mean anything! I’ll never speak ill of anyone again! All hail!"
+    extra character @ very scared "Please, I didn’t mean anything! I’ll never speak ill of anyone again! All hail!"
     "You raise the sacrificial knife."
     show azazel neutral angry transparent
-    a @ -transparent "In the name of our god, Baphomet, I will prove my faith... may he have mercy on your soul."
+    a @ neutral cold "In the name of our god, Baphomet, I will prove my faith... may he have mercy on your soul."
     play sound knife_sfx
-    a @ -transparent "..."
-    extra @ scared "...?"
+    a @ neutral cold "..."
+    extra character @ scared "...?"
     "The sacrificial knife's blade is stuck in the ground."
-    a neutral surprised "{i}I missed!{/i}"
+    a @ neutral disturbed "{i}I missed!{/i}"
     show azazel neutral surprised transparent
     b @ angry """
     {b}That's enough!{/b}
@@ -1546,29 +1551,29 @@ label ending_escape_cult:
     You are a disappointment.
     """
 
-    a @ -transparent "I... I'm..."
+    a @ neutral disturbed "I... I'm..."
     m @ bandage angry "Let's go!"
     "They suddenly grab your hand, and the two of you make a run for it."
-    a @ neutral teary angry "MICAH!"
+    a @ neutral teary "MICAH!"
     b @ angry "STOP THEM!"
 
     scene village with Fade(0.5, 2, 0.5, color="#000")
-    show azazel neutral teary angry at left:
+    show azazel neutral teary at left:
         zoom 0.2
     show micah bandage disturbed transparent at right:
         zoom 0.2
-    a @ -transparent "Where are we going?"
-    m @ -transparent "Away."
+    a @ neutral teary "Where are we going?"
+    m @ bandage disturbed "Away."
     show azazel neutral teary angry transparent
-    a @ -transparent "Micah, I have to complete the ceremony!"
-    a @ -transparent "Father is right, I've been completely useless. I need to do {i}something{/i}. I'll kill that dissenter to save you."
-    m @ bandage fearful "Forget that, keep running! They're catching up!"
-    a @ -transparent "I just wanted to tell you that you're right... this place is horrible. I don't know why I never did anything about it."
-    a @ -transparent "I should have known sooner. I lived here my whole life."
-    m @ bandage calm "Hey. Azazel, it's okay."
-    m @ bandage calm "You're just a kid. It's not your fault."
+    a @ neutral angry teary "Micah, I have to complete the ceremony!"
+    a @ neutral angry teary "Father is right, I've been completely useless. I need to do {i}something{/i}. I'll kill that dissenter to save you."
+    m @ bandage pleading "Forget that, keep running! They're catching up!"
+    a @ neutral teary "I just wanted to tell you that you're right... this place is horrible. I don't know why I never did anything about it."
+    a @ neutral teary "I should have known sooner. I lived here my whole life."
+    m @ bandage relieved "Hey. Azazel, it's okay."
+    m @ bandage relieved "You're just a kid. It's not your fault."
     a @ neutral sheepish "Mm..."
-    a @ -transparent "Wait-"
+    a @ neutral surprised "Wait-"
     a @ neutral horrified "BEHIND YOU!"
 
     play sound knife_sfx
@@ -1590,7 +1595,7 @@ label ending_escape_cult:
 
     b @ -transparent "{b}Here is the fate of all who dare oppose our god.{/b}"
     a @ -transparent "M... Micah..."
-    a neutral angry "AH! AHH!"
+    a @ neutral angry teary "AH! AHH!"
     show azazel neutral teary angry transparent
     m @ -transparent """
     *cough*
@@ -1600,25 +1605,25 @@ label ending_escape_cult:
     Run... forget about me...
     """
 
-    a @ -transparent "No! I can't leave you behind..."
+    a @ neutral angry teary "No! I can't leave you behind..."
     b @ -transparent "{b}Return to my side now.{/b}"
     a neutral teary angry "*cough* Now...!"
     menu:
         "Run away":
-            show azazel neutral teary angry transparent
+            show azazel neutral teary transparent
             "You break into a frenetic run, wiping the stinging tears on your face."
 
         "Stay with Micah":
-            show azazel neutral teary angry transparent
+            show azazel neutral teary transparent
             m @ -transparent "You idiot..."
             m @ -transparent "What's the point if we both get caught? *cough*"
-            a @ -transparent "Don’t die–I’ll take you to the infirmary, I’ll do anything!"
+            a @ -transparent "Don’t die... I’ll take you to the infirmary, I’ll do anything!"
             m @ -transparent "I was supposed to- *cough* -protect you..."
             m @ -transparent "Azazel... be... free..."
             a @ neutral horrified "..."
             "Their breathing goes still."
             "You scramble to your feet and break into a frenetic run, wiping the stinging tears on your face."
-    
+
     hide azazel
     show baphomet at left
     show lilith at right
@@ -1639,20 +1644,20 @@ label ending_escape_cult:
     l @ -transparent "I am only saying what's best for the Order."
     b @ -transparent "..."
     b @ -transparent "Very well. Have it your way."
-    
+
     scene black with Fade(0.5, 2, 0.5, color="#000")
-    show azazel neutral horrified at center:
+    show azazel neutral eyes closed exhausted at center:
         zoom 0.3
     """
-    You have been running for hours. 
-    
-    Through unfamiliar slopes and valleys, your legs carried you away, fueled by nothing but fear. 
-    
+    You have been running for hours.
+
+    Through unfamiliar slopes and valleys, your legs carried you away, fueled by nothing but fear.
+
     Your mind is numb.
-    
+
     Your heart is numb.
 
-    Your body is numb. 
+    Your body is numb.
     """
 
     play music less_mellow_mood
@@ -1661,8 +1666,8 @@ label ending_escape_cult:
         zoom 0.2
 
     """
-    By daybreak, you stumble upon another village for the first time. You collapse from exhaustion. 
-    
+    By daybreak, you stumble upon another village for the first time. You collapse from exhaustion.
+
     The worried citizens see a stranger dressed in strange robes with peculiar ears and horns. They have the kindness and mercy to take you in.
     """
 
@@ -1673,17 +1678,17 @@ label ending_escape_cult:
     {i}Your indecisiveness has costed you everything.{/i}
 
     {i}You have abandoned your friends, your family, and the place you called home.{/i}
-    
+
     {i}Your future is uncertain.{/i}
-    
+
     {i}But at least you have escaped with your life... you are now free, unfettered.{/i}
-    
+
     {i}It is the dawn of a new age.{/i}
-    
+
     {i}Cast aside your former name.{/i}
-    
+
     {i}Cast aside your former skin, your former mind, body, and soul, and embrace your new identity.{/i}
-    
+
     {i}Welcome to the outside world.{/i}
     """
 
@@ -1751,41 +1756,83 @@ label character_blurbs:
     show azazel neutral happy at center:
         zoom 0.2
 
-    a "Hi, I'm Azazel!"
-    a "I like oatmeal and I dislike scary movies."
-    a "I love the order, they're like a big family to me. I love my dad, Lady Lilith, and my best friend Micah!"
-    a "What? No, you can't touch my tail!!!"
+    a @ neutral overjoyed "Hi, My name's Azazel. Thank you for coming on this journey with me."
+    a @ neutral happy "It's been a long day. I'm sure you have lots of questions. I hope I can answer just a few."
+    a @ neutral base "Let's see..."
+    a @ neutral very happy "For starters, I'll tell you about myself!"
+    a @ neutral happy "I am the next Prophet of the Order of Baphomet."
+    a @ neutral meek "Well... I was going to be the next Prophet, but things didn't really go to plan, did they?"
+    a @ neutral sheepish "..."
+    a @ neutral base "Well, let's not dwell on that."
+    a @ neutral happy "Umm... Let's see..."
+    a @ neutral overjoyed "Micah is my best friend! We go way back."
+    a @ very happy "We would always play together when we were younger. I was never bored when they were around."
+    a @ neutral confused "Two years ago, something changed, though... They became really quiet and snappy."
+    a @ neutral surprised "But that's okay! People are allowed to change!"
+    a @ neutral very happy "I would never leave them behind. I'll be by their side, no matter what."
+    a @ neutral happy "I know they would do the same for me."
+    a @ neutral base "Let's see... who else... oh, of course!"
+    a @ neutral very happy "I love my family. Lilith has always been like a mother to me. She always made sure I was happy and safe."
+    a @ neutral happy "Father wasn't home very often. He was busy, so she watched over me. I don't know where I'd be without her."
+    a @ neutral confused "When I was little, she would even tuck me into bed at night. Kind of embarrassing, looking back on it."
+    a @ neutral eyes closed exhausted "And... Father always took care of me, when she wasn't around."
+    a @ neutral eyes closed exhausted "He never missed one of my birthdays, at least."
+    a @ neutral calm "...He could be a good person, sometimes."
 
     hide azazel
 
     show baphomet masked at center:
         zoom 0.2
 
-    b "I am Baphomet, the Leader."
-    b "I like chocolate. And power."
-    b "I dislike dissenters. I enjoy seeing them get sacrificed at our rituals."
-    b "Have you seen my son?"
+    b @ masked "You..."
+    b @ masked angry "Thanks to you, everything I've built up has fallen into ruin."
+    b @ masked angry "Let's make this quick. I can't stand looking at you."
+    b @ masked "I am Baphomet. Our god speaks through me, and chose me to lead the Order."
+    b @ masked angry "Do not disrespect our god. Without them, we would be nothing."
+    b @ masked "My son has been my greatest accomplishment. A powerful being, destine to take my place as the Prophet."
+    b @ masked "He is truly remarkable."
+    b @ masked angry "...Unlike that lowly dissenter who he believes to be his friend. I should have gotten rid of them before it was too late."
+    b @ maked angry "Now, I must go. Dare you show your face around here again, and I will make sure that you regret it."
 
     hide baphomet
 
     show lilith masked at center:
         zoom 0.2
 
-    l "This is Lady Lilith."
-    l "I like red wine. {w}I dislike white wine."
-    l "Do I like anyone? Well... Our god is what's most important to me."
+    l @ masked "Greetings. Thank you for joining us. My name is Lilith."
+    l @ masked "I simply want the best for Azazel. Our god tasked me with raising him to be the next Prophet."
+    l @ masked "I would do whatever it takes to keep him safe."
+    l @ masked "..."
+    l @ masked "Hmm? You'd like to know more about me?"
+    l @ masked "Well, there's not much to say. I live for our god. Thanks to him, I have a peaceful life."
+    l @ masked "I have been with the Order for many years. Before being saved, I was a lost soul, living on the streets, ousted by my family and left to fend for myself."
+    l @ masked "That was when Lord Baphomet found me and took me in. I owe him my life."
+    l @ masked "My loyalty to the Order is what led me to my current standing. Our god believes in me. He chose me for this task."
+    l @ masked angry "Lay a hand on Azazel, and I'll make sure your next breath is your last."
 
     hide lilith
 
     show micah bandage neutral at center:
         zoom 0.2
 
-    m "Hi, I'm Micah."
-    m "I don't remember the last time I had more than 3 hours of sleep in one night..."
-    m "I like coffee."
-    m "I dislike no coffee. {w}And Baphomet."
-    m "Let's keep that last one a secret, OK? Nobody needs to know!"
-    m "Except for Azazel. I think he needs to know about that."
+    m @ bandage neutral "Thanks for watching over Azazel. My name's Micah."
+    m @ bandage annoyed "Although... You had to make some bad decisions to get here. How do you think I felt about that, huh?"
+    m @ bandage annoyed "It's kind of painful, you know. Getting stabbed. Twice. By two different people."
+    m @ bandage annoyed "...Anyways."
+    m @ bandage neutral "I got caught stealing a few years ago, so I was marked as a dissenter."
+    m @ bandage sad "The scars on my neck are proof of that. It sucks, but at least I'm still alive."
+    m @ bandage neutral "I couldn't tell Azazel, or they'd get rid of me. If I wanted to keep being friends with him, I had to keep my mouth shut."
+    m @ bandage calm "I was okay with that. He's my best friend, so.. I put up with it."
+    m @ bandage happy "We've spent our whole lives together, anyways."
+    m @ bandage relieved "I mean, it's not like I had anyone else, haha... I was poor and always had to do the chores for everyone."
+    m @ bandage sad "It was lonely. But Azazel always kept me company, so I put up with it. I was happy when I got to hang out with him."
+    m @ bandage neutral "..."
+    m @ bandage annoyed "What, do you want me to say more?"
+    m @ bandage angry "Don't bring up Baphomet. He's a horrible man. He's brainwashed everyone else into believing he was some sort of god, but not me."
+    m @ bandage angry "Lilith, too. She was completely captivated. All she did was make sure that Azazel never saw the horrible things his father was doing."
+    m @ bandage angry "It's all thanks to those two that all of this happened!"
+    m @ bandage sickly "...cough."
+    m @ bandage sad "...Please don't make me talk about them any more than that.
 
     return
 
@@ -1838,7 +1885,7 @@ label debug_section: #A part of the game I made just to test stuff out.
             $ persistent.ending_lead_unlocked = False
             "You can no longer see the gallery or character blurbs."
             jump debug_section
-        
+
         "Continue debug scene":
             pass
 
@@ -1867,7 +1914,7 @@ label debug_section: #A part of the game I made just to test stuff out.
         "Transparent":
             show azazel neutral transparent
             show lilith transparent
-    
+
     "You awaken with a start in your own room."
 
     a @ neutral surprised "Ah! I'm up!"
