@@ -2,9 +2,72 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 322: expected expression
-    define config.menu_include_disabled = 
-                                          ^
+File "game/script.rpy", line 1835: end of line expected.
+(Perhaps you left out a " at the end of the first line.)
+    m @ bandage sad "...Please don't make me talk about them any more than that.
+    
+        return
+    
+    label debug_section: #A part of the game I made just to test stuff out.
+    
+        # Show a background. This uses a placeholder by default, but you can
+        # add a file (named either "bg room.png" or "bg room.jpg") to the
+                                           ^
+        # images directory to show it.
+        $ moralityScore = 0
+    
+        scene village
+    
+        menu:
+            "Do what?"
+    
+            "Jump to a scene":
+                menu:
+                    "Jump to where?"
+    
+                    "Opening scene (Act 1)":
+                        jump script_intro
+    
+                    "Cave wake-up (Act 1)":
+                        jump cave_wakeup
+    
+                    "Act 2 opening":
+                        jump act2
+    
+                    "Act 2 altar":
+                        jump act2_altar
+    
+                    "Act 3":
+                        jump act3_start
+    
+                    "Return to main debug menu":
+                        jump debug_section
+    
+            "Unlock postgame content" if not persistent.galleryUnlocked:
+                $ persistent.galleryUnlocked = True
+                $ persistent.ending_end_unlocked = True
+                $ persistent.ending_escape_unlocked = True
+                $ persistent.ending_lead_unlocked = True
+                "Now you can see the gallery and character blurbs."
+                jump debug_section
+    
+            "Lock postgame content" if persistent.galleryUnlocked:
+                $ persistent.galleryUnlocked = False
+                $ persistent.ending_end_unlocked = False
+                $ persistent.ending_escape_unlocked = False
+                $ persistent.ending_lead_unlocked = False
+                "You can no longer see the gallery or character blurbs."
+                jump debug_section
+    
+            "Continue debug scene":
+                pass
+    
+        show azazel bad neutral at center:
+            zoom 0.2
+    
+        #a "Here's the debug scene."
+    
+        #l "...What was it that he said, again? \"He's a fraud.\" Yes, that was it."
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Fri Nov  4 17:19:01 2022
+Sat Nov  5 12:55:22 2022

@@ -1832,7 +1832,7 @@ label character_blurbs:
     m @ bandage angry "Lilith, too. She was completely captivated. All she did was make sure that Azazel never saw the horrible things his father was doing."
     m @ bandage angry "It's all thanks to those two that all of this happened!"
     m @ bandage sickly "...cough."
-    m @ bandage sad "...Please don't make me talk about them any more than that.
+    m @ bandage sad "...Please don't make me talk about them any more than that."
 
     return
 
