@@ -1785,14 +1785,14 @@ label character_blurbs:
         zoom 0.2
 
     b @ masked "You..."
-    b @ masked angry "Thanks to you, everything I've built up has fallen into ruin."
-    b @ masked angry "Let's make this quick. I can't stand looking at you."
+    b @ angry "Thanks to you, everything I've built up has fallen into ruin."
+    b @ angry "Let's make this quick. I can't stand looking at you."
     b @ masked "I am Baphomet. Our god speaks through me, and chose me to lead the Order."
-    b @ masked angry "Do not disrespect our god. Without them, we would be nothing."
+    b @ angry "Do not disrespect our god. Without them, we would be nothing."
     b @ masked "My son has been my greatest accomplishment. A powerful being, destine to take my place as the Prophet."
     b @ masked "He is truly remarkable."
-    b @ masked angry "...Unlike that lowly dissenter who he believes to be his friend. I should have gotten rid of them before it was too late."
-    b @ maked angry "Now, I must go. Dare you show your face around here again, and I will make sure that you regret it."
+    b @ angry "...Unlike that lowly dissenter who he believes to be his friend. I should have gotten rid of them before it was too late."
+    b @ angry "Now, I must go. Dare you show your face around here again, and I will make sure that you regret it."
 
     hide baphomet
 
