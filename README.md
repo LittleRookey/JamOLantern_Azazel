@@ -1,7 +1,7 @@
 # JamOLantern_Azazel
 
 ## The Order of Baphomet
-[!HalloweenBonus](Images/halloween_bonus.png)
+![HalloweenBonus](Images/halloween_bonus.png)
 
 Itch.io Link: 
 
